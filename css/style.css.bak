@@ -1,0 +1,2860 @@
+/* Updated: 2026-02-08 22:40 - Glassmorphism effect for Mingfei Bi title */
+
+/* =======================================================
+*
+* 	Template Style 
+*	Edit this section
+*<font color="#d9534f"><font color="#17A689">
+* ======================================================= */
+
+/* 全局CSS变量 */
+:root {
+  --border-radius: 4px;
+  
+  /* Mingfei brand colors */
+  --mingfei-green: #00665F;
+  
+  /* Badge gradient colors */
+  --gradient-harsh-purple: rgb(115, 0, 229);
+  --gradient-harsh-lime: rgb(0, 112, 0);
+  --gradient-harsh-magenta: rgb(178, 0, 143);
+  --gradient-transparent-magenta: rgba(178, 0, 143, 0);
+  
+  /* Badge gradient background - 双层渐变叠加 */
+  --badge-gradient: linear-gradient(196.29deg, var(--gradient-transparent-magenta) 29.188%, var(--gradient-harsh-magenta) 107.2%), 
+                    linear-gradient(163.46deg, var(--gradient-harsh-purple) 29.387%, var(--gradient-harsh-lime) 107.44%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Lato","PT Sans", Arial, sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #7f7f7f;
+  /* 纯白色背景，渐变只在hero区域 */
+  background: #ffffff;
+  height: 100%;
+  position: relative;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #00665F;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+a:hover, a:active, a:focus {
+  color: #00665F;
+  outline: none;
+}
+
+p {
+  margin-bottom: 1.5em;
+  font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #333;
+  font-family: "PT Sans", Arial, serif;
+  font-weight: 300;
+  margin: 0 0 30px 0;
+}
+
+::-webkit-selection {
+  color: #fff;
+  background: #00665F;
+}
+
+::-moz-selection {
+  color: #fff;
+  background: #00665F;
+}
+
+::selection {
+  color: #fff;
+  background: #00665F;
+}
+
+#fh5co-header {
+  position: absolute;
+  z-index: 99;
+  width: calc(100% - 40px);
+  left: 20px;
+  right: 20px;
+  opacity: 1;
+  top: 20px;
+  /* 液态流动感毛玻璃效果 */
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(32px) saturate(150%);
+  -webkit-backdrop-filter: blur(32px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border-radius: var(--border-radius);
+}
+#fh5co-header .navbar {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+#fh5co-header #navbar .navbar-right {
+  margin-right: 0;
+}
+@media screen and (max-width: 992px) {
+  #fh5co-header #navbar .navbar-right {
+    margin-right: -15px;
+  }
+}
+@media screen and (max-width: 992px) {
+  #fh5co-header #navbar li a {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+}
+#fh5co-header #navbar li a span {
+  position: relative;
+  display: block;
+  padding-bottom: 2px;
+  color:#00665F;
+}
+#fh5co-header #navbar li a:hover {
+  color: #00665F;
+}
+#fh5co-header #navbar li.active a {
+  background: transparent;
+  background: none;
+}
+@media screen and (max-width: 480px) {
+  #fh5co-header #navbar li.active a {
+    color: #00665F;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #fh5co-header #navbar li.active a span:before {
+    background-color: transparent;
+  }
+}
+#fh5co-header #navbar li.call-to-action a {
+  border: 2px solid #00665F;
+  padding: 5px 10px 3px 10px;
+  margin: 12px 0 0 0px;
+  -webkit-border-radius: var(--border-radius);
+  -moz-border-radius: var(--border-radius);
+  -ms-border-radius: var(--border-radius);
+  border-radius: var(--border-radius);
+}
+#fh5co-header #navbar li.call-to-action a:hover {
+  background-color: #00665F;
+  color: #00665F;
+}
+#fh5co-header #navbar li.call-to-action a span:before {
+  background-color: transparent;
+}
+#fh5co-header .navbar-brand {
+  float: left;
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  padding-left: 0;
+  color: #74889e;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+#fh5co-header .navbar-brand > span {
+  color: #fff;
+  font-size: 40px;
+}
+#fh5co-header .navbar-brand1 {
+  float: left;
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  padding-left: 0;
+  color: #74889e;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  padding: 17.5px 15px;
+  line-height: 20px;
+  height: 55px;
+
+}
+#fh5co-header .navbar-brand1 > span {
+  color: #fff;
+  font-size: 24px;
+}
+
+#fh5co-header .navbar-brand2 {
+  float: left;
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  padding-left: 0;
+  color: #00665F;
+  text-transform: uppercase;
+  padding: 17.5px 15px;
+  line-height: 20px;
+  height: 55px;
+}
+#fh5co-header .navbar-brand2 > span {
+  color: #fff;
+  font-size: 40px;
+}
+#fh5co-header .navbar-brand3 {
+  float: left;
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  padding-left: 0;
+  color: #00665F;
+  text-transform: uppercase;
+  
+  padding: 17.5px 15px;
+  line-height: 20px;
+  height: 55px;
+
+}
+#fh5co-header .navbar-brand3 > span {
+  color: #fff;
+  font-size: 24px;
+}
+@media screen and (max-width: 992px) {
+  #fh5co-header .navbar-brand {
+    padding-left: 10px !important;
+    padding-right: 0 !important;
+  }
+}
+#fh5co-header.navbar-fixed-top {
+  position: fixed !important;
+  width: calc(100% - 40px);
+  left: 20px;
+  right: 20px;
+  /* 液态流动感毛玻璃效果 */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(32px) saturate(150%);
+  -webkit-backdrop-filter: blur(32px) saturate(150%);
+  margin-top: 0px;
+  top: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border-radius: var(--border-radius);
+}
+#fh5co-header.navbar-fixed-top .navbar-brand {
+  color: #74889e;
+}
+#fh5co-header.navbar-fixed-top #navbar li a {
+  color: rgba(255, 255, 255, 0.5) !important;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+#fh5co-header.navbar-fixed-top #navbar li a:hover {
+  color: #00665F;
+}
+#fh5co-header.navbar-fixed-top #navbar li.active a {
+  color: #00665F !important;
+}
+@media screen and (max-width: 768px) {
+  #fh5co-header.navbar-fixed-top #navbar li.active a {
+    color: #00665F !important;
+  }
+}
+
+
+
+@media screen and (max-width: 768px) {
+  #fh5co-header.navbar-fixed-top #navbar li.active a span:before {
+    background-color: transparent;
+  }
+}
+#fh5co-header.navbar-fixed-top #navbar li.call-to-action a {
+  border: 2px solid #00665F;
+  padding: 5px 10px 3px 10px;
+  margin: 12px 0 0 0px;
+  -webkit-border-radius: var(--border-radius);
+  -moz-border-radius: var(--border-radius);
+  -ms-border-radius: var(--border-radius);
+  border-radius: var(--border-radius);
+}
+#fh5co-header.navbar-fixed-top #navbar li.call-to-action a:hover {
+  background-color: #00665F;
+  color: #00665F !important;
+}
+#fh5co-header.navbar-fixed-top #navbar li.call-to-action a span:before {
+  background-color: transparent;
+}
+#fh5co-header .navbar-default {
+  border: transparent;
+  background: transparent;
+  margin: 0;
+  padding-right: 50px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  border-radius: 0px;
+}
+@media screen and (max-width: 768px) {
+  #fh5co-header .navbar-default {
+    margin-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+}
+#fh5co-header .navbar-default .brand-slogan {
+  margin: 28px 0 0 15px;
+  float: left;
+  letter-spacing: 2px;
+  color: #adadad;
+}
+#fh5co-header .navbar-default .brand-slogan em {
+  color: #00665F;
+  font-style: normal;
+}
+
+#fh5co-home {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: 75vh;
+}
+
+/* Mingfei 渐变背景层 */
+.mingfei-gradient-bg {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(96deg, #8fffce 0%, #b8e7ff 26.85%, #c2d1ff 59.66%, #d2ccff 100%);
+  background-size: 400% 400%;
+  animation: mingfeiGradientMove 12s ease infinite;
+}
+
+/* Mingfei 白色渐变遮罩层 - 让渐变自然过渡到白色 */
+.mingfei-fade-overlay {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(100% 140% at 60% -10%, rgba(255, 255, 255, 0) 0%, #fff 75%);
+  padding-top: 60px;
+}
+#fh5co-home a {
+  color: rgba(255, 255, 255, 0.8) !important;
+  text-decoration: underline;
+}
+#fh5co-home a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+#fh5co-home .gradient {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background: transparent;
+}
+#fh5co-home, #fh5co-home .text-wrap {
+  height: 75vh;
+}
+#fh5co-home .text-wrap {
+  display: table;
+  width: 100%;
+  height: 80vh;
+  position: relative;
+  z-index: 10; /* 确保文字容器在Canvas上方 */
+}
+#fh5co-home .text-inner {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  position: relative;
+  z-index: 10; /* 确保文字在Canvas上方 */
+}
+#fh5co-home .text-inner h1 {
+  font-family: "Monda","PT Sans", Arial, sans-serif;
+  font-size: 120px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 80px 0 20px 0;
+  font-weight: 700;
+  line-height: 1.2;
+  padding-bottom: 10px;
+  transition: all 0.5s ease;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1),
+               0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Mingfei Bi标题渐变动画效果 - 半透明版本 */
+#fh5co-home .text-inner h1.animated {
+  background: linear-gradient(90deg, 
+    rgba(133, 52, 243, 0.7), 
+    rgba(0, 102, 95, 0.7), 
+    rgba(133, 52, 243, 0.7)
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  animation: gradientShift 20s linear infinite;
+  color: rgba(133, 52, 243, 0.7);
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+/* Mingfei 渐变背景动画 */
+@keyframes mingfeiGradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+
+
+/* 隐藏指定大卡及对应 bar（保留 HTML，便于恢复） */
+.section-hidden {
+  display: none !important;
+}
+
+/* Glass Box Pattern Section */
+#glass-box-pattern {
+  /* 无背景色 - 使用body的白色背景 */
+}
+
+/* 第一张大卡收缩时：保证 section 至少 40+60+40=140px，上下 padding 不被压扁 */
+#glass-box-pattern.glass-box-section-shrunk {
+  min-height: 140px;
+}
+
+/* Glass Box Card - Fixed Top Version */
+.glass-box-card-top {
+  position: fixed;
+  top: 78px;
+  left: 20px;
+  right: 20px;
+  width: calc(100% - 40px);
+  height: 60px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 0 40px 0 20px; /* 左padding将由JavaScript动态计算 */
+  /* 和top nav一样的毛玻璃效果 */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(32px) saturate(150%);
+  -webkit-backdrop-filter: blur(32px) saturate(150%);
+  /* 时间控制的fade-in动画 */
+  transition: opacity 0.5s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border-radius: var(--border-radius);
+  transition: opacity 0.3s ease-out;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.glass-box-top-number {
+  width: 36px;
+  height: 36px;
+  background: #00665F;
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.glass-box-top-number span {
+  font-family: "Lato", "PT Sans", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  color: white !important;
+  line-height: 0;
+}
+
+.glass-box-top-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.glass-box-top-title {
+  font-family: "Monda", "PT Sans", Arial, sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.2;
+  flex: 1;
+}
+
+.glass-box-top-title a {
+  color: #333;
+  text-decoration: none;
+}
+
+.glass-box-top-title a:hover {
+  cursor: pointer;
+  color: white;
+  background-color: rgb(36, 36, 36);
+  text-decoration: none;
+  -webkit-transition: 0.1s;
+  -o-transition: 0.1s;
+  transition: 0.1s;
+}
+
+.glass-box-top-readmore {
+  font-family: "Lato", "PT Sans", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 900;
+  margin: 0;
+  flex-shrink: 0;
+  padding-bottom: 10px;
+}
+
+.glass-box-top-readmore a {
+  color: #00665F !important;
+  font-weight: 700 !important;
+  text-decoration: none;
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.glass-box-top-readmore a:hover {
+  cursor: pointer;
+  color: white !important;
+  background-color: #00665F;
+  text-decoration: none;
+  -webkit-transition: 0.1s;
+  -o-transition: 0.1s;
+  transition: 0.1s;
+}
+
+.glass-box-card {
+  display: flex;
+  align-items: stretch;
+  /* 和top nav一样的宽度设定 */
+  width: calc(100% - 40px);
+  margin: 0 20px;
+  min-height: 281px;
+  /* 整体毛玻璃效果和边框 */
+  background: rgba(255, 255, 255, 0.15);
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(32px) saturate(150%);
+  -webkit-backdrop-filter: blur(32px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border-radius: var(--border-radius);
+  overflow: hidden; /* 确保子元素不超出圆角 */
+  transition: height 1s ease, min-height 1s ease;
+}
+
+/* 当上方 project bar 出现时：视觉收成 bar（60px），布局高度由 JS 冻结为收缩前高度，不改变文档流 */
+.glass-box-card.glass-box-card-shrunk {
+  min-height: 60px; /* 仅保底，实际高度由 JS 设 style.height 冻结 */
+  align-items: flex-start; /* 向左上角收拢，不居中，避免“左边中间”消失感 */
+  overflow: hidden; /* 防止收缩后内容溢出产生残影 */
+  /* placeholder 隐藏样式：空白区域不显示大卡的背景/边框/阴影 */
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.glass-box-card.glass-box-card-shrunk .glass-box-image {
+  width: 0;
+  min-width: 0;
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: min-width 1s ease, max-width 1s ease, opacity 0.8s ease;
+}
+
+.glass-box-card.glass-box-card-shrunk .glass-box-content {
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 0 40px;
+  min-width: 0;
+  max-height: 60px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: padding 0.8s ease, opacity 0.8s ease;
+}
+
+.glass-box-card.glass-box-card-shrunk .glass-box-text {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 40px;
+  flex: 1;
+  min-width: 0;
+  max-height: 60px;
+  overflow: hidden;
+}
+
+/* 收缩后大卡内文字用 opacity 渐隐，与展开一致 0.8s */
+.glass-box-card.glass-box-card-shrunk .glass-box-title-container,
+.glass-box-card.glass-box-card-shrunk .glass-box-subtitle,
+.glass-box-card.glass-box-card-shrunk .glass-box-category,
+.glass-box-card.glass-box-card-shrunk .glass-box-description,
+.glass-box-card.glass-box-card-shrunk .glass-box-description-container,
+.glass-box-card.glass-box-card-shrunk .glass-box-title,
+.glass-box-card.glass-box-card-shrunk .glass-box-readmore {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+}
+
+.glass-box-image {
+  flex: 0 0 auto;
+  min-width: 400px;
+  max-width: 500px;
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* 大卡编号绝对定位的参照 */
+  transition: min-width 1s ease, max-width 1s ease, opacity 0.8s ease;
+}
+
+/* 大卡左上角编号：与 bar 数字同款绿色方框，软编码由 JS 注入 */
+.glass-box-card-number {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 1;
+}
+
+.glass-box-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.glass-box-content {
+  flex: 1;
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.glass-box-text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.glass-box-title-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.glass-box-title {
+  font-family: "Monda", "PT Sans", Arial, sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: #0f141a !important;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.glass-box-title a {
+  color: #0f141a !important;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.glass-box-title a:hover {
+  opacity: 0.7;
+  text-decoration: underline;
+}
+
+.glass-box-subtitle {
+  font-family: "Lato", "PT Sans", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 900;
+  color: #00665F !important;
+  margin: 0;
+}
+
+.glass-box-description-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.glass-box-category {
+  font-family: "Lato", "PT Sans", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 900;
+  color: #8c8c94 !important;
+  margin: 0;
+}
+
+.glass-box-description {
+  font-family: "Lato", "PT Sans", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #0f141a !important;
+  line-height: 1.5;
+}
+
+.glass-box-description p {
+  margin: 0 0 8px 0;
+  color: #0f141a !important;
+}
+
+.glass-box-readmore {
+  font-family: "Lato", "PT Sans", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 900;
+  color: #00665F !important;
+  margin: 0;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  display: inline-block;
+}
+
+.glass-box-readmore:hover {
+  opacity: 1;
+  text-decoration: underline;
+  background-color: var(--mingfei-green);
+  color: #FFFFFF !important;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* Glass Box 响应式设计 */
+
+/* 小屏手机 - 640px以下 */
+@media screen and (max-width: 640px) {
+  .glass-box-card {
+    flex-direction: column;
+    width: calc(100% - 32px);
+    margin: 0 16px;
+  }
+  
+  .glass-box-image {
+    min-width: auto;
+    width: 100%;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+  }
+  
+  .glass-box-content {
+    padding: 16px 20px;
+  }
+  
+  .glass-box-title {
+    font-size: 20px;
+  }
+  
+  .glass-box-card-top {
+    width: calc(100% - 32px);
+    left: 16px;
+    right: 16px;
+    padding: 0 20px;
+    gap: 20px;
+  }
+  
+  .glass-box-top-title {
+    font-size: 18px;
+  }
+}
+
+/* 平板 - 641px到1023px */
+@media screen and (min-width: 641px) and (max-width: 1023px) {
+  .glass-box-card {
+    flex-direction: column;
+  }
+  
+  .glass-box-image {
+    min-width: auto;
+    width: 100%;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+  }
+  
+  .glass-box-content {
+    padding: 24px 32px;
+  }
+  
+  .glass-box-title {
+    font-size: 26px;
+  }
+}
+
+/* 中等桌面 - 1024px到1279px */
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .glass-box-card {
+    /* 保持flex横向布局 */
+  }
+  
+  .glass-box-image {
+    min-width: 350px;
+    max-width: 450px;
+  }
+}
+
+/* 大屏幕 - 1280px及以上 */
+@media screen and (min-width: 1280px) {
+  .glass-box-card {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .glass-box-card-top {
+    max-width: 1200px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+  }
+}
+
+/* 页面不可见时暂停 hero 相关动画，降低后台 CPU 占用 */
+body.hero-animations-paused .mingfei-gradient-bg,
+body.hero-animations-paused #fh5co-home .text-inner h1.animated,
+body.hero-animations-paused #genai-text.animated,
+body.hero-animations-paused .bubble,
+body.hero-animations-paused .bubble.purple,
+body.hero-animations-paused .bubble.green,
+body.hero-animations-paused .bubble.star {
+  animation-play-state: paused;
+}
+
+/* 背景/文字渐变「休息」时段：播放一段时间后暂停，让 CPU 释放，再自动恢复 */
+body.hero-animations-rest .mingfei-gradient-bg,
+body.hero-animations-rest #fh5co-home .text-inner h1.animated,
+body.hero-animations-rest #genai-text.animated {
+  animation-play-state: paused;
+}
+
+/* 气泡容器 */
+.bubble-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* 气泡动画 */
+.bubble {
+  position: absolute;
+  border-radius: 0;
+  opacity: 1.0;
+  animation: bubbleFloat 8s ease-out forwards;
+  /* 确保气泡可见 */
+  z-index: 10;
+  pointer-events: none;
+}
+
+@keyframes bubbleFloat {
+  0% {
+    opacity: 0;
+    transform: scale(0) translateY(0);
+  }
+  30% {
+    opacity: 1.0;
+    transform: scale(1) translateY(-15px);
+  }
+  100% {
+    opacity: 1.0;
+    transform: scale(1.2) translateY(-30px);
+  }
+}
+
+/* 气泡颜色变体 - 动态渐变 */
+.bubble.purple {
+  background: linear-gradient(45deg, #8534F3, #A855F7, #8534F3);
+  background-size: 200% 200%;
+  animation: bubbleFloat 8s ease-out forwards, bubbleColorShift 3s ease-in-out infinite;
+}
+
+.bubble.green {
+  background: linear-gradient(45deg, #10B981, #34D399, #10B981);
+  background-size: 200% 200%;
+  animation: bubbleFloat 8s ease-out forwards, bubbleColorShift 3s ease-in-out infinite;
+}
+
+/* 四角星形状 - 动态渐变 */
+.bubble.star {
+  background: linear-gradient(45deg, #8534F3, #A855F7, #8534F3, #3B82F6, #8534F3);
+  background-size: 200% 200%;
+  clip-path: polygon(50% 0%, 65% 35%, 100% 50%, 65% 65%, 50% 100%, 35% 65%, 0% 50%, 35% 35%);
+  opacity: 1.0;
+  animation: bubbleFloat 8s ease-out forwards, bubbleColorShift 3s ease-in-out infinite;
+}
+
+/* 气泡颜色变化动画 */
+@keyframes bubbleColorShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+#fh5co-home .text-inner h2 {
+  font-family: "Lato","PT Sans", Arial, sans-serif;
+  font-size: 23px;
+  line-height: 30px;
+  font-weight: 300;
+  color: #888;
+  margin: 0 0 60px 0;
+}
+
+/* GENAI文字样式 */
+#genai-text {
+  color: #888;
+  transition: all 0.5s ease;
+}
+
+#genai-text.animated {
+  /* GENAI文本使用Microsoft Copilot紫色 */
+  background: linear-gradient(90deg, rgb(133, 52, 243), rgb(0, 102, 95), rgb(133, 52, 243));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  animation: gradientShift 20s linear infinite;
+  /* 添加备用颜色，确保在不支持渐变的浏览器中也能显示 */
+  color: rgb(133, 52, 243);
+}
+#fh5co-home .text-inner .call-to-action {
+  display: block;
+  width: 100%;
+}
+#fh5co-home .text-inner .call-to-action a {
+  width: 230px;
+  display: inline-block;
+  font-size: 20px;
+  padding: 15px 0;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+#fh5co-home .text-inner .call-to-action a.demo {
+  border: 2px solid #fff;
+  text-decoration: none !important;
+}
+@media screen and (max-width: 768px) {
+  #fh5co-home .text-inner .call-to-action a.demo {
+    margin-bottom: 20px;
+  }
+}
+#fh5co-home .text-inner .call-to-action a.demo:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+#fh5co-home .text-inner .call-to-action a.download {
+  border: 2px solid #00665F;
+  background: #00665F;
+  text-decoration: none !important;
+}
+
+#fh5co-services, #fh5co-testimony, #fh5co-explore, #fh5co-faq, #fh5co-team, #fh5co-trusted, #fh5co-footer {
+  padding: 5em 0;
+}
+@media screen and (max-width: 768px) {
+  #fh5co-services, #fh5co-testimony, #fh5co-explore, #fh5co-faq, #fh5co-team, #fh5co-trusted, #fh5co-footer {
+    padding: 2em 0;
+  }
+}
+
+#fh5co-work, #fh5co-counters {
+  padding: 7em 0;
+}
+@media screen and (max-width: 768px) {
+  #fh5co-work, #fh5co-counters {
+    padding: 4em 0;
+  }
+}
+
+.fh5co-explore {
+  padding-bottom: 40px;
+}
+
+.fh5co-explore-bg-color {
+  width: 100%;
+  background: #fbfbfb;
+  padding: 80px 0;
+  margin-bottom: 0;
+}
+
+.work {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding : 80px 0 80px 0;
+}
+.work h4 {
+  position: relative;
+  font-family: "Monda","PT Sans", Arial, sans-serif;
+  font-weight:bold;
+  font-size: 30px;
+}
+
+.work h4 a{
+  position: relative;
+  font-family: "Monda","PT Sans", Arial, sans-serif;
+  font-weight:bold;
+  font-size: 30px;
+  color:#333;
+}
+.work h4 a:hover{
+ cursor: pointer;
+ color:white;
+ background-color: rgb(36, 36, 36);
+ text-decoration: none;
+ -webkit-transition: 0.1s;
+  -o-transition: 0.1s;
+  transition: 0.1s;
+}
+
+.work h5 {
+   color: #00665F;
+    font-family: "Lato","PT Sans", Arial, sans-serif;
+    font-weight: 700;
+    font-size:16px;
+    margin: -20px 0 30px 0;
+
+
+}
+.work h6{
+    color: #9b9b9b;
+    font-family: "Lato","PT Sans", Arial, sans-serif;
+    font-weight: 700;
+    font-size:16px;
+    margin: 0px 0 5px 0;
+
+}
+.work p{
+    color: rgb(36, 36, 36);
+    font-family: "Lato","PT Sans", Arial, sans-serif;
+    font-weight: 300;
+    font-size:16px;
+    margin: 0px 0 0px 0;
+
+
+}
+
+#fh5co-testimony .wrap-testimony {
+  position: relative;
+  width: 100%;
+}
+#fh5co-testimony .wrap-testimony .testimony-slide {
+  text-align: center;
+}
+#fh5co-testimony .wrap-testimony .testimony-slide span {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+#fh5co-testimony .wrap-testimony .testimony-slide span a.twitter {
+  color: #00665F;
+  font-weight: 300;
+}
+#fh5co-testimony .wrap-testimony .testimony-slide figure {
+  margin-bottom: 20px;
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+}
+#fh5co-testimony .wrap-testimony .testimony-slide figure img {
+  width: 90px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+}
+#fh5co-testimony .wrap-testimony .testimony-slide blockquote {
+  border: none;
+  margin: 0 auto;
+  width: 72%;
+  position: relative;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+}
+@media screen and (max-width: 992px) {
+  #fh5co-testimony .wrap-testimony .testimony-slide blockquote {
+    width: 100%;
+  }
+}
+#fh5co-testimony .wrap-testimony .testimony-slide blockquote p {
+  font-style: italic;
+  color: #8f989f;
+  font-size: 20px;
+  line-height: 1.6em;
+}
+#fh5co-testimony .wrap-testimony .testimony-slide blockquote:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 2px;
+  background: #00665F;
+  left: 50%;
+  margin-left: -25px;
+  bottom: 0;
+}
+#fh5co-testimony .wrap-testimony .testimony-slide.active {
+  display: block;
+}
+#fh5co-testimony .wrap-testimony .arrow-thumb {
+  position: absolute;
+  top: 40%;
+  display: block;
+  width: 100%;
+}
+#fh5co-testimony .wrap-testimony .arrow-thumb a {
+  font-size: 32px;
+  color: #dadada;
+}
+#fh5co-testimony .wrap-testimony .arrow-thumb a:hover, #fh5co-testimony .wrap-testimony .arrow-thumb a:focus, #fh5co-testimony .wrap-testimony .arrow-thumb a:active {
+  text-decoration: none;
+}
+
+.getting-started {
+  background: #00665F;
+  padding: 60px 0 40px 0;
+}
+.getting-started h3 {
+  color: #fff;
+}
+.getting-started p {
+  color: rgba(255, 255, 255, 0.8);
+}
+.getting-started .call-to-action {
+  display: block;
+  width: 100%;
+  float: left;
+}
+@media screen and (max-width: 992px) {
+  .getting-started .call-to-action {
+    float: none !important;
+    width: 100%;
+    text-align: left !important;
+  }
+}
+.getting-started .call-to-action a.sign-up {
+  float: right;
+  margin-top: 20px;
+  padding: 18px 60px;
+  background: #ea574c;
+  color: #fff;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  	-webkit-box-shadow: 0px 3px 6px -1px rgba(36, 36, 36, 0.19);
+	-moz-box-shadow: 0px 3px 6px -1px rgba(36, 36, 36, 0.19);
+	-ms-box-shadow: 0px 3px 6px -1px rgba(36, 36, 36, 0.19);
+	-o-box-shadow: 0px 3px 6px -1px rgba(36, 36, 36, 0.19);
+	box-shadow: 0px 3px 6px -1px rgba(36, 36, 36, 0.19);
+}
+@media screen and (max-width: 992px) {
+  .getting-started .call-to-action a.sign-up {
+    float: left !important;
+  }
+}
+.getting-started .call-to-action a.sign-up:hover, .getting-started .call-to-action a.sign-up:focus, .getting-started .call-to-action a.sign-up:active {
+  text-decoration: none;
+}
+.getting-started .call-to-action a.sign-up:hover {
+  background: #393e46;
+}
+
+.fh5co-pricing {
+  padding: 4em 0 6em 0;
+  background: #f1faff;
+}
+.fh5co-pricing .pricing {
+  display: block;
+  float: left;
+  margin-bottom: 30px;
+}
+.fh5co-pricing .price-box {
+  text-align: center;
+  padding: 30px;
+  background: #fff;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+  margin-bottom: 40px;
+  position: relative;
+  -webkit-box-shadow: 0px 2px 10px -1px rgba(36, 36, 36, 0.19);
+  -moz-box-shadow: 0px 2px 10px -1px rgba(36, 36, 36, 0.19);
+  -ms-box-shadow: 0px 2px 10px -1px rgba(36, 36, 36, 0.19);
+  -o-box-shadow: 0px 2px 10px -1px rgba(36, 36, 36, 0.19);
+  box-shadow: 0px 2px 10px -1px rgba(36, 36, 36, 0.19);
+}
+.fh5co-pricing .price-box.popular .btn-select-plan {
+  background: #00665F;
+}
+.fh5co-pricing .price-box .btn-select-plan {
+  padding: 10px 20px;
+  background: #00665F;
+  color: #fff;
+  -webkit-box-shadow: 0px 3px 6px -1px rgba(36, 36, 36, 0.15);
+  -moz-box-shadow: 0px 3px 6px -1px rgba(36, 36, 36, 0.15);
+  -ms-box-shadow: 0px 3px 6px -1px rgba(36, 36, 36, 0.15);
+  -o-box-shadow: 0px 3px 6px -1px rgba(36, 36, 36, 0.15);
+  box-shadow: 0px 3px 6px -1px rgba(36, 36, 36, 0.15);
+}
+.fh5co-pricing .pricing-plan {
+  margin: 0 0 50px 0;
+  padding: 0;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #888f94;
+}
+.fh5co-pricing .pricing-plan.pricing-plan-offer {
+  margin-bottom: 24px;
+}
+.fh5co-pricing .pricing-plan span {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 0;
+  color: #d5d8db;
+}
+.fh5co-pricing .price {
+  font-size: 72px;
+  color: #6d6d6d;
+  line-height: 50px;
+}
+.fh5co-pricing .price .currency {
+  font-size: 30px;
+  top: -0.9em;
+  padding-right: 10px;
+}
+.fh5co-pricing .price small {
+  font-size: 13px;
+  display: block;
+  text-transform: uppercase;
+  color: #888f94;
+}
+
+.fh5co-services .box-services {
+  position: relative;
+  margin-bottom: 70px;
+}
+.fh5co-services .box-services i {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 54px;
+  color: #00665F;
+}
+.fh5co-services .fh5co-post {
+  padding-left: 75px;
+}
+.fh5co-services .fh5co-post h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+.fh5co-services .call-to-action .btn-learn {
+  padding: 12px 30px;
+  background: #50c5f8;
+  color: #fff;
+}
+
+#fh5co-team {
+  background: #f1faff;
+}
+#fh5co-team .team-box {
+  position: relative;
+  padding: 30px;
+  padding-top: 5em;
+  background: #fff;
+  float: left;
+  width: 100%;
+  -webkit-box-shadow: 0px 2px 10px -1px rgba(36, 36, 36, 0.19);
+  -moz-box-shadow: 0px 2px 10px -1px rgba(36, 36, 36, 0.19);
+  -ms-box-shadow: 0px 2px 10px -1px rgba(36, 36, 36, 0.19);
+  -o-box-shadow: 0px 2px 10px -1px rgba(36, 36, 36, 0.19);
+  box-shadow: 0px 2px 10px -1px rgba(36, 36, 36, 0.19);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+}
+@media screen and (max-width: 992px) {
+  #fh5co-team .team-box {
+    margin-bottom: 110px;
+  }
+}
+#fh5co-team .team-box .user {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-top: -73px;
+  margin-left: -73px;
+  width: 147px;
+  height: 147px;
+}
+#fh5co-team .team-box .user img {
+  width: 147px;
+  height: 147px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+  border: 15px solid #f1faff;
+}
+#fh5co-team .team-box h3 {
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+#fh5co-team .team-box .position {
+  font-size: 16px;
+  color: #8f989f;
+  display: block;
+  margin-bottom: 30px;
+}
+#fh5co-team .team-box .social-media {
+  margin: 0;
+  padding: 0;
+}
+#fh5co-team .team-box .social-media li {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+  margin-right: 10px;
+}
+#fh5co-team .team-box .social-media li a {
+  color: #333;
+}
+#fh5co-team .team-box .social-media li a:hover, #fh5co-team .team-box .social-media li a:focus, #fh5co-team .team-box .social-media li a:active {
+  text-decoration: none;
+  color: #00665F !important;
+}
+
+.box-faq {
+  margin-bottom: 60px;
+}
+.box-faq h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.partner-logo {
+  margin-bottom: 30px;
+  float: left;
+  width: 100%;
+  vertical-align: middle;
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+}
+
+.section-heading {
+  float: left;
+  width: 100%;
+  padding-bottom: 50px;
+  margin-bottom: 0px;
+  clear: both;
+}
+.section-heading h2 {
+  margin: 0 0 0 0;
+  font-size: 40px;
+  font-weight: 300;
+  color: #333;
+  position: relative;
+  display: block;
+  padding-bottom: 10px;
+  line-height: 1.5;
+}
+@media screen and (max-width: 768px) {
+  .section-heading h2 {
+    font-size: 28px;
+  }
+}
+.section-heading h3 {
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: #8f989f;
+  position: relative;
+  display: block;
+  padding-bottom: 30px;
+}
+.section-heading h3:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 2px;
+  background: #00665F;
+  left: 50%;
+  margin-left: -25px;
+  bottom: 0;
+}
+@media screen and (max-width: 768px) {
+  .section-heading h3 {
+    font-size: 16px !important;
+    line-height: 28px;
+  }
+}
+
+#fh5co-footer {
+  background: #00665F;
+  color: #fff;
+}
+#fh5co-footer h1,h2,h3{
+  color : #fff;
+  font-family: "Lato","PT Sans", Arial, sans-serif;
+  font-size: 16px;
+   margin: 0 0 10px 0;
+}
+#fh5co-footer h1 {
+  font-weight: 700;
+}
+
+#fh5co-footer a {
+  color: #00665F;
+}
+#fh5co-footer a:hover {
+  color: #fff !important;
+  text-decoration: underline;
+}
+#fh5co-footer .section-title {
+  font-size: 22px;
+  color: #fff;
+  position: relative;
+  padding-bottom: 20px;
+}
+#fh5co-footer .section-title:after {
+  position: absolute;
+  content: '';
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 35px;
+  height: 2px;
+  background: #00665F;
+}
+#fh5co-footer .copy-right {
+  position: relative;
+  padding-top: 20px;
+  margin-top: 40px;
+}
+#fh5co-footer .copy-right > a {
+  color: rgba(255, 255, 255, 0.4);
+}
+#fh5co-footer .copy-right:after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  display: block;
+  width: 35px;
+  height: 2px;
+  background: #00665F;
+}
+#fh5co-footer .contact-info {
+  margin: 0 0 60px 0;
+  padding: 0;
+}
+#fh5co-footer .contact-info li {
+  font-size: 16px;
+  list-style: none;
+  margin: 0 0 20px 0;
+  position: relative;
+  padding-left: 40px;
+}
+#fh5co-footer .contact-info li i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 22px;
+  color: #00665F;
+}
+#fh5co-footer .social-media {
+  margin: 0 0 30px 0;
+  padding: 0;
+}
+#fh5co-footer .social-media li {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+  margin-right: 10px;
+}
+#fh5co-footer .social-media li a {
+  color: #00665F;
+}
+#fh5co-footer .social-media li a:hover, #fh5co-footer .social-media li a:focus, #fh5co-footer .social-media li a:active {
+  text-decoration: none;
+}
+#fh5co-footer .contact-form .form-group input[type="name"],
+#fh5co-footer .contact-form .form-group input[type="text"],
+#fh5co-footer .contact-form .form-group input[type="email"],
+#fh5co-footer .contact-form .form-group textarea {
+  font-size: 16px;
+}
+#fh5co-footer .contact-form .form-group input[type="name"]::-webkit-input-placeholder,
+#fh5co-footer .contact-form .form-group input[type="text"]::-webkit-input-placeholder,
+#fh5co-footer .contact-form .form-group input[type="email"]::-webkit-input-placeholder,
+#fh5co-footer .contact-form .form-group textarea::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+#fh5co-footer .contact-form .form-group input[type="name"]:-moz-placeholder,
+#fh5co-footer .contact-form .form-group input[type="text"]:-moz-placeholder,
+#fh5co-footer .contact-form .form-group input[type="email"]:-moz-placeholder,
+#fh5co-footer .contact-form .form-group textarea:-moz-placeholder {
+  /* Firefox 18- */
+  color: rgba(255, 255, 255, 0.5);
+}
+#fh5co-footer .contact-form .form-group input[type="name"]::-moz-placeholder,
+#fh5co-footer .contact-form .form-group input[type="text"]::-moz-placeholder,
+#fh5co-footer .contact-form .form-group input[type="email"]::-moz-placeholder,
+#fh5co-footer .contact-form .form-group textarea::-moz-placeholder {
+  /* Firefox 19+ */
+  color: rgba(255, 255, 255, 0.5);
+}
+#fh5co-footer .contact-form .form-group input[type="name"]:-ms-input-placeholder,
+#fh5co-footer .contact-form .form-group input[type="text"]:-ms-input-placeholder,
+#fh5co-footer .contact-form .form-group input[type="email"]:-ms-input-placeholder,
+#fh5co-footer .contact-form .form-group textarea:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+#fh5co-footer .contact-form .form-group input {
+  color: #fff;
+  background: transparent;
+  border: none;
+  background: #485b71;
+  box-shadow: none;
+}
+#fh5co-footer .contact-form .form-group textarea {
+  color: #fff;
+  background: transparent;
+  border: none;
+  background: #485b71;
+  box-shadow: none;
+}
+#fh5co-footer #btn-submit {
+  color: rgba(255, 255, 255, 0.9) !important;
+  background: #00665F !important;
+}
+
+.btn {
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.fh5co-nav-toggle {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.fh5co-nav-toggle.active i::before, .fh5co-nav-toggle.active i::after {
+  background: #00665F;
+}
+.fh5co-nav-toggle:hover, .fh5co-nav-toggle:focus, .fh5co-nav-toggle:active {
+  outline: none;
+  border-bottom: none !important;
+}
+.fh5co-nav-toggle i {
+  position: relative;
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  width: 25px;
+  height: 3px;
+  color: #535659;
+  font: bold 14px/.4 Helvetica;
+  text-transform: uppercase;
+  text-indent: -55px;
+  background: #535659;
+  transition: all .2s ease-out;
+}
+.fh5co-nav-toggle i::before, .fh5co-nav-toggle i::after {
+  content: '';
+  width: 25px;
+  height: 3px;
+  background: #535659;
+  position: absolute;
+  left: 0;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.fh5co-nav-toggle i::before {
+  top: -7px;
+}
+
+.fh5co-nav-toggle i::after {
+  bottom: -7px;
+}
+
+.fh5co-nav-toggle:hover i::before {
+  top: -10px;
+}
+
+.fh5co-nav-toggle:hover i::after {
+  bottom: -10px;
+}
+
+.fh5co-nav-toggle.active i {
+  background: transparent;
+}
+
+.fh5co-nav-toggle.active i::before {
+  top: 0;
+  -webkit-transform: rotateZ(45deg);
+  -moz-transform: rotateZ(45deg);
+  -ms-transform: rotateZ(45deg);
+  -o-transform: rotateZ(45deg);
+  transform: rotateZ(45deg);
+}
+
+.fh5co-nav-toggle.active i::after {
+  bottom: 0;
+  -webkit-transform: rotateZ(-45deg);
+  -moz-transform: rotateZ(-45deg);
+  -ms-transform: rotateZ(-45deg);
+  -o-transform: rotateZ(-45deg);
+  transform: rotateZ(-45deg);
+}
+
+.fh5co-nav-toggle {
+  position: absolute;
+  top: 2px;
+  right: 15px;
+  z-index: 21;
+  padding: 6px 0 0 0;
+  display: block;
+  margin: 0 auto;
+  display: none;
+  height: 44px;
+  width: 25px;
+  border-bottom: none !important;
+}
+@media screen and (max-width: 768px) {
+  .fh5co-nav-toggle {
+    display: block;
+  }
+}
+
+.btn {
+  letter-spacing: 2px;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+.btn.btn-primary {
+  background: #00665F;
+  color: #fff;
+  border: none !important;
+  border: 2px solid transparent !important;
+}
+
+
+
+
+#map {
+  width: 100%;
+  height: 500px;
+  position: relative;
+}
+@media screen and (max-width: 768px) {
+  #map {
+    height: 200px;
+  }
+}
+
+
+.js .to-animate,
+.js .to-animate-2,
+.js .to-animate-3,
+.js .single-animate {
+  opacity: 0;
+}
+
+@media screen and (max-width: 480px) {
+  .col-xxs-12 {
+    float: none;
+    width: 100%;
+  }
+}
+
+.row-bottom-padded-lg {
+  padding-bottom: 7em;
+}
+@media screen and (max-width: 768px) {
+  .row-bottom-padded-lg {
+    padding-bottom: 2em;
+  }
+}
+
+.row-bottom-padded-md {
+  padding-bottom: 4em;
+}
+@media screen and (max-width: 768px) {
+  .row-bottom-padded-md {
+    padding-bottom: 2em;
+  }
+}
+
+.row-bottom-padded-sm {
+  padding-bottom: 2em;
+}
+@media screen and (max-width: 768px) {
+  .row-bottom-padded-sm {
+    padding-bottom: 2em;
+  }
+}
+
+
+.tiedImg {
+    height: 50px !important;
+    margin-top: 5px !important;
+}
+/*# sourceMappingURL=style.css.map */
+#mflogo{
+  width: 150px;
+  height:45px;
+	display: inline-block;
+	vertical-align: middle;
+  color: #00665F;
+  font-family: "Lato","PT Sans", Arial, sans-serif;
+  font-weight: bold;
+  margin-top:10px;
+}
+
+#mflogo svg{
+  height:35px;
+  fill:#00665F;
+}
+.nomarginnopadding
+{
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+
+}
+
+.fh5co-parallax {
+    background-color: #555;
+    background-attachment: fixed;
+    background-size: 70%;
+    background-repeat: no-repeat;
+    position: relative;
+}
+a :hover{
+  cursor: pointer;
+}
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* XSmall devices (tablets, 768px and down) */
+
+.fh5co-parallax .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #444;
+    opacity: .2;
+
+}
+.fh5co-parallax .overlay:hover{
+  opacity:0;
+  cursor: pointer;
+}
+
+
+
+.readmore{
+  color:#00665F !important;
+  font-weight:700 !important;
+
+
+}
+.readmore a:hover{
+ cursor: pointer;
+ color:white;
+ background-color: #00665F;
+ text-decoration: none;
+ -webkit-transition: 0.1s;
+  -o-transition: 0.1s;
+  transition: 0.1s;
+}
+
+/* ================&&&&&&&^^^^&&&&&&&&&============*/
+/* for project page*/
+
+.project-info {
+  padding-top: 40px; margin-bottom: 0px;
+}
+.project-title {
+  color: rgb(36, 36, 36); 
+  font-family: 'Monda', sans-serif; 
+  letter-spacing: 0px; 
+  font-size: 30px; 
+  font-weight: 700;
+}
+.project-text-title {
+  color: #00665F; 
+  font-family: 'Monda', sans-serif; 
+  text-transform: uppercase; 
+  letter-spacing: 2px; 
+  font-size: 24px;
+  font-weight: 700; 
+  margin-top: 40px;
+  margin-bottom: 12px; 
+  display: inline-block;
+}
+
+/* Sub-section headers (2.1, 3.1等) - Roboto字体，20px，400 weight */
+.project-text-title.subsection {
+  font-family: 'Roboto', sans-serif;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: 24px;
+}
+
+/* 更小的标题 (2.1.1等) - 深绿色加粗正文，300 weight，无bottom margin */
+.project-text-detailsection {
+  color: #00665F;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  margin-bottom: 0;
+}
+
+/* Tag Container - 标签容器 */
+.tag-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Badge - 徽章标签 */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 8px;
+  border-radius: var(--border-radius);
+  background-image: var(--badge-gradient);
+  font-family: 'Lato', sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  color: #f9f9fa;
+  white-space: nowrap;
+}
+.project-text {
+  color: #444444; 
+  font-family: 'Roboto', sans-serif; 
+  line-height: 24px; 
+  font-size: 16px; 
+  font-weight: 400; 
+  word-spacing: 0.5px;
+  letter-spacing: 0;
+  margin-bottom: 18px;
+  text-align: justify;
+}
+.project-text h3{
+ color:rgb(36, 36, 36);
+ font-size:14px;
+ font-weight: 700;
+
+}
+.image-mb {
+  margin-bottom: 20px;
+}
+.image-smb {
+  margin-bottom: 30px;
+}
+.image-mt {
+  margin-top: 0px;
+}
+.next {
+  color:#00665F;
+  padding: 10px; 
+  margin: 50px auto ;
+  display: inline-block;
+}
+.next:hover {
+  background-color: #00665F;
+  color:white;
+}
+
+.next span{
+  font-size: 14px;
+  margin-right: 10px
+}
+#fh5co-about {
+  background-color: transparent;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  width: 100%;
+  background-color:transparent;
+  height:70vh;
+}
+
+#fh5co-about .gradient {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background: transparent;
+}
+
+#fh5co-about .text-wrap {
+  display: table;
+  width: 100%;
+  position: relative;
+  z-index: 4;
+}
+#fh5co-about .text-inner {
+  display: table-cell;
+  text-align: center;
+  margin-top:30vh;
+}
+#fh5co-about .text-inner h1 {
+  font-family: "Monda","PT Sans", Arial, sans-serif;
+  font-size: 100px;
+  color: #00665F;
+  margin: 0 0 20px 0;
+  font-weight: 700;
+}
+
+#fh5co-about .text-inner .call-to-action {
+  display: block;
+  width: 100%;
+}
+#fh5co-about .text-inner .call-to-action a {
+  width: 230px;
+  display: inline-block;
+  font-size: 20px;
+  padding: 15px 0;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+#fh5co-about .text-inner .call-to-action a.demo {
+  border: 2px solid #fff;
+  text-decoration: none !important;
+}
+@media screen and (max-width: 768px) {
+  #fh5co-about .text-inner .call-to-action a.demo {
+    margin-bottom: 20px;
+  }
+}
+
+
+.project-title-about{
+    font-family: "Monda","PT Sans", Arial, sans-serif;
+    font-size: 100px;
+    color: #00665F;
+    margin: 0 0 5px 0;
+    font-weight: 700;
+    line-height: 1em;
+
+}
+#aboutinfo{
+  padding-top:200px;
+  margin-bottom: 150px;
+}
+.image-mt2{
+  margin-top :50px;
+}
+
+/**/
+.fh5co-cover{
+   position: relative;
+    height: 80vh;
+    background-color: var(--hero-bg, #FAF5FF);
+}
+
+/* 各项目 hero 背景色由该页在 :root 或 body 上设置 --hero-bg，此处不再按 id 写死 */
+
+/* 图片右侧空出一列：占位，背景已去掉 */
+.headerpic-right-gutter {
+}
+
+/* 小尺寸(<992px)下隐藏 hero 背景相关：右侧留白列、占位列 */
+@media (max-width: 991px) {
+  .headerpic-right-gutter,
+  .headerpic-spacer {
+    display: none !important;
+  }
+}
+
+/* 背景图：缩小显示，且右侧留出约一列宽(8.33%)，图片不画进最右列 */
+#headerpic {
+  background-size: 48%;
+  background-repeat: no-repeat;
+  background-position: right 8.33% center;
+}
+/* 768–1199px 使用独立 img 元素，与文字分块布局，避免重叠（仅 glassbox） */
+.hero-responsive-img {
+  display: none;
+}
+
+.fh5co-hero {
+    position: relative;
+    height: 100%;
+    top: 0;
+    padding-top: 77px;
+    background-color: var(--hero-bg, #FAF5FF);
+}
+
+
+.fh5co-cover .desc {
+    top: 25%;
+    position: absolute;
+    width: 100%;
+    margin-top: -100px;
+    z-index: 2;
+    color: #fff;
+}
+
+.fh5co-cover .desc h2{
+   color: #00665F; 
+  font-family: 'Monda', sans-serif; 
+  letter-spacing: 0px; 
+  font-size: 30px; 
+  font-weight: 700;
+}
+.desc li, p{
+  color:#00665F;
+}
+#aboutp{
+  color:#000;
+}
+.desc .project-text h3{
+  color: #fff;
+}
+.desc .btn{
+  border-color:#fff;
+}
+
+
+
+.fh5co-cover .desc span {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 24px;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.8);
+}
+.fh5co-cover .desc span i {
+  color: #DA1212;
+}
+.fh5co-cover .desc span a {
+  color: #fff;
+   font-family: 'Monda', sans-serif;
+  font-weight: 700;
+
+}
+.desc a {
+   font-family: 'Monda', sans-serif;
+  font-weight: 700;
+  color: #fff;
+}
+.fh5co-cover .desc span a:hover, .fh5co-cover .desc span a:focus {
+  color: #fff !important;
+}
+.fh5co-cover .desc span a.fh5co-site-name {
+  padding-bottom: 2px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+/* 仅 glassbox 页：hero 内文字与按钮改为品牌色 #00665F */
+body.page-glassbox .fh5co-cover .desc {
+  color: #00665F;
+}
+body.page-glassbox .fh5co-cover .desc h2 {
+  color: #00665F;
+}
+body.page-glassbox .desc li,
+body.page-glassbox .desc p {
+  color: #00665F;
+}
+body.page-glassbox .desc .project-text h3 {
+  color: #00665F;
+}
+
+/* Watchlist hero 内的「What I have done / delivered」标题和正文 */
+.fh5co-cover #capslist1 h3 {
+  color: #00665F;
+}
+.fh5co-cover #capslist1 {
+  color: #00665F;
+}
+.fh5co-cover #capslist2 h3 {
+  color: #00665F;
+}
+.fh5co-cover #capslist2 {
+  color: #00665F;
+}
+/* 按钮保持原样（白色），不随页面改为 #00665F */
+body.page-glassbox .desc .btn,
+body.page-glassbox .desc a.btn {
+  color: #fff !important;
+  border-color: #fff;
+}
+body.page-glassbox .fh5co-cover .desc span {
+  color: #00665F;
+}
+body.page-glassbox .fh5co-cover .desc span a,
+body.page-glassbox .desc a {
+  color: #00665F;
+}
+body.page-glassbox .fh5co-cover .desc span a:hover,
+body.page-glassbox .fh5co-cover .desc span a:focus {
+  color: #00665F !important;
+}
+body.page-glassbox .fh5co-cover .desc span a.fh5co-site-name {
+  border-bottom-color: #00665F;
+}
+
+.fh5co-overlay {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(77px + 80vh);
+    z-index: 1;
+    /* background: rgba(36, 36, 36, .1);  暂时去掉遮罩背景，保留结构 */
+}
+.btn-outline-primary {
+    color: #00665F;
+    background-color: #00665F;
+    background-image: none;
+    border-color: #00665F;
+    font-family: 'Monda', sans-serif;
+    font-weight: 700;
+    border-radius: 0px;
+}
+.btn.btn-primary:hover, .btn.btn-primary:active, .btn.btn-primary:focus {
+  box-shadow: none;
+  background: #00665F;
+}
+.btn:hover, .btn:active, .btn:focus {
+  background: #00665F !important;
+  color: #fff;
+  outline: none !important;
+  font-family: 'Monda', sans-serif;
+  font-weight: 700;
+  border-radius: 0px;
+}
+.btn.btn-default:hover, .btn.btn-default:focus, .btn.btn-default:active {
+  border-color: transparent;
+}
+.project-text ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.project-text li{
+  position: relative;
+  padding-left: 1em; 
+  text-indent: 0;
+  text-align: justify;
+  margin-bottom: 18px;
+}
+.project-text li::before {
+  content: "■  ";
+  color: #00665F;
+  position: absolute;
+  left: 0;
+}
+
+/* 嵌套列表 - 空心方框，左侧对齐，右侧多一个空格 */
+.project-text ul ul li {
+  position: relative;
+  padding-left: 1.2em;
+  text-indent: 0;
+  text-align: justify;
+  margin-bottom: 18px;
+}
+.project-text ul ul li::before {
+  content: "□  "; 
+  color: #00665F;
+  position: absolute;
+  left: 0;
+}
+
+
+.project-text li a{
+  padding-left: 0em; 
+  text-indent: 0.7em;
+}
+
+.project-text span{
+  font-weight: 600;
+}
+#applestoresvg{
+  margin-top:5px;
+  height: 1.15em;
+  margin-bottom: -10px;
+}
+.project-text li .btn{
+  margin-left: 7px;
+}
+
+/* SideKcK 页面：列表项间距减半 */
+body.page-sidekck .project-text li,
+body.page-sidekck .project-text ul ul li {
+  margin-bottom: 9px;
+}
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: #00665F;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+   font-family: 'Monda', sans-serif;
+  font-weight: 700;
+}
+
+
+
+#myBtn:hover {
+  background-color: #fff;
+  color:#00665F;
+  border-width: 2px;
+  border-style: groove;
+  border-color:#00665F;
+
+}
+
+.carousel-control-next-icon {
+background-image: url('cssimages/right-arrow.png');
+}
+.carousel-control-prev-icon {
+background-image: url('cssimages/left-arrow.png');
+}
+.carousel-indicators li{
+background-color: #4A5A6C;
+
+}
+
+
+@media (max-width: 767px) { 
+ .workpic{
+    height:250px;
+    }
+  .fh5co-parallax{
+      background-color: #555;
+      background-attachment: scroll;
+      background-size: 102%;
+  }
+  #fh5co-home .text-inner h1 {
+    font-size: 55px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.2;
+    padding-bottom: 8px;
+    transition: all 0.5s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1),
+                 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  #fh5co-home .text-inner h1.animated {
+    background: linear-gradient(90deg, 
+      rgba(133, 52, 243, 0.7), 
+      rgba(0, 102, 95, 0.7), 
+      rgba(133, 52, 243, 0.7)
+    );
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 20s linear infinite;
+    color: rgba(133, 52, 243, 0.7);
+  }
+  
+  
+
+    #fh5co-home .text-inner h2 {
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  #mflogo {
+    margin-left: 15px;
+  }
+  #mflogo svg{
+    height: 25px;
+  }
+  #fh5co-footer h1, h2, h3 {
+    font-size: 14px;
+    padding-left: 15px;
+  }
+  .project-title-about{
+    font-size: 50px;
+  }
+   .fh5co-cover{
+      background-size: 60%;
+      background-position:-2000px -2000px;
+       background-repeat: no-repeat;
+       min-height: 80vh;
+       height: auto;
+  }
+  .fh5co-cover .desc{
+    top:15%;
+     padding-left: 20px;
+    padding-right: 20px;
+  }
+  .fh5co-cover .desc h2{
+    font-size: 20px; 
+  }
+  .fh5co-overlay{
+    opacity:0;
+  }
+  /* 小屏隐藏 hero 背景图（.fh5co-cover 已统一处理）；glassbox 用下方 hero-has-img 规则显示 img */
+  /* 0–767px：所有 hero-has-img 页面使用独立 img，与文字分块，图片不消失 */
+  .fh5co-cover.hero-has-img {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-image: none !important;
+  }
+  .fh5co-cover.hero-has-img .desc {
+    position: relative;
+    top: auto;
+    margin-top: 0;
+    order: 1;
+  }
+  .fh5co-cover.hero-has-img .hero-responsive-img {
+    display: block !important;
+    order: 2;
+    text-align: center;
+    padding: 1em 1em 1.5em;
+    flex-shrink: 0;
+  }
+  .fh5co-cover.hero-has-img .hero-responsive-img img {
+    width: 85vw;
+    max-width: 360px;
+    height: auto;
+  }
+  /* 0–767px 正文区增加左右留白 */
+  .project-info .container {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+}
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+ .workpic{
+    height:300px;
+    }
+  .fh5co-parallax {
+      background-color: #555;
+      background-attachment: fixed;
+      background-size: 62%;
+      background-repeat: no-repeat;
+      background-position: 0px -80px;
+      position: relative;
+  }
+  .fh5co-cover{
+      background-size: 60%;
+      background-repeat: no-repeat;
+  }
+  .fh5co-cover .desc h2{
+    font-size: 20px; 
+  }
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+   .workpic{
+    height:450px;
+    }
+    .work{
+      margin-top:0px;
+    }
+    #sidekckpic {
+      background-color: #555;
+      background-attachment: fixed;
+      background-size: 73%;
+      background-repeat: repeat;
+      background-position: -100px -10px;
+      position: relative;
+  }
+  #uniroomiepic {
+      background-color: #555;
+      background-attachment: fixed;
+      background-size: 82%;
+      background-repeat: no-repeat;
+      background-position: -140px 20px;
+      position: relative;
+  }
+  #cfaiapic {
+      background-color: #555;
+      background-attachment: fixed;
+      background-size: 90%;
+      background-repeat: no-repeat;
+      background-position: -120px 0px;
+      position: relative;
+  }
+  #dbcapspic {
+      background-color: #555;
+      background-attachment: fixed;
+      background-size: 75%;
+      background-repeat: no-repeat;
+      background-position: -40px -10px;
+      position: relative;
+  }
+  
+  .fh5co-cover .desc h2{
+    font-size: 24px; 
+  }
+}
+
+/* 768–1199px：使用独立 img 与文字分块布局，避免重叠（所有 hero-has-img 页面） */
+@media (min-width: 768px) and (max-width: 1199px) {
+  /* 问题1修复：hero 高度改为 auto，图片留在 hero 内不溢出到正文 */
+  .fh5co-cover.hero-has-img {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-image: none !important;
+    height: auto !important;
+    min-height: 80vh;
+  }
+  .fh5co-cover.hero-has-img .desc {
+    position: relative;
+    top: auto;
+    margin-top: 0;
+    order: 1;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+  .fh5co-cover.hero-has-img .hero-responsive-img {
+    display: block;
+    order: 2;
+    text-align: center;
+    padding: 1em 1em 1.5em;
+    flex-shrink: 0;
+  }
+  .fh5co-cover.hero-has-img .hero-responsive-img img {
+    width: 65vw;
+    max-width: 400px;
+    height: auto;
+  }
+  /* 问题2修复：正文区增加左右留白，避免文字贴边 */
+  .project-info .container {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+  #sidekckpic, #uniroomiepic, #dbcapspic,#cfaiapic{
+      background-color: #555;
+      background-attachment: fixed;
+      background-size: 62%;
+      background-repeat: no-repeat;
+      background-position: -50px -20px;
+      position: relative;
+  }
+    #vawl1pic{
+     background-color: #555;
+      background-attachment: fixed;
+      background-size: 120%;
+      background-repeat: no-repeat;
+      background-position: 40px -40px;
+      position: relative;
+
+  }
+    .fh5co-cover .desc h2{
+    font-size: 24px; 
+  }
+
+
+@media (min-width: 1600px) { 
+  #sidekckpic, #uniroomiepic, #dbcapspic{
+      background-color: #555;
+      background-attachment: fixed;
+      background-size: 62%;
+      background-repeat: no-repeat;
+      background-position: -50px -120px;
+      position: relative;
+    }
+    #cfaiapic{
+      background-color: #555;
+      background-attachment: fixed;
+      background-size: 62%;
+      background-repeat: no-repeat;
+      background-position: -50px -80px;
+      position: relative;
+
+    }
+  .workpic{
+    height:500px;
+    }
+        .fh5co-cover .desc h2{
+    font-size: 30px; 
+  }
+}
+
+
+  @media (min-width: 2000px) { 
+  #sidekckpic, #uniroomiepic, #dbcapspic {
+      background-color: #555;
+      background-attachment: fixed;
+      background-size: 62%;
+      background-repeat: no-repeat;
+      background-position: -50px -150px;
+      position: relative;
+  }
+  .workpic{
+    height:550px;
+    }
+    .work{
+      margin-top: 60px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+  
+}
+
+@media (min-width: 992px) { 
+  .fh5co-cover{
+      background-color: var(--hero-bg, #FAF5FF);
+      background-size: 60%;
+      background-repeat: no-repeat;
+       background-position: 100% 40% !important; 
+      position: relative;
+    }
+  /* 992–1199px 继续使用独立 img 布局（继承 768px 规则） */
+    .fh5co-cover li{
+    line-height: 1.4em;
+    /* padding-top:0.6em; */
+    font-weight: 300;
+    }
+}
+/* 1200px 及以上恢复背景图右侧布局，隐藏独立 img */
+@media (min-width: 1200px) { 
+  .fh5co-cover.hero-has-img {
+    display: block;
+    /* background-image 由各页 inline style 提供 */
+  }
+  .fh5co-cover.hero-has-img .desc {
+    position: absolute;
+    top: 25%;
+    margin-top: -100px;
+  }
+  .fh5co-cover.hero-has-img .hero-responsive-img {
+    display: none;
+  }
+  #headerpic {
+    background-size: 48% !important;
+    background-position: right 8.33% center !important;
+  }
+}
+@media (min-width: 1600px) { 
+  .fh5co-cover{
+      background-color: var(--hero-bg, #FAF5FF);
+      background-size: 60%;
+      background-repeat: no-repeat;
+       background-position: 100% 20% !important; 
+      position: relative;
+    }
+  #headerpic {
+    background-size: 48%;
+    background-position: right 8.33% center !important;
+  }
+    .fh5co-cover li{
+    line-height: 1.5em;
+    }
+}
+
+/* Image modal - global */
+.project-info img.img-responsive { cursor: pointer; }
+#img-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 9998; display: none; align-items: center; justify-content: center; }
+#img-modal-overlay.active { display: flex; }
+#img-modal-content { position: relative; max-width: 95%; max-height: 95%; z-index: 9999; }
+#img-modal-content img { max-width: 100%; max-height: 90vh; display: block; border-radius: 4px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+#img-modal-close { position: absolute; top: -44px; right: 0; width: 36px; height: 36px; background: #fff; border: none; border-radius: 50%; font-size: 28px; line-height: 1; cursor: pointer; color: #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.2); padding: 0; }
+#img-modal-close:hover { background: #f3f4f6; }
+
+
+
+/* Global image hover effects */
+img {
+	transition: box-shadow 0.3s ease;
+}
+
+img:hover {
+	box-shadow: -2px -2px 8px 0 #A000B8, 2px 2px 8px 0 #00B8A9;
+}
+
+/* Card hover effects */
+.glass-box-card {
+	transition: box-shadow 0.3s ease;
+}
+
+.glass-box-card:hover {
+	box-shadow: -2px -2px 8px 0 #A000B8, 2px 2px 8px 0 #00B8A9;
+}
+
+/* Remove hover effect from top placeholder cards */
+.glass-box-card-top {
+	transition: none !important;
+}
+
+.glass-box-card-top:hover {
+	box-shadow: none !important;
+}
+
+/* Remove hover effect from hidden section cards */
+.section-hidden .glass-box-card {
+	transition: none !important;
+}
+
+.section-hidden .glass-box-card:hover {
+	box-shadow: none !important;
+}
+
+/* Restore hover effect for top bar (override previous removal) */
+.glass-box-card-top {
+	transition: box-shadow 0.3s ease !important;
+}
+
+.glass-box-card-top:hover {
+	box-shadow: -2px -2px 8px 0 #A000B8, 2px 2px 8px 0 #00B8A9 !important;
+}
+
+/* Remove hover effect from shrunk cards */
+.glass-box-card-shrunk {
+	transition: none !important;
+}
+
+.glass-box-card-shrunk:hover {
+	box-shadow: none !important;
+}
+
+/* Change top bar link background from black to green */
+.glass-box-top-title a {
+	background-color: #00695C !important;
+}
+
+.glass-box-top-title a:hover {
+	background-color: #00897B !important;
+}
+
+/* Change text color to white on hover */
+.glass-box-top-title a:hover {
+	color: #FFFFFF !important;
+}
+
+/* Ensure default text color is preserved */
+.glass-box-top-title a {
+	color: inherit !important;
+}
+
+/* Remove default background, only show on hover */
+.glass-box-top-title a {
+	background-color: transparent !important;
+}
+
+/* Set default text color to black/dark */
+.glass-box-top-title a {
+	color: #333333 !important;
+}
+
+/* Add underline on hover for all card titles with links */
+.glass-box-title a {
+	text-decoration: none;
+	transition: text-decoration 0.2s ease;
+}
+
+.glass-box-title a:hover {
+	text-decoration: underline;
+}
+
+/* Change card title hover color to green */
+.glass-box-title a:hover {
+	color: #00897B !important;
+}
+
+/* Update card title hover color to mingfei green */
+.glass-box-title a:hover {
+	color: #00665F !important;
+}
+
+/* Force mingfei green on card title hover with highest priority */
+.glass-box-card .glass-box-title a:hover {
+	color: #00665F !important;
+	text-decoration: underline !important;
+}
+
+/* Remove any filters or opacity on card title hover */
+.glass-box-card .glass-box-title a:hover {
+	opacity: 1 !important;
+	filter: none !important;
+	-webkit-filter: none !important;
+}
+
+/* Update top bar title hover to mingfei green (consistent with card titles) */
+.glass-box-top-title a:hover {
+	color: #00665F !important;
+	background-color: transparent !important;
+	opacity: 1 !important;
+	filter: none !important;
+	-webkit-filter: none !important;
+}
+
+/* Add underline to top bar title hover */
+.glass-box-top-title a:hover {
+	text-decoration: underline !important;
+}
+
+/* Change subtitle color from green to black */
+.glass-box-subtitle {
+	color: #333333 !important;
+	text-transform: capitalize !important;
+}
+
+/* Make card Read More button match top bar style */
+.glass-box-readmore a {
+	color: #333333 !important;
+	text-decoration: none !important;
+	transition: all 0.3s ease !important;
+}
+
+.glass-box-readmore a:hover {
+	color: #FFFFFF !important;
+	background-color: #00665F !important;
+	text-decoration: none !important;
+	padding: 4px 8px !important;
+	border-radius: 4px !important;
+}
+
+/* Remove default color override for Read More */
+.glass-box-readmore a {
+	color: inherit !important;
+}
+
+/* Update Read More hover background to match top bar */
+.glass-box-readmore a:hover {
+	background-color: #00695C !important;
+}
+
+/* Update Read More hover to use mingfei green variable */
+.glass-box-readmore a:hover {
+	background-color: var(--mingfei-green) !important;
+}
+
+/* Ensure no opacity or filter on Read More hover */
+.glass-box-readmore a:hover {
+	opacity: 1 !important;
+	filter: none !important;
+	-webkit-filter: none !important;
+	background-color: var(--mingfei-green) !important;
+	color: #FFFFFF !important;
+}
+
+/* Ensure top bar Read More uses same exact style */
+.glass-box-top-readmore a:hover {
+	background-color: var(--mingfei-green) !important;
+	opacity: 1 !important;
+	filter: none !important;
+	-webkit-filter: none !important;
+}
+
+/* Remove transition that might affect color during animation */
+.glass-box-readmore a {
+	transition: background-color 0.3s ease, color 0.3s ease, padding 0.3s ease !important;
+}
+
+.glass-box-readmore a:hover {
+	transition: none !important;
+}
+
+/* Override opacity transition that affects color display */
+.glass-box-readmore {
+	transition: none !important;
+}
+
+.glass-box-readmore a {
+	transition: background-color 0.2s ease, color 0.2s ease !important;
+}

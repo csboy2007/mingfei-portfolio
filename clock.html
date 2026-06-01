@@ -1,0 +1,100 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="apple-touch-icon" type="image/png" href="https://static.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+<meta name="apple-mobile-web-app-title" content="CodePen">
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+<title>CodePen - Simple Digital Clock with Date and Time</title>
+<style>
+html{
+	background-color: #333;
+}
+.clockdate-wrapper {
+    background-color: #333;
+    padding:25px;
+    max-width:3000px;
+    width:100%;
+    text-align:center;
+    border-radius:5px;
+    margin:0 auto;
+    margin-top:15%;
+}
+#clock{
+    background-color:#333;
+    font-family: sans-serif;
+    font-size:260px;
+    text-shadow:0px 0px 1px #fff;
+    color:#fff;
+}
+#clock span {
+    color:#888;
+    text-shadow:0px 0px 1px #333;
+    font-size:130px;
+    position:relative;
+    top:-27px;
+    left:-10px;
+}
+#date {
+    letter-spacing:10px;
+    font-size:80px;
+    font-family:arial,sans-serif;
+    color:#fff;
+}
+</style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+<body translate="no">
+<body onload="startTime()">
+<div id="clockdate">
+<div class="clockdate-wrapper">
+<div id="clock"></div>
+<div id="date"></div>
+</div>
+</div>
+<script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-9bf952ccbbd13c245169a0a1190323a27ce073a3d304b8c0fdf421ab22794a58.js"></script>
+<script id="rendered-js">
+function startTime() {
+  var today = new Date();
+  var hr = today.getHours();
+  var min = today.getMinutes();
+  var sec = today.getSeconds();
+
+
+  //Add a zero in front of numbers<10
+  hr = checkTime(hr);
+  min = checkTime(min);
+  sec = checkTime(sec);
+  document.getElementById("clock").innerHTML = hr + ":" + min ;
+
+  var months = ['January', '02', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  var curWeekDay = days[today.getDay()];
+  var curDay ='0' + today.getDate();
+  var curMonth = months[today.getMonth()];
+  var curYear = today.getFullYear();
+  var date = curWeekDay + ", " + curDay + "-" + curMonth + " " + curYear;
+  document.getElementById("date").innerHTML = date;
+
+  var time = setTimeout(function () {startTime();}, 500);
+}
+function checkTime(i) {
+  if (i < 10) {
+    i = "0" + i;
+  }
+  return i;
+}
+//# sourceURL=pen.js
+    </script>
+</body>
+</html>

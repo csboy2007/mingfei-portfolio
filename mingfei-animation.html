@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mingfei Bi - 动画效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #000;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .text {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #fff;
+            text-align: center;
+            z-index: 10;
+            position: relative;
+            opacity: 1;
+            transition: all 0.5s ease;
+        }
+
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .background-animation.active {
+            opacity: 1;
+        }
+
+        /* 动态网格背景 */
+        .grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(50px, 50px);
+            }
+        }
+
+        /* 彩色光晕效果 */
+        .glow {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: glowMove 8s ease-in-out infinite;
+        }
+
+        .glow:nth-child(1) {
+            background: #ff006e;
+            top: 20%;
+            left: 20%;
+            animation-delay: 0s;
+        }
+
+        .glow:nth-child(2) {
+            background: #8338ec;
+            top: 60%;
+            right: 20%;
+            animation-delay: 2s;
+        }
+
+        .glow:nth-child(3) {
+            background: #3a86ff;
+            bottom: 20%;
+            left: 40%;
+            animation-delay: 4s;
+        }
+
+        .glow:nth-child(4) {
+            background: #06ffa5;
+            top: 40%;
+            left: 60%;
+            animation-delay: 6s;
+        }
+
+        @keyframes glowMove {
+            0%, 100% {
+                transform: scale(1) translate(0, 0);
+                opacity: 0.6;
+            }
+            25% {
+                transform: scale(1.5) translate(50px, -30px);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(0.8) translate(-30px, 50px);
+                opacity: 0.4;
+            }
+            75% {
+                transform: scale(1.2) translate(30px, 30px);
+                opacity: 0.7;
+            }
+        }
+
+        /* 粒子效果 */
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #fff;
+            border-radius: 50%;
+            animation: particleFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes particleFloat {
+            0%, 100% {
+                transform: translateY(0px) scale(1);
+                opacity: 0;
+            }
+            50% {
+                transform: translateY(-100px) scale(1.5);
+                opacity: 1;
+            }
+        }
+
+        /* 动态线条 */
+        .line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #fff, transparent);
+            animation: lineMove 6s linear infinite;
+        }
+
+        .line:nth-child(1) {
+            width: 200px;
+            top: 30%;
+            left: -200px;
+            animation-delay: 0s;
+        }
+
+        .line:nth-child(2) {
+            width: 150px;
+            top: 70%;
+            right: -150px;
+            animation-delay: 2s;
+        }
+
+        .line:nth-child(3) {
+            width: 180px;
+            bottom: 40%;
+            left: -180px;
+            animation-delay: 4s;
+        }
+
+        @keyframes lineMove {
+            0% {
+                transform: translateX(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(calc(100vw + 200px));
+                opacity: 0;
+            }
+        }
+
+        /* 文字特效 */
+        .text-glow {
+            text-shadow: 
+                0 0 10px #fff,
+                0 0 20px #fff,
+                0 0 30px #fff,
+                0 0 40px #ff006e,
+                0 0 70px #ff006e,
+                0 0 80px #ff006e;
+            animation: textPulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes textPulse {
+            from {
+                text-shadow: 
+                    0 0 10px #fff,
+                    0 0 20px #fff,
+                    0 0 30px #fff,
+                    0 0 40px #ff006e,
+                    0 0 70px #ff006e,
+                    0 0 80px #ff006e;
+            }
+            to {
+                text-shadow: 
+                    0 0 20px #fff,
+                    0 0 30px #fff,
+                    0 0 40px #fff,
+                    0 0 50px #8338ec,
+                    0 0 80px #8338ec,
+                    0 0 90px #8338ec;
+            }
+        }
+
+        /* 脉冲圆圈 */
+        .pulse-circle {
+            position: absolute;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: pulse 3s ease-out infinite;
+        }
+
+        .pulse-circle:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: 0s;
+        }
+
+        .pulse-circle:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: 1s;
+        }
+
+        .pulse-circle:nth-child(3) {
+            width: 300px;
+            height: 300px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: 2s;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text" id="mainText">Mingfei Bi</div>
+        
+        <div class="background-animation" id="backgroundAnimation">
+            <div class="grid"></div>
+            <div class="glow"></div>
+            <div class="glow"></div>
+            <div class="glow"></div>
+            <div class="glow"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="pulse-circle"></div>
+            <div class="pulse-circle"></div>
+            <div class="pulse-circle"></div>
+        </div>
+    </div>
+
+    <script>
+        // 创建粒子效果
+        function createParticles() {
+            const container = document.querySelector('.background-animation');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 4 + 's';
+                particle.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // 初始化动画
+        function initAnimation() {
+            const text = document.getElementById('mainText');
+            const backgroundAnimation = document.getElementById('backgroundAnimation');
+            
+            // 1秒后开始背景动画
+            setTimeout(() => {
+                backgroundAnimation.classList.add('active');
+                text.classList.add('text-glow');
+                createParticles();
+            }, 1000);
+        }
+
+        // 页面加载完成后启动动画
+        window.addEventListener('load', initAnimation);
+    </script>
+</body>
+</html>

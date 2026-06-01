@@ -1,0 +1,15 @@
+{
+  "name": "Mingfei Bi Portfolio",
+  "short_name": "Mingfei Bi",
+  "description": "UX Designer Portfolio - Establishing design strategies and frameworks for complex problem solving by integrating GENAI into the design process",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#00D4AB",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
