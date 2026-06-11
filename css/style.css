@@ -12,10 +12,10 @@
   --border-radius: 4px;
   
   /* Mingfei brand colors */
-  --mingfei-green: #00665F;
+  --mingfei-green: #00b89a;
   
   /* Typography colors */
-  --paragraph-text-color: #565656;
+  --paragraph-text-color: #c0c0c0;
   
   /* Badge gradient colors */
   --gradient-harsh-purple: rgb(115, 0, 229);
@@ -32,6 +32,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="12" fill="%2300b89a"/></svg>') 24 24, auto;
 }
 
 html {
@@ -46,9 +47,9 @@ body {
   font-weight: 300;
   font-size: 20px;
   line-height: 1.5;
-  color: #7f7f7f;
-  /* 纯白色背景，渐变只在hero区域 */
-  background: #ffffff;
+  color: #c0c0c0;
+  /* 深黑背景 */
+  background: #0f0f0f;
   height: 100%;
   position: relative;
   text-rendering: optimizeLegibility;
@@ -59,13 +60,13 @@ body {
 }
 
 a {
-  color: #00665F;
+  color: #00b89a;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
 }
 a:hover, a:active, a:focus {
-  color: #00665F;
+  color: #00b89a;
   outline: none;
 }
 
@@ -75,7 +76,7 @@ p {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #333;
+  color: #e8e8e8;
   font-family: "PT Sans", Arial, serif;
   font-weight: 300;
   margin: 0 0 30px 0;
@@ -83,17 +84,17 @@ h1, h2, h3, h4, h5, h6 {
 
 ::-webkit-selection {
   color: #fff;
-  background: #00665F;
+  background: #00b89a;
 }
 
 ::-moz-selection {
   color: #fff;
-  background: #00665F;
+  background: #00b89a;
 }
 
 ::selection {
   color: #fff;
-  background: #00665F;
+  background: #00b89a;
 }
 
 #fh5co-header {
@@ -104,12 +105,12 @@ h1, h2, h3, h4, h5, h6 {
   right: 20px;
   opacity: 1;
   top: 20px;
-  /* 液态流动感毛玻璃效果 */
-  background: rgba(255, 255, 255, 0.12);
+  /* 深色毛玻璃效果 */
+  background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(32px) saturate(150%);
   -webkit-backdrop-filter: blur(32px) saturate(150%);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   border-radius: var(--border-radius);
 }
 #fh5co-header .navbar {
@@ -134,10 +135,10 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   display: block;
   padding-bottom: 2px;
-  color:#00665F;
+  color:#00b89a;
 }
 #fh5co-header #navbar li a:hover {
-  color: #00665F;
+  color: #00b89a;
 }
 #fh5co-header #navbar li.active a {
   background: transparent;
@@ -145,7 +146,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 @media screen and (max-width: 480px) {
   #fh5co-header #navbar li.active a {
-    color: #00665F;
+    color: #00b89a;
   }
 }
 
@@ -155,7 +156,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 #fh5co-header #navbar li.call-to-action a {
-  border: 2px solid #00665F;
+  border: 2px solid #00b89a;
   padding: 5px 10px 3px 10px;
   margin: 12px 0 0 0px;
   -webkit-border-radius: var(--border-radius);
@@ -164,8 +165,8 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: var(--border-radius);
 }
 #fh5co-header #navbar li.call-to-action a:hover {
-  background-color: #00665F;
-  color: #00665F;
+  background-color: #00b89a;
+  color: #00b89a;
 }
 #fh5co-header #navbar li.call-to-action a span:before {
   background-color: transparent;
@@ -209,7 +210,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 20px;
   font-weight: 700;
   padding-left: 0;
-  color: #00665F;
+  color: #00b89a;
   text-transform: uppercase;
   padding: 17.5px 15px;
   line-height: 20px;
@@ -225,7 +226,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 24px;
   font-weight: 700;
   padding-left: 0;
-  color: #00665F;
+  color: #00b89a;
   text-transform: uppercase;
   
   padding: 17.5px 15px;
@@ -248,14 +249,14 @@ h1, h2, h3, h4, h5, h6 {
   width: calc(100% - 40px);
   left: 20px;
   right: 20px;
-  /* 液态流动感毛玻璃效果 */
-  background: rgba(255, 255, 255, 0.15);
+  /* 深色毛玻璃效果 */
+  background: rgba(15, 15, 15, 0.75);
   backdrop-filter: blur(32px) saturate(150%);
   -webkit-backdrop-filter: blur(32px) saturate(150%);
   margin-top: 0px;
   top: 0;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
   border-radius: var(--border-radius);
 }
 #fh5co-header.navbar-fixed-top .navbar-brand {
@@ -268,14 +269,14 @@ h1, h2, h3, h4, h5, h6 {
   transition: 0.3s;
 }
 #fh5co-header.navbar-fixed-top #navbar li a:hover {
-  color: #00665F;
+  color: #00b89a;
 }
 #fh5co-header.navbar-fixed-top #navbar li.active a {
-  color: #00665F !important;
+  color: #00b89a !important;
 }
 @media screen and (max-width: 768px) {
   #fh5co-header.navbar-fixed-top #navbar li.active a {
-    color: #00665F !important;
+    color: #00b89a !important;
   }
 }
 
@@ -287,7 +288,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 #fh5co-header.navbar-fixed-top #navbar li.call-to-action a {
-  border: 2px solid #00665F;
+  border: 2px solid #00b89a;
   padding: 5px 10px 3px 10px;
   margin: 12px 0 0 0px;
   -webkit-border-radius: var(--border-radius);
@@ -296,8 +297,8 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: var(--border-radius);
 }
 #fh5co-header.navbar-fixed-top #navbar li.call-to-action a:hover {
-  background-color: #00665F;
-  color: #00665F !important;
+  background-color: #00b89a;
+  color: #00b89a !important;
 }
 #fh5co-header.navbar-fixed-top #navbar li.call-to-action a span:before {
   background-color: transparent;
@@ -326,7 +327,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #adadad;
 }
 #fh5co-header .navbar-default .brand-slogan em {
-  color: #00665F;
+  color: #00b89a;
   font-style: normal;
 }
 
@@ -341,16 +342,16 @@ h1, h2, h3, h4, h5, h6 {
 .mingfei-gradient-bg {
   width: 100%;
   height: 100%;
-  background: linear-gradient(96deg, #8fffce 0%, #b8e7ff 26.85%, #c2d1ff 59.66%, #d2ccff 100%);
+  background: linear-gradient(96deg, #0d2b1f 0%, #0a1a2e 26.85%, #12103a 59.66%, #1a0f2e 100%);
   background-size: 400% 400%;
   animation: mingfeiGradientMove 12s ease infinite;
 }
 
-/* Mingfei 白色渐变遮罩层 - 让渐变自然过渡到白色 */
+/* Mingfei 深色渐变遮罩层 */
 .mingfei-fade-overlay {
   width: 100%;
   height: 100%;
-  background: radial-gradient(100% 140% at 60% -10%, rgba(255, 255, 255, 0) 0%, #fff 75%);
+  background: radial-gradient(100% 140% at 60% -10%, rgba(15, 15, 15, 0) 0%, #0f0f0f 75%);
   padding-top: 60px;
 }
 #fh5co-home a {
@@ -467,13 +468,13 @@ h1, h2, h3, h4, h5, h6 {
   gap: 40px;
   padding: 0 40px 0 20px; /* 左padding将由JavaScript动态计算 */
   /* 和top nav一样的毛玻璃效果 */
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(15, 15, 15, 0.75);
   backdrop-filter: blur(32px) saturate(150%);
   -webkit-backdrop-filter: blur(32px) saturate(150%);
   /* 时间控制的fade-in动画 */
   transition: opacity 0.5s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
   border-radius: var(--border-radius);
   transition: opacity 0.3s ease-out;
   opacity: 0;
@@ -483,7 +484,7 @@ h1, h2, h3, h4, h5, h6 {
 .glass-box-top-number {
   width: 36px;
   height: 36px;
-  background: #00665F;
+  background: #00b89a;
   border-radius: var(--border-radius);
   display: flex;
   align-items: center;
@@ -517,7 +518,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .glass-box-top-title a {
-  color: #333;
+  color: #e8e8e8;
   text-decoration: none;
 }
 
@@ -540,7 +541,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .glass-box-top-readmore a {
-  color: #00665F !important;
+  color: #00b89a !important;
   font-weight: 700 !important;
   text-decoration: none;
   padding: 2px 8px;
@@ -551,7 +552,7 @@ h1, h2, h3, h4, h5, h6 {
 .glass-box-top-readmore a:hover {
   cursor: pointer;
   color: white !important;
-  background-color: #00665F;
+  background-color: #00b89a;
   text-decoration: none;
   -webkit-transition: 0.1s;
   -o-transition: 0.1s;
@@ -561,18 +562,17 @@ h1, h2, h3, h4, h5, h6 {
 .glass-box-card {
   display: flex;
   align-items: stretch;
-  /* 和top nav一样的宽度设定 */
   width: calc(100% - 40px);
   margin: 0 20px;
   min-height: 281px;
   /* 整体毛玻璃效果和边框 */
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
   position: relative;
   z-index: 1;
   backdrop-filter: blur(32px) saturate(150%);
   -webkit-backdrop-filter: blur(32px) saturate(150%);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
   border-radius: var(--border-radius);
   overflow: hidden; /* 确保子元素不超出圆角 */
   transition: height 1s ease, min-height 1s ease;
@@ -691,13 +691,13 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Monda", "PT Sans", Arial, sans-serif;
   font-size: 30px;
   font-weight: 400;
-  color: #0f141a !important;
+  color: #e8e8e8 !important;
   margin: 0;
   line-height: 1.2;
 }
 
 .glass-box-title a {
-  color: #0f141a !important;
+  color: #e8e8e8 !important;
   text-decoration: none;
   transition: opacity 0.2s ease;
 }
@@ -711,7 +711,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Lato", "PT Sans", Arial, sans-serif;
   font-size: 16px;
   font-weight: 900;
-  color: #00665F !important;
+  color: #00b89a !important;
   margin: 0;
 }
 
@@ -733,20 +733,20 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Lato", "PT Sans", Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
-  color: #0f141a !important;
+  color: #c0c0c0 !important;
   line-height: 1.5;
 }
 
 .glass-box-description p {
   margin: 0 0 8px 0;
-  color: #0f141a !important;
+  color: #c0c0c0 !important;
 }
 
 .glass-box-readmore {
   font-family: "Lato", "PT Sans", Arial, sans-serif;
   font-size: 16px;
   font-weight: 900;
-  color: #00665F !important;
+  color: #00b89a !important;
   margin: 0;
   cursor: pointer;
   text-decoration: none;
@@ -893,7 +893,7 @@ body.hero-animations-rest #genai-text.animated {
   font-size: 23px;
   line-height: 30px;
   font-weight: 300;
-  color: #888;
+  color: #aaa;
   margin: 0 0 60px 0;
   white-space: normal;
 }
@@ -904,23 +904,14 @@ body.hero-animations-rest #genai-text.animated {
 
 /* GENAI文字样式 */
 #genai-text {
-  color: #888;
+  color: #aaa;
   transition: all 0.5s ease;
 }
 
 #genai-text.animated {
-  /* GENAI文本使用Microsoft Copilot紫色 */
-  background: linear-gradient(90deg, rgb(133, 52, 243), rgb(0, 102, 95), rgb(133, 52, 243));
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  -moz-background-clip: text;
-  -moz-text-fill-color: transparent;
-  animation: gradientShift 20s linear infinite;
-  /* 添加备用颜色，确保在不支持渐变的浏览器中也能显示 */
-  color: rgb(133, 52, 243);
+  /* Animated class removed - no styling applied */
 }
+
 #fh5co-home .text-inner .call-to-action {
   display: block;
   width: 100%;
@@ -949,8 +940,8 @@ body.hero-animations-rest #genai-text.animated {
   background: rgba(255, 255, 255, 0.2);
 }
 #fh5co-home .text-inner .call-to-action a.download {
-  border: 2px solid #00665F;
-  background: #00665F;
+  border: 2px solid #00b89a;
+  background: #00b89a;
   text-decoration: none !important;
 }
 
@@ -993,6 +984,7 @@ body.hero-animations-rest #genai-text.animated {
   font-family: "Monda","PT Sans", Arial, sans-serif;
   font-weight:bold;
   font-size: 30px;
+  color:#e8e8e8;
 }
 
 .work h4 a{
@@ -1013,7 +1005,7 @@ body.hero-animations-rest #genai-text.animated {
 }
 
 .work h5 {
-   color: #00665F;
+   color: #00b89a;
     font-family: "Lato","PT Sans", Arial, sans-serif;
     font-weight: 700;
     font-size:16px;
@@ -1053,7 +1045,7 @@ body.hero-animations-rest #genai-text.animated {
   font-weight: 700;
 }
 #fh5co-testimony .wrap-testimony .testimony-slide span a.twitter {
-  color: #00665F;
+  color: #00b89a;
   font-weight: 300;
 }
 #fh5co-testimony .wrap-testimony .testimony-slide figure {
@@ -1061,7 +1053,6 @@ body.hero-animations-rest #genai-text.animated {
   display: -moz-inline-stack;
   display: inline-block;
   zoom: 1;
-  *display: inline;
 }
 #fh5co-testimony .wrap-testimony .testimony-slide figure img {
   width: 90px;
@@ -1095,7 +1086,7 @@ body.hero-animations-rest #genai-text.animated {
   display: block;
   width: 50px;
   height: 2px;
-  background: #00665F;
+  background: #00b89a;
   left: 50%;
   margin-left: -25px;
   bottom: 0;
@@ -1118,7 +1109,7 @@ body.hero-animations-rest #genai-text.animated {
 }
 
 .getting-started {
-  background: #00665F;
+  background: #00b89a;
   padding: 60px 0 40px 0;
 }
 .getting-started h3 {
@@ -1193,11 +1184,11 @@ body.hero-animations-rest #genai-text.animated {
   box-shadow: 0px 2px 10px -1px rgba(36, 36, 36, 0.19);
 }
 .fh5co-pricing .price-box.popular .btn-select-plan {
-  background: #00665F;
+  background: #00b89a;
 }
 .fh5co-pricing .price-box .btn-select-plan {
   padding: 10px 20px;
-  background: #00665F;
+  background: #00b89a;
   color: #fff;
   -webkit-box-shadow: 0px 3px 6px -1px rgba(36, 36, 36, 0.15);
   -moz-box-shadow: 0px 3px 6px -1px rgba(36, 36, 36, 0.15);
@@ -1249,7 +1240,7 @@ body.hero-animations-rest #genai-text.animated {
   left: 0;
   top: 0;
   font-size: 54px;
-  color: #00665F;
+  color: #00b89a;
 }
 .fh5co-services .fh5co-post {
   padding-left: 75px;
@@ -1335,7 +1326,7 @@ body.hero-animations-rest #genai-text.animated {
 }
 #fh5co-team .team-box .social-media li a:hover, #fh5co-team .team-box .social-media li a:focus, #fh5co-team .team-box .social-media li a:active {
   text-decoration: none;
-  color: #00665F !important;
+  color: #00b89a !important;
 }
 
 .box-faq {
@@ -1351,10 +1342,6 @@ body.hero-animations-rest #genai-text.animated {
   float: left;
   width: 100%;
   vertical-align: middle;
-  display: -moz-inline-stack;
-  display: inline-block;
-  zoom: 1;
-  *display: inline;
 }
 
 .section-heading {
@@ -1394,7 +1381,7 @@ body.hero-animations-rest #genai-text.animated {
   display: block;
   width: 50px;
   height: 2px;
-  background: #00665F;
+  background: #00b89a;
   left: 50%;
   margin-left: -25px;
   bottom: 0;
@@ -1407,8 +1394,13 @@ body.hero-animations-rest #genai-text.animated {
 }
 
 #fh5co-footer {
-  background: #00665F;
+  background: #00b89a;
   color: #fff;
+}
+
+#fh5co-footer *,
+session * {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="12" fill="%230f0f0f"/></svg>') 24 24, auto !important;
 }
 #fh5co-footer h1,h2,h3{
   color : #fff;
@@ -1421,7 +1413,7 @@ body.hero-animations-rest #genai-text.animated {
 }
 
 #fh5co-footer a {
-  color: #00665F;
+  color: #00b89a;
 }
 #fh5co-footer a:hover {
   color: #fff !important;
@@ -1441,7 +1433,7 @@ body.hero-animations-rest #genai-text.animated {
   display: block;
   width: 35px;
   height: 2px;
-  background: #00665F;
+  background: #00b89a;
 }
 #fh5co-footer .copy-right {
   position: relative;
@@ -1459,7 +1451,7 @@ body.hero-animations-rest #genai-text.animated {
   display: block;
   width: 35px;
   height: 2px;
-  background: #00665F;
+  background: #00b89a;
 }
 #fh5co-footer .contact-info {
   margin: 0 0 60px 0;
@@ -1477,7 +1469,7 @@ body.hero-animations-rest #genai-text.animated {
   top: 0;
   left: 0;
   font-size: 22px;
-  color: #00665F;
+  color: #00b89a;
 }
 #fh5co-footer .social-media {
   margin: 0 0 30px 0;
@@ -1491,7 +1483,7 @@ body.hero-animations-rest #genai-text.animated {
   margin-right: 10px;
 }
 #fh5co-footer .social-media li a {
-  color: #00665F;
+  color: #00b89a;
 }
 #fh5co-footer .social-media li a:hover, #fh5co-footer .social-media li a:focus, #fh5co-footer .social-media li a:active {
   text-decoration: none;
@@ -1544,7 +1536,7 @@ body.hero-animations-rest #genai-text.animated {
 }
 #fh5co-footer #btn-submit {
   color: rgba(255, 255, 255, 0.9) !important;
-  background: #00665F !important;
+  background: #00b89a !important;
 }
 
 .btn {
@@ -1560,7 +1552,7 @@ body.hero-animations-rest #genai-text.animated {
   text-decoration: none;
 }
 .fh5co-nav-toggle.active i::before, .fh5co-nav-toggle.active i::after {
-  background: #00665F;
+  background: #00b89a;
 }
 .fh5co-nav-toggle:hover, .fh5co-nav-toggle:focus, .fh5co-nav-toggle:active {
   outline: none;
@@ -1571,7 +1563,6 @@ body.hero-animations-rest #genai-text.animated {
   display: -moz-inline-stack;
   display: inline-block;
   zoom: 1;
-  *display: inline;
   width: 25px;
   height: 3px;
   color: #535659;
@@ -1657,7 +1648,7 @@ body.hero-animations-rest #genai-text.animated {
   transition: 0.3s;
 }
 .btn.btn-primary {
-  background: #00665F;
+  background: #00b89a;
   color: #fff;
   border: none !important;
   border: 2px solid transparent !important;
@@ -1730,7 +1721,7 @@ body.hero-animations-rest #genai-text.animated {
   height:45px;
 	display: inline-block;
 	vertical-align: middle;
-  color: #00665F;
+  color: #00b89a;
   font-family: "Lato","PT Sans", Arial, sans-serif;
   font-weight: bold;
   margin-top:10px;
@@ -1738,7 +1729,7 @@ body.hero-animations-rest #genai-text.animated {
 
 #mflogo svg{
   height:35px;
-  fill:#00665F;
+  fill:#00b89a;
 }
 .nomarginnopadding
 {
@@ -1780,7 +1771,7 @@ a :hover{
 
 
 .readmore{
-  color:#00665F !important;
+  color:#00b89a !important;
   font-weight:700 !important;
 
 
@@ -1788,7 +1779,7 @@ a :hover{
 .readmore a:hover{
  cursor: pointer;
  color:white;
- background-color: #00665F;
+ background-color: #00b89a;
  text-decoration: none;
  -webkit-transition: 0.1s;
   -o-transition: 0.1s;
@@ -1809,7 +1800,7 @@ a :hover{
   font-weight: 700;
 }
 .project-text-title {
-  color: #00665F; 
+  color: #00b89a; 
   font-family: 'Monda', sans-serif; 
   text-transform: uppercase; 
   letter-spacing: 2px; 
@@ -1832,7 +1823,7 @@ a :hover{
 
 /* 更小的标题 (2.1.1等) - 深绿色加粗正文，300 weight，无bottom margin */
 .project-text-detailsection {
-  color: #00665F;
+  color: #00b89a;
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-weight: 300;
@@ -1888,13 +1879,13 @@ a :hover{
   margin-top: 0px;
 }
 .next {
-  color:#00665F;
+  color:#00b89a;
   padding: 10px; 
   margin: 50px auto ;
   display: inline-block;
 }
 .next:hover {
-  background-color: #00665F;
+  background-color: #00b89a;
   color:white;
 }
 
@@ -1936,7 +1927,7 @@ a :hover{
 #fh5co-about .text-inner h1 {
   font-family: "Monda","PT Sans", Arial, sans-serif;
   font-size: 100px;
-  color: #00665F;
+  color: #00b89a;
   margin: 0 0 20px 0;
   font-weight: 700;
 }
@@ -1970,7 +1961,7 @@ a :hover{
 .project-title-about{
     font-family: "Monda","PT Sans", Arial, sans-serif;
     font-size: 100px;
-    color: #00665F;
+    color: #00b89a;
     margin: 0 0 5px 0;
     font-weight: 700;
     line-height: 1em;
@@ -2036,14 +2027,14 @@ a :hover{
 }
 
 .fh5co-cover .desc h2{
-   color: #00665F; 
+   color: #00b89a; 
   font-family: 'Monda', sans-serif; 
   letter-spacing: 0px; 
   font-size: 30px; 
   font-weight: 700;
 }
 .desc li, p{
-  color:#00665F;
+  color:#00b89a;
 }
 #aboutp{
   color:#000;
@@ -2086,50 +2077,50 @@ a :hover{
   border-bottom: 1px solid rgba(255, 255, 255, 0.7);
 }
 
-/* 仅 glassbox 页：hero 内文字与按钮改为品牌色 #00665F */
+/* 仅 glassbox 页：hero 内文字与按钮改为品牌色 #00b89a */
 body.page-glassbox .fh5co-cover .desc {
-  color: #00665F;
+  color: #00b89a;
 }
 body.page-glassbox .fh5co-cover .desc h2 {
-  color: #00665F;
+  color: #00b89a;
 }
 body.page-glassbox .desc li,
 body.page-glassbox .desc p {
-  color: #00665F;
+  color: #00b89a;
 }
 body.page-glassbox .desc .project-text h3 {
-  color: #00665F;
+  color: #00b89a;
 }
 
 /* Watchlist hero 内的「What I have done / delivered」标题和正文 */
 .fh5co-cover #capslist1 h3 {
-  color: #00665F;
+  color: #00b89a;
 }
 .fh5co-cover #capslist1 {
-  color: #00665F;
+  color: #00b89a;
 }
 .fh5co-cover #capslist2 h3 {
-  color: #00665F;
+  color: #00b89a;
 }
 .fh5co-cover #capslist2 {
-  color: #00665F;
+  color: #00b89a;
 }
-/* 按钮保持原样（白色），不随页面改为 #00665F */
+/* 按钮保持原样（白色），不随页面改为 #00b89a */
 body.page-glassbox .desc .btn,
 body.page-glassbox .desc a.btn {
   color: #fff !important;
   border-color: #fff;
 }
 body.page-glassbox .fh5co-cover .desc span {
-  color: #00665F;
+  color: #00b89a;
 }
 body.page-glassbox .fh5co-cover .desc span a,
 body.page-glassbox .desc a {
-  color: #00665F;
+  color: #00b89a;
 }
 body.page-glassbox .fh5co-cover .desc span a:hover,
 body.page-glassbox .fh5co-cover .desc span a:focus {
-  color: #00665F !important;
+  color: #00b89a !important;
 }
 /* Keep button text white on hover and add underline */
 body.page-glassbox .fh5co-cover .desc span a.btn:hover,
@@ -2138,7 +2129,7 @@ body.page-glassbox .fh5co-cover .desc span a.btn:focus {
   text-decoration: underline !important;
 }
 body.page-glassbox .fh5co-cover .desc span a.fh5co-site-name {
-  border-bottom-color: #00665F;
+  border-bottom-color: #00b89a;
 }
 
 .fh5co-overlay {
@@ -2151,20 +2142,20 @@ body.page-glassbox .fh5co-cover .desc span a.fh5co-site-name {
     /* background: rgba(36, 36, 36, .1);  暂时去掉遮罩背景，保留结构 */
 }
 .btn-outline-primary {
-    color: #00665F;
-    background-color: #00665F;
+    color: #00b89a;
+    background-color: #00b89a;
     background-image: none;
-    border-color: #00665F;
+    border-color: #00b89a;
     font-family: 'Monda', sans-serif;
     font-weight: 700;
     border-radius: 0px;
 }
 .btn.btn-primary:hover, .btn.btn-primary:active, .btn.btn-primary:focus {
   box-shadow: none;
-  background: #00665F;
+  background: #00b89a;
 }
 .btn:hover, .btn:active, .btn:focus {
-  background: #00665F !important;
+  background: #00b89a !important;
   color: #fff;
   outline: none !important;
   font-family: 'Monda', sans-serif;
@@ -2188,7 +2179,7 @@ body.page-glassbox .fh5co-cover .desc span a.fh5co-site-name {
 }
 .project-text li::before {
   content: "■  ";
-  color: #00665F;
+  color: #00b89a;
   position: absolute;
   left: 0;
   top: 0.15em;
@@ -2205,7 +2196,7 @@ body.page-glassbox .fh5co-cover .desc span a.fh5co-site-name {
 }
 .project-text ul ul li::before {
   content: "□  "; 
-  color: #00665F;
+  color: #00b89a;
   position: absolute;
   left: 0;
   top: 0.15em;
@@ -2243,7 +2234,7 @@ body.page-sidekck .project-text ul ul li {
   z-index: 99;
   border: none;
   outline: none;
-  background-color: #00665F;
+  background-color: #00b89a;
   color: white;
   cursor: pointer;
   padding: 15px;
@@ -2255,10 +2246,10 @@ body.page-sidekck .project-text ul ul li {
 
 #myBtn:hover {
   background-color: #fff;
-  color:#00665F;
+  color:#00b89a;
   border-width: 2px;
   border-style: groove;
-  border-color:#00665F;
+  border-color:#00b89a;
 
 }
 
@@ -2399,6 +2390,8 @@ background-color: #4A5A6C;
     font-size: 20px; 
   }
 
+} /* end @media (min-width: 768px) */
+
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) { 
    .workpic{
@@ -2506,6 +2499,7 @@ background-color: #4A5A6C;
     font-size: 24px; 
   }
 
+} /* end @media (min-width: 1200px) */
 
 @media (min-width: 1600px) { 
   #sidekckpic, #uniroomiepic, #dbcapspic{
@@ -2697,7 +2691,7 @@ img:hover {
 
 /* Set default text color to black/dark */
 .glass-box-top-title a {
-	color: #333333 !important;
+	color: #e8e8e8 !important;
 }
 
 /* Add underline on hover for all card titles with links */
@@ -2717,12 +2711,12 @@ img:hover {
 
 /* Update card title hover color to mingfei green */
 .glass-box-title a:hover {
-	color: #00665F !important;
+	color: #00b89a !important;
 }
 
 /* Force mingfei green on card title hover with highest priority */
 .glass-box-card .glass-box-title a:hover {
-	color: #00665F !important;
+	color: #00b89a !important;
 	text-decoration: underline !important;
 }
 
@@ -2735,7 +2729,7 @@ img:hover {
 
 /* Update top bar title hover to mingfei green (consistent with card titles) */
 .glass-box-top-title a:hover {
-	color: #00665F !important;
+	color: #00b89a !important;
 	background-color: transparent !important;
 	opacity: 1 !important;
 	filter: none !important;
@@ -2749,10 +2743,800 @@ img:hover {
 
 /* Change subtitle color from green to black */
 .glass-box-subtitle {
-	color: #333333 !important;
+	color: #00b89a !important;
 }
 
 .glass-box-readmore a {
 	transition: background-color 0.2s ease, color 0.2s ease !important;
 }
 
+/* ══════════════════════════════════════════════
+ * style2026.css
+ * CSS for index_2026.html — Organic AI Orb hero
+ * ══════════════════════════════════════════════ */
+
+/* ── Hero 2026 layout ── */
+#fh5co-home {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	height: 75vh;
+}
+
+#fh5co-home .mingfei-gradient-bg,
+#fh5co-home .mingfei-fade-overlay {
+	width: 100%;
+	height: 100%;
+}
+
+/* Remove all background animation in hero — plain dark bg */
+#fh5co-home .mingfei-gradient-bg {
+	background: #0f0f0f;
+	animation: none;
+}
+
+#fh5co-home .mingfei-fade-overlay {
+	background: none;
+	padding-top: 0;
+}
+
+/* Two-column hero layout */
+#hero-layout {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	padding: 0 20px;
+	max-width: 1200px;
+	margin: 0 auto;
+	gap: 40px;
+	position: relative;
+	z-index: 2;
+}
+
+/* Left: text */
+#hero-text {
+	flex: 0 0 45%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding-top: 80px;
+}
+
+#hero-text h1#main-title {
+	font-family: "Monda","PT Sans", Arial, sans-serif;
+	font-size: clamp(56px, 7vw, 110px);
+	font-weight: 700;
+	line-height: 1.1;
+	margin: 0 0 20px 0;
+	text-align: left;
+}
+
+#hero-text h2 {
+	font-family: "Lato","PT Sans", Arial, sans-serif;
+	font-size: clamp(14px, 1.4vw, 22px);
+	line-height: 1.5;
+	font-weight: 300;
+	color: #aaa;
+	margin: 0;
+	text-align: left;
+	white-space: normal;
+}
+
+/* Right: orb container */
+#hero-orb {
+	flex: 1;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	overflow: visible;
+	z-index: 2; /* above scroll-curve so blob hides the line head */
+}
+
+#hero-orb svg {
+	position: absolute;
+	width: 0;
+	height: 0;
+}
+
+/* Hide toggle checkboxes */
+#hero-orb input[type="checkbox"] {
+	position: absolute;
+	opacity: 0;
+	pointer-events: none;
+}
+
+/* ══════════════════════════════════════════════
+ * ORGANIC AI ORB — CSS Custom Properties
+ * ══════════════════════════════════════════════ */
+
+@property --s1 { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+@property --s2 { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+@property --s3 { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+@property --rotation { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+
+@property --mesh-x-0 { syntax: "<percentage>"; inherits: false; initial-value: 85%; }
+@property --mesh-y-0 { syntax: "<percentage>"; inherits: false; initial-value: 80%; }
+@property --mesh-c-0 { syntax: "<color>"; inherits: false; initial-value: hsla(150.88, 62%, 73%, 1); }
+@property --mesh-s-start-0 { syntax: "<percentage>"; inherits: false; initial-value: 9%; }
+@property --mesh-s-end-0 { syntax: "<percentage>"; inherits: false; initial-value: 55%; }
+
+@property --mesh-x-1 { syntax: "<percentage>"; inherits: false; initial-value: 60%; }
+@property --mesh-y-1 { syntax: "<percentage>"; inherits: false; initial-value: 24%; }
+@property --mesh-c-1 { syntax: "<color>"; inherits: false; initial-value: hsla(220, 100%, 72%, 1); }
+@property --mesh-s-start-1 { syntax: "<percentage>"; inherits: false; initial-value: 5%; }
+@property --mesh-s-end-1 { syntax: "<percentage>"; inherits: false; initial-value: 72%; }
+
+@property --mesh-x-2 { syntax: "<percentage>"; inherits: false; initial-value: 13%; }
+@property --mesh-y-2 { syntax: "<percentage>"; inherits: false; initial-value: 82%; }
+@property --mesh-c-2 { syntax: "<color>"; inherits: false; initial-value: hsla(297.79, 100%, 55%, 0.49); }
+@property --mesh-s-start-2 { syntax: "<percentage>"; inherits: false; initial-value: 5%; }
+@property --mesh-s-end-2 { syntax: "<percentage>"; inherits: false; initial-value: 52%; }
+
+@property --mesh-x-3 { syntax: "<percentage>"; inherits: false; initial-value: 24%; }
+@property --mesh-y-3 { syntax: "<percentage>"; inherits: false; initial-value: 7%; }
+@property --mesh-c-3 { syntax: "<color>"; inherits: false; initial-value: hsla(182, 72%, 68%, 1); }
+@property --mesh-s-start-3 { syntax: "<percentage>"; inherits: false; initial-value: 13%; }
+@property --mesh-s-end-3 { syntax: "<percentage>"; inherits: false; initial-value: 68%; }
+
+/* ══════════════════════════════════════════════
+ * KEYFRAME ANIMATIONS
+ * ══════════════════════════════════════════════ */
+
+@keyframes s1 { to { --s1: 360deg; } }
+@keyframes s2 { to { --s2: 360deg; } }
+@keyframes s3 { to { --s3: 360deg; } }
+@keyframes rotation { to { --rotation: 360deg; } }
+
+@keyframes mesh-gradient {
+	0% {
+		--mesh-x-0: 85%; --mesh-y-0: 80%;
+		--mesh-c-1: hsla(220, 100%, 82%, 1);
+		--mesh-x-1: 60%; --mesh-y-1: 24%;
+		--mesh-x-2: 13%; --mesh-y-2: 82%;
+		--mesh-x-3: 24%; --mesh-y-3: 7%;
+	}
+	100% {
+		--mesh-x-0: 31%; --mesh-y-0: 94%;
+		--mesh-c-1: hsla(220, 82%, 95%, 1);
+		--mesh-x-1: 2%;  --mesh-y-1: 25%;
+		--mesh-x-2: 98%; --mesh-y-2: 20%;
+		--mesh-x-3: 95%; --mesh-y-3: 92%;
+	}
+}
+
+@keyframes grain-jitter {
+	0%     { transform: translate(1px, 6px); }
+	3.33%  { transform: translate(-12px, 8px); }
+	6.67%  { transform: translate(15px, -10px); }
+	10%    { transform: translate(-8px, 14px); }
+	13.33% { transform: translate(11px, -6px); }
+	16.67% { transform: translate(-14px, -9px); }
+	20%    { transform: translate(9px, 13px); }
+	23.33% { transform: translate(-7px, -15px); }
+	26.67% { transform: translate(13px, 7px); }
+	30%    { transform: translate(-10px, -11px); }
+	33.33% { transform: translate(6px, -8px); }
+	36.67% { transform: translate(-15px, 12px); }
+	40%    { transform: translate(14px, -7px); }
+	43.33% { transform: translate(-9px, 15px); }
+	46.67% { transform: translate(8px, -13px); }
+	50%    { transform: translate(-13px, -6px); }
+	53.33% { transform: translate(12px, 10px); }
+	56.67% { transform: translate(-6px, -14px); }
+	60%    { transform: translate(10px, 9px); }
+	63.33% { transform: translate(-11px, -12px); }
+	66.67% { transform: translate(7px, 14px); }
+	70%    { transform: translate(-14px, -8px); }
+	73.33% { transform: translate(15px, 11px); }
+	76.67% { transform: translate(-8px, -15px); }
+	80%    { transform: translate(9px, 6px); }
+	83.33% { transform: translate(-12px, -10px); }
+	86.67% { transform: translate(13px, 15px); }
+	90%    { transform: translate(-10px, 7px); }
+	93.33% { transform: translate(11px, -14px); }
+	96.67% { transform: translate(-7px, 13px); }
+	100%   { transform: translate(14px, -9px); }
+}
+
+/* ══════════════════════════════════════════════
+ * BLOB COMPONENT
+ * ══════════════════════════════════════════════ */
+
+.blob-wrapper {
+	filter: url(#glow);
+	transform-origin: center bottom;
+	will-change: transform, opacity;
+}
+
+#filter-toggle:checked ~ .blob-wrapper {
+	filter: url(#edge-displacement) url(#glow);
+}
+
+.blob {
+	aspect-ratio: 1;
+	width: 300px;
+	overflow: hidden;
+	background-color: hsla(358, 0%, 100%, 1);
+	background-image:
+		radial-gradient(circle at var(--mesh-x-0) var(--mesh-y-0), var(--mesh-c-0) var(--mesh-s-start-0), transparent var(--mesh-s-end-0)),
+		radial-gradient(circle at var(--mesh-x-1) var(--mesh-y-1), var(--mesh-c-1) var(--mesh-s-start-1), transparent var(--mesh-s-end-1)),
+		radial-gradient(circle at var(--mesh-x-2) var(--mesh-y-2), var(--mesh-c-2) var(--mesh-s-start-2), transparent var(--mesh-s-end-2)),
+		radial-gradient(circle at var(--mesh-x-3) var(--mesh-y-3), var(--mesh-c-3) var(--mesh-s-start-3), transparent var(--mesh-s-end-3));
+	--depth: 0.3;
+	--rotation: 0deg;
+	animation: s1 7s linear infinite, s2 11s linear infinite, s3 13s linear infinite, mesh-gradient 10s linear infinite alternate;
+}
+
+/* Blob shape using CSS shape() */
+.blob-shape {
+	--angle0: 0deg;       --p1-0: 0deg;     --p2-0: 0deg;     --p3-0: 0deg;
+	--angle1: 51.43deg;   --p1-1: 137.5deg; --p2-1: 222.5deg; --p3-1: 360.1deg;
+	--angle2: 102.86deg;  --p1-2: 275deg;   --p2-2: 85deg;    --p3-2: 80.2deg;
+	--angle3: 154.29deg;  --p1-3: 52.5deg;  --p2-3: 307.5deg; --p3-3: 200.3deg;
+	--angle4: 205.71deg;  --p1-4: 190deg;   --p2-4: 170deg;   --p3-4: 320.4deg;
+	--angle5: 257.14deg;  --p1-5: 327.5deg; --p2-5: 32.5deg;  --p3-5: 80.5deg;
+	--angle6: 308.57deg;  --p1-6: 105deg;   --p2-6: 255deg;   --p3-6: 200.6deg;
+
+	--rand0: calc(0.5 + 0.5 * (0.5 * sin(var(--s1) + var(--p1-0)) + 0.3 * sin(var(--s2) + var(--p2-0)) + 0.2 * sin(var(--s3) + var(--p3-0))));
+	--d0: calc(50 * (1 - var(--depth)) + 50 * var(--rand0) * var(--depth));
+	--x0: calc((50 + var(--d0) * cos(var(--rotation) + var(--angle0))) * 1%);
+	--y0: calc((50 + var(--d0) * sin(var(--rotation) + var(--angle0))) * 1%);
+
+	--rand1: calc(0.5 + 0.5 * (0.5 * sin(var(--s1) + var(--p1-1)) + 0.3 * sin(var(--s2) + var(--p2-1)) + 0.2 * sin(var(--s3) + var(--p3-1))));
+	--d1: calc(50 * (1 - var(--depth)) + 50 * var(--rand1) * var(--depth));
+	--x1: calc((50 + var(--d1) * cos(var(--rotation) + var(--angle1))) * 1%);
+	--y1: calc((50 + var(--d1) * sin(var(--rotation) + var(--angle1))) * 1%);
+
+	--rand2: calc(0.5 + 0.5 * (0.5 * sin(var(--s1) + var(--p1-2)) + 0.3 * sin(var(--s2) + var(--p2-2)) + 0.2 * sin(var(--s3) + var(--p3-2))));
+	--d2: calc(50 * (1 - var(--depth)) + 50 * var(--rand2) * var(--depth));
+	--x2: calc((50 + var(--d2) * cos(var(--rotation) + var(--angle2))) * 1%);
+	--y2: calc((50 + var(--d2) * sin(var(--rotation) + var(--angle2))) * 1%);
+
+	--rand3: calc(0.5 + 0.5 * (0.5 * sin(var(--s1) + var(--p1-3)) + 0.3 * sin(var(--s2) + var(--p2-3)) + 0.2 * sin(var(--s3) + var(--p3-3))));
+	--d3: calc(50 * (1 - var(--depth)) + 50 * var(--rand3) * var(--depth));
+	--x3: calc((50 + var(--d3) * cos(var(--rotation) + var(--angle3))) * 1%);
+	--y3: calc((50 + var(--d3) * sin(var(--rotation) + var(--angle3))) * 1%);
+
+	--rand4: calc(0.5 + 0.5 * (0.5 * sin(var(--s1) + var(--p1-4)) + 0.3 * sin(var(--s2) + var(--p2-4)) + 0.2 * sin(var(--s3) + var(--p3-4))));
+	--d4: calc(50 * (1 - var(--depth)) + 50 * var(--rand4) * var(--depth));
+	--x4: calc((50 + var(--d4) * cos(var(--rotation) + var(--angle4))) * 1%);
+	--y4: calc((50 + var(--d4) * sin(var(--rotation) + var(--angle4))) * 1%);
+
+	--rand5: calc(0.5 + 0.5 * (0.5 * sin(var(--s1) + var(--p1-5)) + 0.3 * sin(var(--s2) + var(--p2-5)) + 0.2 * sin(var(--s3) + var(--p3-5))));
+	--d5: calc(50 * (1 - var(--depth)) + 50 * var(--rand5) * var(--depth));
+	--x5: calc((50 + var(--d5) * cos(var(--rotation) + var(--angle5))) * 1%);
+	--y5: calc((50 + var(--d5) * sin(var(--rotation) + var(--angle5))) * 1%);
+
+	--rand6: calc(0.5 + 0.5 * (0.5 * sin(var(--s1) + var(--p1-6)) + 0.3 * sin(var(--s2) + var(--p2-6)) + 0.2 * sin(var(--s3) + var(--p3-6))));
+	--d6: calc(50 * (1 - var(--depth)) + 50 * var(--rand6) * var(--depth));
+	--x6: calc((50 + var(--d6) * cos(var(--rotation) + var(--angle6))) * 1%);
+	--y6: calc((50 + var(--d6) * sin(var(--rotation) + var(--angle6))) * 1%);
+
+	/* Midpoints for smooth curves */
+	--mx0: calc((var(--x0) + var(--x1)) / 2); --my0: calc((var(--y0) + var(--y1)) / 2);
+	--mx1: calc((var(--x1) + var(--x2)) / 2); --my1: calc((var(--y1) + var(--y2)) / 2);
+	--mx2: calc((var(--x2) + var(--x3)) / 2); --my2: calc((var(--y2) + var(--y3)) / 2);
+	--mx3: calc((var(--x3) + var(--x4)) / 2); --my3: calc((var(--y3) + var(--y4)) / 2);
+	--mx4: calc((var(--x4) + var(--x5)) / 2); --my4: calc((var(--y4) + var(--y5)) / 2);
+	--mx5: calc((var(--x5) + var(--x6)) / 2); --my5: calc((var(--y5) + var(--y6)) / 2);
+	--mx6: calc((var(--x6) + var(--x0)) / 2); --my6: calc((var(--y6) + var(--y0)) / 2);
+
+	/* Fallback: simple circle */
+	clip-path: circle(50%);
+	transform: scale(calc(0.5 + var(--depth) * 0.5));
+}
+
+/* Progressive enhancement: use fancy shape if supported */
+@supports (clip-path: shape(from 0% 0%, move to 100% 100%)) {
+	#shape-toggle:checked ~ .blob-wrapper .blob-shape {
+		clip-path: content-box
+			shape(
+				from var(--mx6) var(--my6),
+				curve to var(--mx0) var(--my0) with var(--x0) var(--y0),
+				curve to var(--mx1) var(--my1) with var(--x1) var(--y1),
+				curve to var(--mx2) var(--my2) with var(--x2) var(--y2),
+				curve to var(--mx3) var(--my3) with var(--x3) var(--y3),
+				curve to var(--mx4) var(--my4) with var(--x4) var(--y4),
+				curve to var(--mx5) var(--my5) with var(--x5) var(--y5),
+				curve to var(--mx6) var(--my6) with var(--x6) var(--y6)
+			);
+		border-radius: 0;
+		transform: scale(calc(1 + var(--depth)));
+	}
+}
+
+/* ══════════════════════════════════════════════
+ * GRAIN OVERLAY
+ * ══════════════════════════════════════════════ */
+
+.grain-overlay {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	background: white;
+	filter: url(#filmGrain);
+	mix-blend-mode: multiply;
+	opacity: 0;
+	animation: grain-jitter 1s infinite steps(1);
+}
+
+#grain-toggle:checked ~ .blob-wrapper .grain-overlay {
+	opacity: 0.4;
+}
+
+/* Firefox fallback */
+@-moz-document url-prefix() {
+	.blob-wrapper { filter: none; }
+	.grain-overlay { filter: none; }
+}
+
+/* ══════════════════════════════════════════════
+ * RESPONSIVE
+ * ══════════════════════════════════════════════ */
+
+@media screen and (max-width: 768px) {
+	#hero-layout {
+		flex-direction: column;
+		padding-top: 80px;
+		gap: 20px;
+	}
+	#hero-text {
+		flex: none;
+		width: 100%;
+		padding-top: 0;
+		text-align: left;
+	}
+	#hero-orb {
+		flex: none;
+		width: 100%;
+		height: 280px;
+	}
+	.blob { width: 200px; }
+}
+
+/* Achievements section responsive */
+
+/* Achievement card title and description styling */
+/* Achievement card styling */
+.achievement-card {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	width: 100%;
+	padding: 24px 24px 12px 24px;
+}
+
+.achievement-card .glass-box-content {
+	display: flex;
+	flex-direction: column;
+	padding: 0;
+}
+
+.achievement-title {
+	font-family: 'Monda','PT Sans', Arial, sans-serif;
+	font-weight: 700;
+	font-size: 36px;
+	margin: 0 0 3px 0;
+	line-height: 1.1;
+}
+
+.achievement-subtitle {
+	font-size: 32px;
+	font-weight: 400;
+}
+
+.achievement-number {
+	font-weight: 700;
+	color: inherit;
+}
+
+.achievement-description {
+	font-family: 'Lato','PT Sans', Arial, sans-serif;
+	font-size: 16px;
+	line-height: 1.3;
+	color: #b5b5b5;
+	margin: 0;
+}
+
+/* Achievement card content padding reduction */
+#achievements .glass-box-card {
+	padding: 24px 24px 12px 24px !important;
+	min-height: unset !important;
+}
+
+#achievements .glass-box-content {
+	padding: 0 !important;
+}
+
+/* 小屏手机 - 640px以下 */
+@media screen and (max-width: 640px) {
+	#achievements > div {
+		grid-template-columns: 1fr !important;
+		gap: 16px !important;
+		padding: 0 16px;
+	}
+	#achievements .glass-box-card .glass-box-title {
+		font-size: 28px;
+	}
+	#achievements .glass-box-card .glass-box-description {
+		font-size: 14px;
+	}
+}
+
+/* 平板 - 641px到1023px */
+@media screen and (min-width: 641px) and (max-width: 1023px) {
+	#achievements > div {
+		grid-template-columns: 1fr 1fr !important;
+		gap: 24px !important;
+		padding: 0 20px;
+	}
+	#achievements .glass-box-card .glass-box-title {
+		font-size: 32px;
+	}
+	#achievements .glass-box-card .glass-box-description {
+		font-size: 15px;
+	}
+}
+
+/* 桌面 - 1024px以上 */
+@media screen and (min-width: 1024px) {
+	#achievements > div {
+		grid-template-columns: repeat(3, 1fr) !important;
+		gap: 40px !important;
+	}
+	#achievements .glass-box-card .glass-box-title {
+		font-size: 36px;
+	}
+	#achievements .glass-box-card .glass-box-description {
+		font-size: 16px;
+	}
+}
+
+/* ══════════════════════════════════════════════
+ * AMBIGUITY TEXT - Simple glow effect
+ * ══════════════════════════════════════════════ */
+
+#ambiguity-text {
+	position: relative;
+	display: inline-block;
+	text-shadow: 
+		2px 0 8px hsla(150.88, 62%, 73%, 0.6),
+		4px 0 16px hsla(150.88, 62%, 73%, 0.3),
+		6px 0 24px hsla(150.88, 62%, 73%, 0.1);
+}
+
+/* ══════════════════════════════════════════════
+ * SHAPE DECORATIONS - Circle, Triangle, Square
+ * ══════════════════════════════════════════════ */
+
+.shape-decorated {
+	display: inline;
+	margin-left: 2px;
+	margin-right: 2px;
+}
+
+.shape-decoration {
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 1;
+	margin-right: 4px;
+}
+
+/* Circle — green, 12px diameter */
+.shape-circle {
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background-color: hsla(150.88, 62%, 73%, 1);
+}
+
+/* Triangle — 12px base, using SVG via content-box or CSS clip-path */
+.shape-triangle {
+	width: 12px;
+	height: 12px;
+	background: currentColor;
+	clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+/* Square — 12px */
+.shape-square {
+	width: 12px;
+	height: 12px;
+	background: currentColor;
+}
+
+/* ══════════════════════════════════════════════
+ * DISABLE: Fixed top card stacking & shrink on scroll
+ * ══════════════════════════════════════════════ */
+
+.glass-box-card-link {
+	text-decoration: none;
+	color: inherit;
+	display: block;
+	position: relative;
+}
+
+.glass-box-card-link .glass-box-card {
+	position: relative;
+	overflow: hidden;
+}
+
+/* ══════════════════════════════════════════════
+ * EXPANDABLE BUTTON - Grows from dot to full button on hover
+ * ══════════════════════════════════════════════ */
+
+.glass-box-expand-button {
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	display: inline-flex;
+	align-items: center;
+	gap: 0;
+	padding: 0;
+	background: #00b89a;
+	border: none;
+	border-radius: 50px;
+	text-decoration: none;
+	cursor: pointer;
+	transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+	overflow: hidden;
+	z-index: 5;
+}
+
+.button-dot {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: #00b89a;
+	flex-shrink: 0;
+}
+
+.button-text {
+	display: inline-block;
+	font-family: "Roboto", "PT Sans", Arial, sans-serif;
+	font-size: 14px;
+	font-weight: 700;
+	color: #0f141a;
+	white-space: nowrap;
+	opacity: 0;
+	width: 0;
+	transition: opacity 0.3s ease 0.1s, width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+	padding-right: 0;
+}
+
+.glass-box-card:hover .glass-box-expand-button {
+	width: 200px;
+	padding: 6px 22px;
+}
+
+.glass-box-card:hover .button-text {
+	opacity: 1;
+	width: auto;
+	padding-right: 12px;
+}
+
+.hover-button {
+	font-family: "Roboto", "PT Sans", Arial, sans-serif;
+	font-size: 14px;
+	font-weight: 700;
+	color: #0f141a;
+	padding: 6px 22px;
+	border: 2px solid #00b89a;
+	background-color: #00b89a;
+	border-radius: 20px;
+	transition: all 0.3s ease;
+	cursor: pointer;
+	white-space: nowrap;
+	display: inline-block;
+}
+
+.glass-box-card-link:hover .hover-button {
+	background: #00b89a;
+	box-shadow: 0 0 20px rgba(0, 184, 154, 0.5);
+}
+
+.glass-box-card-top {
+	display: none !important;
+}
+
+/* Reduce blur so curve line shows through cards better */
+.glass-box-card {
+	backdrop-filter: blur(12px) saturate(150%);
+	-webkit-backdrop-filter: blur(12px) saturate(150%);
+}
+
+/* ══════════════════════════════════════════════
+ * CARD HOVER: rotating border glow (replaces box-shadow)
+ * ══════════════════════════════════════════════ */
+
+@property --gradient-angle {
+	syntax: "<angle>";
+	inherits: false;
+	initial-value: 0deg;
+}
+
+@keyframes border-rotate {
+	0%   { --gradient-angle: 0deg; }
+	100% { --gradient-angle: 360deg; }
+}
+
+/* Remove old hover shadow */
+.glass-box-card:hover {
+	box-shadow: none !important;
+}
+
+/* Rotating border — hidden by default, visible on hover */
+.glass-box-card {
+	position: relative;
+}
+
+.glass-box-card::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: var(--border-radius);
+	padding: 1.5px;
+	background: conic-gradient(
+		from var(--gradient-angle),
+		rgba(255, 255, 255, 0.05) 0deg,
+		rgba(255, 255, 255, 0.05) 60deg,
+		rgba(255, 255, 255, 0.7) 120deg,
+		rgba(255, 255, 255, 0.05) 180deg,
+		rgba(255, 255, 255, 0.05) 240deg,
+		rgba(255, 255, 255, 0.7) 300deg,
+		rgba(255, 255, 255, 0.05) 360deg
+	);
+	-webkit-mask: conic-gradient(#000 0 0) content-box exclude, conic-gradient(#000 0 0);
+	mask: conic-gradient(#000 0 0) content-box exclude, conic-gradient(#000 0 0);
+	animation: border-rotate 4s linear infinite;
+	pointer-events: none;
+	z-index: 2;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.glass-box-card:hover::after {
+	opacity: 1;
+}
+
+/* NDA card — red warning border on hover */
+.glass-box-card[data-cursor="nda"]::after {
+	background: conic-gradient(
+		from var(--gradient-angle),
+		rgba(169, 68, 66, 0.05) 0deg,
+		rgba(169, 68, 66, 0.05) 60deg,
+		rgba(169, 68, 66, 0.7) 120deg,
+		rgba(169, 68, 66, 0.05) 180deg,
+		rgba(169, 68, 66, 0.05) 240deg,
+		rgba(169, 68, 66, 0.7) 300deg,
+		rgba(169, 68, 66, 0.05) 360deg
+	);
+}
+
+/* NDA card number styling */
+.glass-box-card[data-cursor="nda"] .glass-box-top-number {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	font-size: 24px;
+	font-weight: 700;
+	z-index: 10;
+}
+
+/* ══════════════════════════════════════════════
+ * SCROLL-DRIVEN SVG CURVE
+ * ══════════════════════════════════════════════ */
+
+#scroll-curve {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 0;
+	overflow: visible;
+	filter: url(#curve-displacement) url(#curve-glow);
+}
+
+#scroll-path {
+	transition: stroke-dashoffset 0.05s linear;
+}
+
+/* ══════════════════════════════════════════════
+ * CLARITY DOT — perfect circle at journey's end
+ * ══════════════════════════════════════════════ */
+
+#clarity-dot {
+	display: flex;
+	justify-content: flex-start;
+	padding: 0;
+	margin-left: -4px;
+}
+
+.clarity-shapes {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	/* width will be set by JS to align with email text */
+}
+
+.clarity-shape {
+	width: 120px;
+	height: 120px;
+	opacity: 0;
+	transform: scale(0);
+	transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.clarity-circle {
+	border-radius: 50%;
+	background-color: hsla(150.88, 62%, 73%, 1); /* fixed, matches line color */
+}
+
+.clarity-triangle {
+	width: 120px;
+	height: 120px;
+	clip-path: none;
+	background: none !important;
+	position: relative;
+}
+
+.clarity-triangle svg {
+	width: 100%;
+	height: 100%;
+}
+
+.clarity-square {
+	border-radius: 4px;
+}
+
+.clarity-arrow {
+	opacity: 0;
+	transform: translateX(-10px);
+	transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Sequential reveal when visible */
+#clarity-dot.visible .clarity-circle {
+	opacity: 1;
+	transform: scale(1);
+}
+
+#clarity-dot.visible .clarity-arrow:nth-of-type(1) {
+	opacity: 1;
+	transform: translateX(0);
+	transition-delay: 0.3s;
+}
+
+#clarity-dot.visible .clarity-triangle {
+	opacity: 1;
+	transform: scale(1);
+	transition-delay: 0.5s;
+}
+
+#clarity-dot.visible .clarity-arrow:nth-of-type(2) {
+	opacity: 1;
+	transform: translateX(0);
+	transition-delay: 0.7s;
+}
+
+#clarity-dot.visible .clarity-square {
+	opacity: 1;
+	transform: scale(1);
+	transition-delay: 0.9s;
+}
+
+/* Colors assigned by JS at page load */
+
+#clarity-dot.visible .clarity-dot-inner {
+	opacity: 1;
+	transform: scale(1);
+}
