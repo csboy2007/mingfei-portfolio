@@ -3840,12 +3840,13 @@ background-color: #4A5A6C;
 	pointer-events: none;
 	z-index: 0;
 	overflow: visible;
-	filter: url(#curve-displacement) url(#curve-glow);
+	filter: url(#curve-displacement);
 }
 
 #scroll-path {
 	stroke-dasharray: 99999;
 	stroke-dashoffset: 99999;
+	filter: url(#curve-glow);
 }
 
 /* ══════════════════════════════════════════════
