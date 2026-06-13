@@ -9,11 +9,12 @@
 
 /* 全局CSS变量 */
 :root {
-  --border-radius: 20px;
+  --border-radius: 8px;
 
   /* Layout content width */
   --layout-content-max-width: 800px;
   --layout-content-mid-width: 600px;
+  --layout-content-padding: 24px;
   
   /* Color tokens */
   --color-bg: #0f0f0f;
@@ -211,7 +212,7 @@
   --type-heading-s-spacing: -0.2px;
 
     /* Card / Title */
-  --type-card-title-size: 32px;
+  --type-card-title-size: 28px;
   --type-card-title-line: 38px;
   --type-card-title-weight: 400;
   --type-card-title-spacing: -0.6px;
@@ -363,13 +364,13 @@ h1, h2, h3, h4, h5, h6 {
   right: 20px;
   opacity: 1;
   top: 20px;
+  transition: opacity 0.3s ease;
   /* 深色毛玻璃效果 */
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(32px) saturate(150%);
   -webkit-backdrop-filter: blur(32px) saturate(150%);
   border: 1px solid rgba(255, 255, 255, 0.10);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
-  border-radius: var(--border-radius);
   border-radius: var(--border-radius);
 }
 #fh5co-header .navbar {
@@ -685,8 +686,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .work-menu-item.active {
-  background: transparent;
-  border: none;
+  background: var(--color-accent);
+  border: 2px solid transparent;
   position: relative;
   overflow: hidden;
 }
@@ -1033,10 +1034,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* 大卡左上角编号：与 bar 数字同款绿色方框，软编码由 JS 注入 */
 .glass-box-card-number {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  z-index: 1;
+  display: none;
 }
 
 .glass-box-image img {
@@ -1051,7 +1049,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .glass-box-content {
   flex: 0 0 auto;
-  padding: 16px 40px 20px;
+  padding: 16px var(--layout-content-padding) 20px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -1790,6 +1788,43 @@ body.hero-animations-rest #genai-text.animated {
   backdrop-filter: blur(6px) saturate(130%);
   z-index: 1;
   color: #fff;
+}
+
+/* Footer grid — same layout system as achievement cards for alignment */
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: var(--layout-content-max-width);
+  margin: 0 auto;
+  padding-left: calc(var(--layout-content-padding) + 1px);
+  padding-right: var(--layout-content-padding);
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-left: calc(20px + 1px);
+    padding-right: 20px;
+    max-width: none;
+    margin: 0 16px;
+  }
+}
+
+/* 平板 - footer 和 card 对齐 (641-1023px) */
+@media screen and (min-width: 641px) and (max-width: 1023px) {
+  .footer-grid {
+    max-width: var(--layout-content-mid-width);
+    margin: 0 auto;
+    padding-left: calc(32px + 1px);
+    padding-right: 32px;
+  }
 }
 
 #fh5co-footer *,
@@ -3193,26 +3228,28 @@ background-color: #4A5A6C;
 	padding-top: 0;
 }
 
-/* Two-column hero layout */
+/* Two-column hero layout — uses same 3-col grid as achievements for alignment */
 #hero-layout {
-	display: flex;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 40px;
 	align-items: center;
 	height: 100%;
-	padding: 0 20px;
-	max-width: 1200px;
+	max-width: var(--layout-content-max-width);
+	width: calc(100% - 40px);
 	margin: 0 auto;
-	gap: 40px;
 	position: relative;
 	z-index: 2;
 }
 
-/* Left: text */
+/* Left: text spans first 2 columns */
 #hero-text {
-	flex: 0 0 45%;
+	grid-column: 1 / 3;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	padding-top: 80px;
+	padding-left: var(--layout-content-padding);
 }
 
 #hero-text h1#main-title {
@@ -3237,16 +3274,16 @@ background-color: #4A5A6C;
 	white-space: normal;
 }
 
-/* Right: orb container */
+/* Right: orb sits in 3rd grid column, naturally aligned with 3rd achievement card */
 #hero-orb {
-	flex: 1;
-	height: 100%;
+	grid-column: 3;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	position: relative;
 	overflow: visible;
-	z-index: 2; /* above scroll-curve so blob hides the line head */
+	z-index: 2;
+	padding-top: 80px;
 }
 
 #hero-orb svg {
@@ -3371,7 +3408,7 @@ background-color: #4A5A6C;
 
 .blob {
 	aspect-ratio: 1;
-	width: 300px;
+	width: 200px;
 	overflow: hidden;
 	background-color: hsla(358, 0%, 100%, 1);
 	background-image:
@@ -3495,6 +3532,7 @@ background-color: #4A5A6C;
 
 @media screen and (max-width: 768px) {
 	#hero-layout {
+		display: flex;
 		flex-direction: column;
 		padding-top: 80px;
 		gap: 20px;
@@ -3506,9 +3544,11 @@ background-color: #4A5A6C;
 		text-align: left;
 	}
 	#hero-orb {
+		grid-column: auto;
 		flex: none;
 		width: 100%;
 		height: 280px;
+		margin-left: 0;
 	}
 	.blob { width: 200px; }
 }
@@ -3522,7 +3562,9 @@ background-color: #4A5A6C;
 	flex-direction: column;
 	margin: 0;
 	width: 100%;
-	padding: 24px 24px 12px 24px;
+	padding: var(--layout-content-padding) var(--layout-content-padding) 12px var(--layout-content-padding);
+  backdrop-filter: blur(12px) saturate(150%) !important ;
+-webkit-backdrop-filter: blur(12px) saturate(150%) !important ;
 }
 
 .achievement-card .glass-box-content {
@@ -3558,7 +3600,7 @@ background-color: #4A5A6C;
 
 /* Achievement card content padding reduction */
 #achievements .glass-box-card {
-	padding: 24px 24px 12px 24px !important;
+	padding: var(--layout-content-padding) var(--layout-content-padding) 12px var(--layout-content-padding) !important;
 	min-height: unset !important;
 }
 
@@ -3644,6 +3686,18 @@ background-color: #4A5A6C;
 	width: 12px;
 	height: 12px;
 	background: currentColor;
+}
+
+/* Ambiguity glow effect — reusable class matching hero's inline style */
+.ambiguity-glow {
+	text-shadow:
+		1px 0 10px hsla(150.88, 62%, 73%, 1),
+		2px 0 15px hsla(150.88, 62%, 73%, 1),
+		4px 0 25px hsla(150.88, 62%, 73%, 0.9),
+		6px 0 35px hsla(150.88, 62%, 73%, 0.75),
+		8px 0 45px hsla(150.88, 62%, 73%, 0.5),
+		10px 0 55px hsla(150.88, 62%, 73%, 0.3),
+		12px 0 65px hsla(150.88, 62%, 73%, 0.15);
 }
 
 /* ══════════════════════════════════════════════
@@ -3745,8 +3799,8 @@ background-color: #4A5A6C;
 
 /* Reduce blur so curve line shows through cards better */
 .glass-box-card {
-	backdrop-filter: blur(12px) saturate(150%);
-	-webkit-backdrop-filter: blur(12px) saturate(150%);
+	backdrop-filter: blur(4px) saturate(120%);
+	-webkit-backdrop-filter: blur(4px) saturate(120%);
 }
 
 /* ══════════════════════════════════════════════
@@ -3819,12 +3873,7 @@ background-color: #4A5A6C;
 
 /* NDA card number styling */
 .glass-box-card[data-cursor="nda"] .glass-box-top-number {
-	position: absolute;
-	top: 20px;
-	left: 20px;
-	font-size: 24px;
-	font-weight: 700;
-	z-index: 10;
+	display: none;
 }
 
 /* ══════════════════════════════════════════════
@@ -3934,6 +3983,35 @@ background-color: #4A5A6C;
 }
 
 /* Colors assigned by JS at page load */
+
+/* Clarity shapes inside project card */
+#clarity-card-image {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: transparent;
+	height: auto;
+	min-height: 200px;
+}
+
+#clarity-card-image #clarity-dot {
+	margin: 0;
+	padding: 40px;
+}
+
+#clarity-card-image .clarity-shapes {
+	gap: 20px;
+	justify-content: center;
+}
+
+/* Back-to-top card: more transparent than regular cards */
+#back-to-top-section .glass-box-card {
+	background: rgba(255, 255, 255, 0.01);
+	border-color: rgba(255, 255, 255, 0.03);
+	box-shadow: none;
+	backdrop-filter: blur(4px) saturate(120%);
+	-webkit-backdrop-filter: blur(4px) saturate(120%);
+}
 
 #clarity-dot.visible .clarity-dot-inner {
 	opacity: 1;

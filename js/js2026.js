@@ -35,7 +35,7 @@ function setupScrollShrink() {
 	const blobWrapper = document.querySelector('.blob-wrapper');
 	if (!heroSection || !blobWrapper) return;
 
-	const blobSize = 300;
+	const blobSize = 200;
 	const minSize = 6;
 	const minScale = minSize / blobSize;
 
@@ -102,9 +102,9 @@ function setupScrollCurve() {
 	const scrollY = window.scrollY || 0;
 	// Blob center = orb container center (convert viewport coords to document coords)
 	const blobCenterX = orbRect.left + orbRect.width / 2;
-	// Blob bottom = orb vertical center + half blob height (blob is 300px, visually centered)
+	// Blob bottom = orb vertical center + half blob height (blob is 200px, visually centered)
 	// Convert viewport Y to document Y by adding scroll offset
-	const blobBottomY = orbRect.top + scrollY + orbRect.height / 2 + 138; // 150 = half of 300px blob
+	const blobBottomY = orbRect.top + scrollY + orbRect.height / 2 + 88; // 100 = half of 200px blob
 
 	const startX = blobCenterX;
 	const startY = blobBottomY; // document coords
@@ -135,7 +135,23 @@ function setupScrollCurve() {
 
 	for (let i = 0; i < segments - 1; i++) {
 		const y = startY + (i + 1) * segHeight;
-		const x = (i % 2 === 0) ? pageWidth * 0.25 : pageWidth * 0.7;
+		// On smaller screens, push the curve wider so it isn't hidden behind cards
+		let leftX, rightX;
+		if (pageWidth < 768) {
+			leftX = pageWidth * 0.03;
+			rightX = pageWidth * 0.97;
+		} else if (pageWidth < 1024) {
+			leftX = pageWidth * 0.05;
+			rightX = pageWidth * 0.92;
+		} else {
+			// Cap curve width to max 1200px centered on page
+			const maxCurveWidth = 1200;
+			const curveWidth = Math.min(pageWidth * 0.84, maxCurveWidth);
+			const curveLeft = (pageWidth - curveWidth) / 2;
+			leftX = curveLeft;
+			rightX = curveLeft + curveWidth;
+		}
+		const x = (i % 2 === 0) ? leftX : rightX;
 		const midY = (prevY + y) / 2;
 		d += ` C ${prevX} ${midY}, ${x} ${midY}, ${x} ${y}`;
 		prevX = x;
@@ -221,11 +237,10 @@ function setupScrollCurve() {
 			}
 		}
 
-		// Show clarity dot
-		if (clarityDot && footerRect) {
-			const footerHeight = footerRect.height;
-			const footerTrigger = viewportH - (footerHeight * 0.3);
-			if (footerRect.top <= footerTrigger) {
+		// Show clarity dot when back-to-top card enters viewport
+		if (clarityDot) {
+			const clarityRect = clarityDot.getBoundingClientRect();
+			if (clarityRect.top <= viewportH * 0.8) {
 				clarityDot.classList.add('visible');
 			} else {
 				clarityDot.classList.remove('visible');
@@ -256,17 +271,13 @@ let sharedShapeColors = { triangle: null, square: null };
 // ── Align clarity shapes: square's left edge aligns with email text's left edge ──
 // Also assign colors to triangle and square matching the hero shapes
 function alignClarityShapes() {
-	const emailEl = document.getElementById('footer-email');
 	const shapesEl = document.querySelector('.clarity-shapes');
 	const squareEl = document.querySelector('.clarity-square');
 	const dotEl = document.getElementById('clarity-dot');
-	if (!emailEl || !shapesEl || !dotEl || !squareEl) return;
+	if (!shapesEl || !dotEl || !squareEl) return;
 
-	const emailRect = emailEl.getBoundingClientRect();
-	const dotRect = dotEl.getBoundingClientRect();
-	const squareWidth = squareEl.offsetWidth || 120;
-	const targetWidth = (emailRect.left - dotRect.left) + squareWidth;
-	shapesEl.style.width = targetWidth + 'px';
+	// Shapes now live inside a card image area — let them fill available width
+	shapesEl.style.width = '100%';
 
 	// Use the same colors as hero shapes
 	const triangle = document.querySelector('.clarity-triangle');
@@ -317,17 +328,15 @@ function assignHeroShapeColors() {
 	sharedShapeColors.triangle = shuffled[0];
 	sharedShapeColors.square = shuffled[1];
 
-	// Assign triangle color (before "connected")
-	const triangleEl = document.querySelector('.shape-triangle');
-	if (triangleEl) {
-		triangleEl.style.color = shuffled[0];
-	}
+	// Assign triangle color to ALL .shape-triangle elements
+	document.querySelectorAll('.shape-triangle').forEach(el => {
+		el.style.color = shuffled[0];
+	});
 
-	// Assign square color (before "product experiences")
-	const squareEl = document.querySelector('.shape-square');
-	if (squareEl) {
-		squareEl.style.backgroundColor = shuffled[1];
-	}
+	// Assign square color to ALL .shape-square elements
+	document.querySelectorAll('.shape-square').forEach(el => {
+		el.style.backgroundColor = shuffled[1];
+	});
 }
 
 // ── Init ──
