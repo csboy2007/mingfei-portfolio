@@ -1,0 +1,1284 @@
+ChatGPT
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+你这几个颜色是我在上传的html知道的吗？
+
+Thought for a couple of seconds
+不是。你说得对，我刚才那几个 Tailwind / shadcn 的 stone-400 不是从你上传的 HTML 里读出来的，是我根据 rgb(168,162,158) 直接联想到 Tailwind 的颜色系统。这个对你当前问题不够准确。
+
+我现在看了你上传的 Portfolio Color System Scale.html，你的 system 里最接近 rgb(168,162,158) / #A8A29E 的是：
+
+--color-system-muted-400: #A6A6AD;
+它在你的 HTML 里属于 System Neutral Gray / System Muted 这一组，完整附近值是：
+
+--color-system-muted-300: #BABABF;
+--color-system-muted-400: #A6A6AD;
+--color-system-muted-500: #8C8C94;
+你的 #A8A29E 和 #A6A6AD 很近，但不是完全一样。#A8A29E 更偏暖一点、棕灰一点；你的 #A6A6AD 更偏冷一点、蓝灰一点。你的 HTML 里也明确把 System Muted 的 500 定义为 #8C8C94，并且 full scale 里有 --color-system-muted-400: #A6A6AD。
+
+
+所以准确答案是：
+
+在你上传的 color system 里，最近的是 --color-system-muted-400: #A6A6AD。
+
+
+你可以用给一个html的文件先试一下我给你的颜色和你觉得最接近的颜色吗？
+
+可以。我会做一个很小的对比 HTML：左边放你给的 rgb(168,162,158)，右边放我判断最近的 --color-system-muted-400: #A6A6AD，再加一组上下文灰阶，方便你肉眼判断是不是应该用它。
+
+Thought for 20s
+可以，已经做好一个对比 HTML 文件：
+
+打开 / 下载 color comparison HTML
+
+里面有三组：
+
+你给的颜色：rgb(168,162,158) / #A8A29E
+
+我判断最接近的 system color：--color-system-muted-400: #A6A6AD
+
+放在你自己的 System Muted 灰阶里一起比较：300 / given / 400 / 500
+
+我还加了一个小的 UI text sample，这样你可以看它们作为小标题/label 在深色背景上的差别。
+
+
+
+你不觉得我给你的颜色有点发红，有暖色调吗？你给我的几个都是冷色调的。
+
+Thought for a couple of seconds
+你给的颜色：
+
+rgb(168, 162, 158)
+#A8A29E
+对应的 HSL 大约是：
+
+hsl(24, 5%, 64%)
+更精确一点是：
+
+hsl(24deg, 5.4%, 63.9%)
+所以你刚才的判断是对的：
+它不是纯 neutral gray，也不是冷灰。Hue 24° 落在橙红/暖棕方向，只是 saturation 很低，所以视觉上是一个 warm gray / stone gray / taupe gray。
+
+
+那你看一下我们的billing是否可以在这个系列里面多一个1100-2000，主要是增加灰度的。
+
+对，这个方向可以成立：Billing 现在 600–1000 还是很“橙”，如果继续往深处走，1100–2000 应该不要只是变黑，而是逐步降 saturation，变成更稳的 brown/charcoal amber。
+
+Thought for 9s
+可以，而且我觉得 Billing 最适合加 1100–2000，因为它现在的 600–1000 还是高饱和橙色，继续往深色走如果不降饱和，会变成很“焦橙/烧黄”，不够高级。
+
+你现在的 Billing 是：
+
+--color-project-billing-500: #FFB84D;
+--color-project-billing-600: #F6A223;
+--color-project-billing-700: #DD8809;
+--color-project-billing-800: #AC6A07;
+--color-project-billing-900: #855206;
+--color-project-billing-1000: #5E3A04;
+我建议 1100–2000 不再继续保持高 saturation，而是这样走：
+
+/* Billing / Operations Amber — gray-expanded dark steps */
+--color-project-billing-1100: #3B2A11; /* hsl(36, 55%, 15%) */
+--color-project-billing-1200: #302412; /* hsl(36, 45%, 13%) */
+--color-project-billing-1300: #261E12; /* hsl(36, 36%, 11%) */
+--color-project-billing-1400: #211B12; /* hsl(36, 28%, 10%) */
+--color-project-billing-1500: #1C1812; /* hsl(36, 22%, 9%) */
+--color-project-billing-1600: #181511; /* hsl(36, 17%, 8%) */
+--color-project-billing-1700: #141210; /* hsl(36, 13%, 7%) */
+--color-project-billing-1800: #11100E; /* hsl(36, 10%, 6%) */
+--color-project-billing-1900: #0E0D0C; /* hsl(36, 8%, 5%) */
+--color-project-billing-2000: #0B0A0A; /* hsl(36, 6%, 4%) */
+这里的逻辑是：
+
+500–1000：保留 Billing 的 amber identity。
+1100–2000：进入 warm charcoal / billing background / warm dark surface，逐步增加灰度，减少橙色存在感。
+
+我不建议 1100–2000 继续这样：
+
+/* 不建议：太橙，太脏，太像 burned orange */
+hsl(36, 92%, 15%)
+hsl(36, 92%, 10%)
+hsl(36, 92%, 5%)
+因为它会变成非常明显的深橙色，而不是你想要的“灰度增加”。
+
+所以我的判断是：
+可以加，而且 Billing 1100–2000 应该是低饱和 warm dark scale，不应该是继续高饱和 amber scale。
+
+
+也帮我放在html给我看一下
+
+可以。我会把现有 Billing 0–1000 和新增 1100–2000 放在同一个 HTML 里，并且加一个深色背景预览，这样你能看出它是不是变成了“暖灰暗面”而不是继续橙下去。
+
+Thought for 31s
+做好了：
+
+打开 / 下载 Billing 1100–2000 preview HTML
+
+里面包括：
+
+现有 Billing 0–1000
+
+新增 proposed 1100–2000
+
+Dark surface preview，看它们作为深色背景时是不是你想要的暖灰暗面
+
+最后有可以复制的 CSS variables
+
+我建议你重点看 1300 / 1500 / 1800 这三个。
+1100 还是比较 brown；1500 开始更像高级一点的 warm charcoal。
+
+
+
+你这个的确是够黑，但是不够灰
+
+你这个判断很准确：上一版主要是在降亮度，所以“黑”是做到了，但 saturation / hue 还保留了太多 brown，灰度没有被真正拉起来。我要把它改成更接近 warm gray charcoal：更少橙、更接近中性，但仍然保留一点 Billing 的暖感。
+
+Thought for a few seconds
+对，这版我重新做了：更灰，少 brown，不只是更黑。
+
+打开 / 下载新版 Billing warm gray preview HTML
+
+我这次把 1100–2000 改成：
+
+--color-project-billing-1100: #3F372C;
+--color-project-billing-1200: #38322B;
+--color-project-billing-1300: #312D28;
+--color-project-billing-1400: #2B2824;
+--color-project-billing-1500: #25231F;
+--color-project-billing-1600: #201F1C;
+--color-project-billing-1700: #1C1B19;
+--color-project-billing-1800: #181716;
+--color-project-billing-1900: #141413;
+--color-project-billing-2000: #11110F;
+这版的逻辑是：
+1100 还有一点 warm brown，1300 开始明显转 warm gray，1500 之后基本是 warm charcoal。
+
+我建议你重点看 1300 / 1500 / 1700。其中 1500 #25231F 可能是最适合作为 Billing 深色 card background 的。 
+
+
+
+可能是我的知道方向不对。我们还是要修改一个新的muted的颜色，可以把角度调整到26，然后ls都参考我们现在muted你觉得这个方法可以行吗？
+
+可以，这个方向比继续拉 Billing 深色更准确：你现在要解决的其实不是 Billing amber scale，而是 neutral muted scale 的色温。我会直接按你说的方式，把 Hue 改到 26°，S/L 沿用现在 muted 的结构。
+
+Thought for 7s
+可以，我觉得这个方法更对。
+
+你现在不是要扩展 Billing，而是要做一个新的 warm muted / warm neutral。方法可以是：
+
+Hue 固定到 26°，Lightness / Saturation 参考现在的 System Muted。
+
+你现在的 muted 是冷灰，Hue 是 240°，Saturation 很低，Lightness 从 97% 到 11%。所以把 Hue 从 240° 改到 26°，同时保留类似的 L/S 结构，就会得到一个很稳的 warm gray scale。你原来的 HTML 里 System Neutral Gray 的 500 是 #8C8C94，并且 full scale 从 0–1000 都是低饱和冷灰。
+
+
+按照这个方法，新的 warm muted 可以是：
+
+/* Warm Muted / Warm Neutral — hue shifted to 26° */
+--color-system-warm-muted-0: #F8F7F7;     /* hsl(26, 7%, 97%) */
+--color-system-warm-muted-100: #EBEBEA;   /* hsl(26, 2%, 92%) */
+--color-system-warm-muted-200: #D8D6D5;   /* hsl(26, 4%, 84%) */
+--color-system-warm-muted-300: #BFBCBA;   /* hsl(26, 4%, 74%) */
+--color-system-warm-muted-400: #ACA8A5;   /* hsl(26, 4%, 66%) */
+--color-system-warm-muted-500: #938E8A;   /* hsl(26, 4%, 56%) */
+--color-system-warm-muted-600: #7A7571;   /* hsl(26, 4%, 46%) */
+--color-system-warm-muted-700: #5F5B59;   /* hsl(26, 3%, 36%) */
+--color-system-warm-muted-800: #454240;   /* hsl(26, 4%, 26%) */
+--color-system-warm-muted-900: #302E2C;   /* hsl(26, 4%, 18%) */
+--color-system-warm-muted-1000: #1D1C1B;  /* hsl(26, 4%, 11%) */
+这组里面最接近你给的 rgb(168,162,158) / #A8A29E 的会是：
+
+--color-system-warm-muted-400: #ACA8A5;
+它比你给的 #A8A29E 稍微更亮一点、更灰一点；但方向是对的。
+
+我建议命名不要叫 Billing，也不要替换原来的 system-muted。更好的结构是：
+
+--color-system-muted-*        /* 保留现在的冷灰 */
+--color-system-warm-muted-*   /* 新增暖灰 */
+这样以后你可以明确区分：
+
+cool muted = technology / system / glass / platform
+warm muted = billing / editorial / case study body / softer text
+结论：这个方法可行，而且比修改 Billing 1100–2000 更系统。
+
+
+可以给我一个html，有现在muted还有我们这次新的warm muted吗？
+
+可以。我会做一个并排对比 HTML：上面是现在的 cool system-muted，下面是新的 system-warm-muted，再加一个文字预览区，方便你判断在页面里用哪个。
+
+Thought for a couple of seconds
+做好了：
+
+打开 / 下载 System Muted vs Warm Muted HTML
+
+里面有三部分：
+
+现在的 system-muted：冷灰，Hue 大约 240°
+
+新的 system-warm-muted：Hue 调到 26°，S/L 参考现有 muted
+
+文字和 surface preview：看它们在 portfolio UI 里的气质差异
+
+我觉得这个方向比改 Billing scale 更干净。Billing 继续负责 amber identity，warm muted 负责你说的这种 暖灰 / stone / taupe。 
+
+
+
+我觉得这个特别好。你看看是否可以把这个加到我现在有的html中。created一个更新的html给我。其他部分都不需要变，就是在system muted之下加一个system warm muted。 然后在页面最后的变量部分，把这个变量也帮我加好。
+
+可以，我会只改两处：在页面里的 System Muted section 后面插入 System Warm Muted section；然后在最后 Full color scale variables 的代码块里追加 warm muted 变量，其他内容保持不动。
+
+Thought for 26s
+做好了。这个版本只加了你要的两处：
+
+在 System Muted 下方新增 System Warm Muted
+
+在页面最后的 Full color scale variables 里追加 --color-system-warm-muted-*
+
+其他 section 和原来的变量都没有改。
+
+打开 / 下载更新后的 color system HTML
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Portfolio Color System Scale - Purple Dark Steps Revised</title>
+<style>
+  :root {
+    --bg: #0f0f0f;
+    --panel: rgba(255,255,255,0.055);
+    --border: rgba(255,255,255,0.12);
+    --text-primary: #e8e8e8;
+    --text-secondary: #c0c0c0;
+    --text-muted: #8c8c94;
+    --font-display: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 56px;
+    background:
+      linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+      radial-gradient(circle at 74% 10%, rgba(25,184,25,0.15), transparent 28%),
+      radial-gradient(circle at 18% 72%, rgba(155,124,255,0.12), transparent 30%),
+      var(--bg);
+    background-size: 100% 4px, auto, auto, auto;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+  }
+  header, .section, .scale-card, .code-block {
+    max-width: 1220px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  header { margin-bottom: 34px; }
+  h1 {
+    font-family: var(--font-display);
+    font-size: 56px;
+    line-height: 62px;
+    font-weight: 400;
+    letter-spacing: -1.5px;
+    margin: 0 0 16px;
+  }
+  .intro {
+    max-width: 940px;
+    color: var(--text-secondary);
+    font-size: 17px;
+    line-height: 27px;
+    margin: 0;
+  }
+  .section {
+    border: 1px solid var(--border);
+    background: var(--panel);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 28px;
+    backdrop-filter: blur(24px) saturate(130%);
+  }
+  .section h2, .code-block h2 {
+    font-family: var(--font-display);
+    font-size: 28px;
+    line-height: 34px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    margin: 0 0 16px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  th, td {
+    text-align: left;
+    padding: 12px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  th { color: var(--text-muted); font-weight: 500; }
+  code, pre { font-family: var(--font-mono); }
+  td code { color: #bfeebf; }
+  .dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: var(--c);
+    border-radius: 50%;
+    margin-right: 10px;
+    box-shadow: 0 0 12px color-mix(in srgb, var(--c) 55%, transparent);
+    vertical-align: -1px;
+  }
+  .scale-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: rgba(10,12,10,0.72);
+    padding: 24px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    position: relative;
+  }
+  .scale-card::after {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 90px;
+    right: -80px;
+    bottom: -32px;
+    background: var(--base);
+    filter: blur(56px);
+    opacity: 0.12;
+  }
+  .scale-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  .scale-head h2 {
+    font-family: var(--font-display);
+    font-size: 28px;
+    line-height: 34px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    margin: 0 0 4px;
+  }
+  .scale-head p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 21px;
+  }
+  .base-dot {
+    width: 54px;
+    height: 54px;
+    border-radius: 6px;
+    background: var(--c);
+    box-shadow: 0 0 24px color-mix(in srgb, var(--c) 55%, transparent);
+    flex: 0 0 auto;
+  }
+  .swatch-row {
+    display: grid;
+    grid-template-columns: repeat(11, minmax(84px, 1fr));
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+  }
+  .swatch {
+    background: var(--c);
+    color: var(--tc);
+    border-radius: 6px;
+    min-height: 100px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+  }
+  .swatch.revised {
+    outline: 2px solid rgba(255,255,255,0.22);
+    outline-offset: -2px;
+  }
+  .stop {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 700;
+  }
+  .hex {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    line-height: 15px;
+    opacity: 0.9;
+  }
+  .hls {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    line-height: 14px;
+    opacity: 0.72;
+  }
+  .code-block {
+    border: 1px solid rgba(25,184,25,0.22);
+    background: rgba(0,0,0,0.36);
+    border-radius: 8px;
+    padding: 22px 24px;
+    margin-top: 34px;
+  }
+  pre {
+    margin: 0;
+    white-space: pre-wrap;
+    color: #bfeebf;
+    font-size: 13px;
+    line-height: 20px;
+  }
+  .note {
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 20px;
+    margin: 14px 0 0;
+  }
+  @media (max-width: 980px) {
+    body { padding: 28px; }
+    h1 { font-size: 38px; line-height: 44px; }
+    .swatch-row { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    table { font-size: 13px; }
+    th, td { padding: 10px 6px; }
+  }
+  @media (max-width: 560px) {
+    .swatch-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Portfolio color system scale — purple dark steps revised</h1>
+    <p class="intro"></p>
+  </header>
+
+  <section class="section">
+    <h2>Selected 500 colors</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Role</th>
+          <th>Name</th>
+          <th>500 Hex</th>
+          <th>Hue</th>
+          <th>Lightness</th>
+          <th>Saturation</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><span class="dot" style="--c:#19B819"></span>Primary / GenAI</td>
+        <td>Deep Terminal Green</td>
+        <td><code>#19B819</code></td>
+        <td>120°</td>
+        <td>41%</td>
+        <td>76%</td>
+      </tr>
+      <tr>
+        <td><span class="dot" style="--c:#9B7CFF"></span>Glass Box</td>
+        <td>Kiro-like Electric Violet</td>
+        <td><code>#9B7CFF</code></td>
+        <td>254°</td>
+        <td>74%</td>
+        <td>100%</td>
+      </tr>
+      <tr>
+        <td><span class="dot" style="--c:#FFB84D"></span>Billing</td>
+        <td>Operations Amber</td>
+        <td><code>#FFB84D</code></td>
+        <td>36°</td>
+        <td>65%</td>
+        <td>100%</td>
+      </tr>
+      <tr>
+        <td><span class="dot" style="--c:#3AA0FF"></span>Data / Platform</td>
+        <td>Platform Blue</td>
+        <td><code>#3AA0FF</code></td>
+        <td>209°</td>
+        <td>61%</td>
+        <td>100%</td>
+      </tr>
+      <tr>
+        <td><span class="dot" style="--c:#FF5C8A"></span>Mobile / Consumer</td>
+        <td>Signal Pink</td>
+        <td><code>#FF5C8A</code></td>
+        <td>343°</td>
+        <td>68%</td>
+        <td>100%</td>
+      </tr>
+      <tr>
+        <td><span class="dot" style="--c:#66CC66"></span>Secondary Green</td>
+        <td>Muted Phosphor Green</td>
+        <td><code>#66CC66</code></td>
+        <td>120°</td>
+        <td>60%</td>
+        <td>50%</td>
+      </tr>
+      <tr>
+        <td><span class="dot" style="--c:#FF5A4F"></span>System Warning</td>
+        <td>Terminal Warning Red</td>
+        <td><code>#FF5A4F</code></td>
+        <td>4°</td>
+        <td>65%</td>
+        <td>100%</td>
+      </tr>
+      <tr>
+        <td><span class="dot" style="--c:#8C8C94"></span>System Muted</td>
+        <td>System Neutral Gray</td>
+        <td><code>#8C8C94</code></td>
+        <td>240°</td>
+        <td>56%</td>
+        <td>4%</td>
+      </tr></tbody>
+    </table>
+    <p class="note">Glass Box 的 600–1000 有细 outline，表示这几个是这版唯一重新调过的值。</p>
+  </section>
+
+  
+    <section class="scale-card" style="--base:#19B819">
+      <div class="scale-head">
+        <div>
+          <h2>Primary / GenAI</h2>
+          <p>Deep Terminal Green — base 500: <code>#19B819</code></p>
+        </div>
+        <div class="base-dot" style="--c:#19B819"></div>
+      </div>
+      <div class="swatch-row">
+          <div class="swatch" style="--c:#F4FBF4; --tc:#071007">
+            <div class="stop">0</div>
+            <div class="hex">#F4FBF4</div>
+            <div class="hls">H 120° · L 97% · S 47%</div>
+          </div>
+          <div class="swatch" style="--c:#E1F4E1; --tc:#071007">
+            <div class="stop">100</div>
+            <div class="hex">#E1F4E1</div>
+            <div class="hls">H 120° · L 92% · S 46%</div>
+          </div>
+          <div class="swatch" style="--c:#C4E9C4; --tc:#071007">
+            <div class="stop">200</div>
+            <div class="hex">#C4E9C4</div>
+            <div class="hls">H 120° · L 84% · S 46%</div>
+          </div>
+          <div class="swatch" style="--c:#93E693; --tc:#071007">
+            <div class="stop">300</div>
+            <div class="hex">#93E693</div>
+            <div class="hls">H 120° · L 74% · S 62%</div>
+          </div>
+          <div class="swatch" style="--c:#34D034; --tc:#071007">
+            <div class="stop">400</div>
+            <div class="hex">#34D034</div>
+            <div class="hls">H 120° · L 51% · S 62%</div>
+          </div>
+          <div class="swatch" style="--c:#19B819; --tc:#F4FFF4">
+            <div class="stop">500</div>
+            <div class="hex">#19B819</div>
+            <div class="hls">H 120° · L 41% · S 76%</div>
+          </div>
+          <div class="swatch" style="--c:#188618; --tc:#F4FFF4">
+            <div class="stop">600</div>
+            <div class="hex">#188618</div>
+            <div class="hls">H 120° · L 31% · S 70%</div>
+          </div>
+          <div class="swatch" style="--c:#105B10; --tc:#F4FFF4">
+            <div class="stop">700</div>
+            <div class="hex">#105B10</div>
+            <div class="hls">H 120° · L 21% · S 70%</div>
+          </div>
+          <div class="swatch" style="--c:#083008; --tc:#F4FFF4">
+            <div class="stop">800</div>
+            <div class="hex">#083008</div>
+            <div class="hls">H 120° · L 11% · S 71%</div>
+          </div>
+          <div class="swatch" style="--c:#041604; --tc:#F4FFF4">
+            <div class="stop">900</div>
+            <div class="hex">#041604</div>
+            <div class="hls">H 120° · L 5% · S 69%</div>
+          </div>
+          <div class="swatch" style="--c:#031103; --tc:#F4FFF4">
+            <div class="stop">1000</div>
+            <div class="hex">#031103</div>
+            <div class="hls">H 120° · L 4% · S 70%</div>
+          </div></div>
+    </section>
+    <section class="scale-card" style="--base:#9B7CFF">
+      <div class="scale-head">
+        <div>
+          <h2>Glass Box</h2>
+          <p>Kiro-like Electric Violet — base 500: <code>#9B7CFF</code> · revised only 600–1000</p>
+        </div>
+        <div class="base-dot" style="--c:#9B7CFF"></div>
+      </div>
+      <div class="swatch-row">
+          <div class="swatch" style="--c:#F5F3FC; --tc:#071007">
+            <div class="stop">0</div>
+            <div class="hex">#F5F3FC</div>
+            <div class="hls">H 253° · L 97% · S 60%</div>
+          </div>
+          <div class="swatch" style="--c:#E4DEF7; --tc:#071007">
+            <div class="stop">100</div>
+            <div class="hex">#E4DEF7</div>
+            <div class="hls">H 254° · L 92% · S 61%</div>
+          </div>
+          <div class="swatch" style="--c:#C9BEEF; --tc:#071007">
+            <div class="stop">200</div>
+            <div class="hex">#C9BEEF</div>
+            <div class="hls">H 253° · L 84% · S 60%</div>
+          </div>
+          <div class="swatch" style="--c:#A086F3; --tc:#071007">
+            <div class="stop">300</div>
+            <div class="hex">#A086F3</div>
+            <div class="hls">H 254° · L 74% · S 82%</div>
+          </div>
+          <div class="swatch" style="--c:#BDABF7; --tc:#071007">
+            <div class="stop">400</div>
+            <div class="hex">#BDABF7</div>
+            <div class="hls">H 254° · L 82% · S 83%</div>
+          </div>
+          <div class="swatch" style="--c:#9B7CFF; --tc:#F4FFF4">
+            <div class="stop">500</div>
+            <div class="hex">#9B7CFF</div>
+            <div class="hls">H 254° · L 74% · S 100%</div>
+          </div>
+          <div class="swatch revised" style="--c:#8968EA; --tc:#F4FFF4">
+            <div class="stop">600</div>
+            <div class="hex">#8968EA</div>
+            <div class="hls">H 255° · L 66% · S 76%</div>
+          </div>
+          <div class="swatch revised" style="--c:#7654D4; --tc:#F4FFF4">
+            <div class="stop">700</div>
+            <div class="hex">#7654D4</div>
+            <div class="hls">H 256° · L 58% · S 60%</div>
+          </div>
+          <div class="swatch revised" style="--c:#6140B6; --tc:#F4FFF4">
+            <div class="stop">800</div>
+            <div class="hex">#6140B6</div>
+            <div class="hls">H 257° · L 48% · S 48%</div>
+          </div>
+          <div class="swatch revised" style="--c:#4C2E91; --tc:#F4FFF4">
+            <div class="stop">900</div>
+            <div class="hex">#4C2E91</div>
+            <div class="hls">H 258° · L 37% · S 52%</div>
+          </div>
+          <div class="swatch revised" style="--c:#38206E; --tc:#F4FFF4">
+            <div class="stop">1000</div>
+            <div class="hex">#38206E</div>
+            <div class="hls">H 258° · L 28% · S 55%</div>
+          </div></div>
+    </section>
+    <section class="scale-card" style="--base:#FFB84D">
+      <div class="scale-head">
+        <div>
+          <h2>Billing</h2>
+          <p>Operations Amber — base 500: <code>#FFB84D</code></p>
+        </div>
+        <div class="base-dot" style="--c:#FFB84D"></div>
+      </div>
+      <div class="swatch-row">
+          <div class="swatch" style="--c:#FCF8F3; --tc:#071007">
+            <div class="stop">0</div>
+            <div class="hex">#FCF8F3</div>
+            <div class="hls">H 33° · L 97% · S 60%</div>
+          </div>
+          <div class="swatch" style="--c:#F7EDDE; --tc:#071007">
+            <div class="stop">100</div>
+            <div class="hex">#F7EDDE</div>
+            <div class="hls">H 36° · L 92% · S 61%</div>
+          </div>
+          <div class="swatch" style="--c:#EFDBBE; --tc:#071007">
+            <div class="stop">200</div>
+            <div class="hex">#EFDBBE</div>
+            <div class="hls">H 36° · L 84% · S 60%</div>
+          </div>
+          <div class="swatch" style="--c:#F3C886; --tc:#071007">
+            <div class="stop">300</div>
+            <div class="hex">#F3C886</div>
+            <div class="hls">H 36° · L 74% · S 82%</div>
+          </div>
+          <div class="swatch" style="--c:#F4CA8B; --tc:#071007">
+            <div class="stop">400</div>
+            <div class="hex">#F4CA8B</div>
+            <div class="hls">H 36° · L 75% · S 83%</div>
+          </div>
+          <div class="swatch" style="--c:#FFB84D; --tc:#F4FFF4">
+            <div class="stop">500</div>
+            <div class="hex">#FFB84D</div>
+            <div class="hls">H 36° · L 65% · S 100%</div>
+          </div>
+          <div class="swatch" style="--c:#F6A223; --tc:#F4FFF4">
+            <div class="stop">600</div>
+            <div class="hex">#F6A223</div>
+            <div class="hls">H 36° · L 55% · S 92%</div>
+          </div>
+          <div class="swatch" style="--c:#DD8809; --tc:#F4FFF4">
+            <div class="stop">700</div>
+            <div class="hex">#DD8809</div>
+            <div class="hls">H 36° · L 45% · S 92%</div>
+          </div>
+          <div class="swatch" style="--c:#AC6A07; --tc:#F4FFF4">
+            <div class="stop">800</div>
+            <div class="hex">#AC6A07</div>
+            <div class="hls">H 36° · L 35% · S 92%</div>
+          </div>
+          <div class="swatch" style="--c:#855206; --tc:#F4FFF4">
+            <div class="stop">900</div>
+            <div class="hex">#855206</div>
+            <div class="hls">H 36° · L 27% · S 91%</div>
+          </div>
+          <div class="swatch" style="--c:#5E3A04; --tc:#F4FFF4">
+            <div class="stop">1000</div>
+            <div class="hex">#5E3A04</div>
+            <div class="hls">H 36° · L 19% · S 92%</div>
+          </div></div>
+    </section>
+    <section class="scale-card" style="--base:#3AA0FF">
+      <div class="scale-head">
+        <div>
+          <h2>Data / Platform</h2>
+          <p>Platform Blue — base 500: <code>#3AA0FF</code></p>
+        </div>
+        <div class="base-dot" style="--c:#3AA0FF"></div>
+      </div>
+      <div class="swatch-row">
+          <div class="swatch" style="--c:#F3F8FC; --tc:#071007">
+            <div class="stop">0</div>
+            <div class="hex">#F3F8FC</div>
+            <div class="hls">H 207° · L 97% · S 60%</div>
+          </div>
+          <div class="swatch" style="--c:#DEEBF7; --tc:#071007">
+            <div class="stop">100</div>
+            <div class="hex">#DEEBF7</div>
+            <div class="hls">H 209° · L 92% · S 61%</div>
+          </div>
+          <div class="swatch" style="--c:#BED7EF; --tc:#071007">
+            <div class="stop">200</div>
+            <div class="hex">#BED7EF</div>
+            <div class="hls">H 209° · L 84% · S 60%</div>
+          </div>
+          <div class="swatch" style="--c:#86BFF3; --tc:#071007">
+            <div class="stop">300</div>
+            <div class="hex">#86BFF3</div>
+            <div class="hls">H 209° · L 74% · S 82%</div>
+          </div>
+          <div class="swatch" style="--c:#7AB8F2; --tc:#071007">
+            <div class="stop">400</div>
+            <div class="hex">#7AB8F2</div>
+            <div class="hls">H 209° · L 71% · S 82%</div>
+          </div>
+          <div class="swatch" style="--c:#3AA0FF; --tc:#F4FFF4">
+            <div class="stop">500</div>
+            <div class="hex">#3AA0FF</div>
+            <div class="hls">H 209° · L 61% · S 100%</div>
+          </div>
+          <div class="swatch" style="--c:#1187F5; --tc:#F4FFF4">
+            <div class="stop">600</div>
+            <div class="hex">#1187F5</div>
+            <div class="hls">H 209° · L 51% · S 92%</div>
+          </div>
+          <div class="swatch" style="--c:#086DCB; --tc:#F4FFF4">
+            <div class="stop">700</div>
+            <div class="hex">#086DCB</div>
+            <div class="hls">H 209° · L 41% · S 92%</div>
+          </div>
+          <div class="swatch" style="--c:#06539A; --tc:#F4FFF4">
+            <div class="stop">800</div>
+            <div class="hex">#06539A</div>
+            <div class="hls">H 209° · L 31% · S 92%</div>
+          </div>
+          <div class="swatch" style="--c:#053E72; --tc:#F4FFF4">
+            <div class="stop">900</div>
+            <div class="hex">#053E72</div>
+            <div class="hls">H 209° · L 23% · S 92%</div>
+          </div>
+          <div class="swatch" style="--c:#03284B; --tc:#F4FFF4">
+            <div class="stop">1000</div>
+            <div class="hex">#03284B</div>
+            <div class="hls">H 209° · L 15% · S 92%</div>
+          </div></div>
+    </section>
+    <section class="scale-card" style="--base:#FF5C8A">
+      <div class="scale-head">
+        <div>
+          <h2>Mobile / Consumer</h2>
+          <p>Signal Pink — base 500: <code>#FF5C8A</code></p>
+        </div>
+        <div class="base-dot" style="--c:#FF5C8A"></div>
+      </div>
+      <div class="swatch-row">
+          <div class="swatch" style="--c:#FCF3F5; --tc:#071007">
+            <div class="stop">0</div>
+            <div class="hex">#FCF3F5</div>
+            <div class="hls">H 347° · L 97% · S 60%</div>
+          </div>
+          <div class="swatch" style="--c:#F7DEE5; --tc:#071007">
+            <div class="stop">100</div>
+            <div class="hex">#F7DEE5</div>
+            <div class="hls">H 343° · L 92% · S 61%</div>
+          </div>
+          <div class="swatch" style="--c:#EFBECC; --tc:#071007">
+            <div class="stop">200</div>
+            <div class="hex">#EFBECC</div>
+            <div class="hls">H 343° · L 84% · S 60%</div>
+          </div>
+          <div class="swatch" style="--c:#F386A5; --tc:#071007">
+            <div class="stop">300</div>
+            <div class="hex">#F386A5</div>
+            <div class="hls">H 343° · L 74% · S 82%</div>
+          </div>
+          <div class="swatch" style="--c:#F599B3; --tc:#071007">
+            <div class="stop">400</div>
+            <div class="hex">#F599B3</div>
+            <div class="hls">H 343° · L 78% · S 82%</div>
+          </div>
+          <div class="swatch" style="--c:#FF5C8A; --tc:#F4FFF4">
+            <div class="stop">500</div>
+            <div class="hex">#FF5C8A</div>
+            <div class="hls">H 343° · L 68% · S 100%</div>
+          </div>
+          <div class="swatch" style="--c:#F63269; --tc:#F4FFF4">
+            <div class="stop">600</div>
+            <div class="hex">#F63269</div>
+            <div class="hls">H 343° · L 58% · S 92%</div>
+          </div>
+          <div class="swatch" style="--c:#EB0A49; --tc:#F4FFF4">
+            <div class="stop">700</div>
+            <div class="hex">#EB0A49</div>
+            <div class="hls">H 343° · L 48% · S 92%</div>
+          </div>
+          <div class="swatch" style="--c:#BA083A; --tc:#F4FFF4">
+            <div class="stop">800</div>
+            <div class="hex">#BA083A</div>
+            <div class="hls">H 343° · L 38% · S 92%</div>
+          </div>
+          <div class="swatch" style="--c:#93062E; --tc:#F4FFF4">
+            <div class="stop">900</div>
+            <div class="hex">#93062E</div>
+            <div class="hls">H 343° · L 30% · S 92%</div>
+          </div>
+          <div class="swatch" style="--c:#6C0422; --tc:#F4FFF4">
+            <div class="stop">1000</div>
+            <div class="hex">#6C0422</div>
+            <div class="hls">H 343° · L 22% · S 93%</div>
+          </div></div>
+    </section>
+    <section class="scale-card" style="--base:#66CC66">
+      <div class="scale-head">
+        <div>
+          <h2>Secondary Green</h2>
+          <p>Muted Phosphor Green — base 500: <code>#66CC66</code></p>
+        </div>
+        <div class="base-dot" style="--c:#66CC66"></div>
+      </div>
+      <div class="swatch-row">
+          <div class="swatch" style="--c:#F5FAF5; --tc:#071007">
+            <div class="stop">0</div>
+            <div class="hex">#F5FAF5</div>
+            <div class="hls">H 120° · L 97% · S 33%</div>
+          </div>
+          <div class="swatch" style="--c:#E4F1E4; --tc:#071007">
+            <div class="stop">100</div>
+            <div class="hex">#E4F1E4</div>
+            <div class="hls">H 120° · L 92% · S 32%</div>
+          </div>
+          <div class="swatch" style="--c:#CAE2CA; --tc:#071007">
+            <div class="stop">200</div>
+            <div class="hex">#CAE2CA</div>
+            <div class="hls">H 120° · L 84% · S 29%</div>
+          </div>
+          <div class="swatch" style="--c:#A2D8A2; --tc:#071007">
+            <div class="stop">300</div>
+            <div class="hex">#A2D8A2</div>
+            <div class="hls">H 120° · L 74% · S 41%</div>
+          </div>
+          <div class="swatch" style="--c:#93D293; --tc:#071007">
+            <div class="stop">400</div>
+            <div class="hex">#93D293</div>
+            <div class="hls">H 120° · L 70% · S 41%</div>
+          </div>
+          <div class="swatch" style="--c:#66CC66; --tc:#F4FFF4">
+            <div class="stop">500</div>
+            <div class="hex">#66CC66</div>
+            <div class="hls">H 120° · L 60% · S 50%</div>
+          </div>
+          <div class="swatch" style="--c:#45BA45; --tc:#F4FFF4">
+            <div class="stop">600</div>
+            <div class="hex">#45BA45</div>
+            <div class="hls">H 120° · L 50% · S 46%</div>
+          </div>
+          <div class="swatch" style="--c:#379537; --tc:#F4FFF4">
+            <div class="stop">700</div>
+            <div class="hex">#379537</div>
+            <div class="hls">H 120° · L 40% · S 46%</div>
+          </div>
+          <div class="swatch" style="--c:#297029; --tc:#F4FFF4">
+            <div class="stop">800</div>
+            <div class="hex">#297029</div>
+            <div class="hls">H 120° · L 30% · S 46%</div>
+          </div>
+          <div class="swatch" style="--c:#1E521E; --tc:#F4FFF4">
+            <div class="stop">900</div>
+            <div class="hex">#1E521E</div>
+            <div class="hls">H 120° · L 22% · S 46%</div>
+          </div>
+          <div class="swatch" style="--c:#133413; --tc:#F4FFF4">
+            <div class="stop">1000</div>
+            <div class="hex">#133413</div>
+            <div class="hls">H 120° · L 14% · S 46%</div>
+          </div></div>
+    </section>
+    <section class="scale-card" style="--base:#FF5A4F">
+      <div class="scale-head">
+        <div>
+          <h2>System Warning</h2>
+          <p>Terminal Warning Red — base 500: <code>#FF5A4F</code></p>
+        </div>
+        <div class="base-dot" style="--c:#FF5A4F"></div>
+      </div>
+      <div class="swatch-row">
+          <div class="swatch" style="--c:#FCF3F3; --tc:#071007">
+            <div class="stop">0</div>
+            <div class="hex">#FCF3F3</div>
+            <div class="hls">H 0° · L 97% · S 60%</div>
+          </div>
+          <div class="swatch" style="--c:#F7E0DE; --tc:#071007">
+            <div class="stop">100</div>
+            <div class="hex">#F7E0DE</div>
+            <div class="hls">H 5° · L 92% · S 61%</div>
+          </div>
+          <div class="swatch" style="--c:#EFC1BE; --tc:#071007">
+            <div class="stop">200</div>
+            <div class="hex">#EFC1BE</div>
+            <div class="hls">H 4° · L 84% · S 60%</div>
+          </div>
+          <div class="swatch" style="--c:#F38D86; --tc:#071007">
+            <div class="stop">300</div>
+            <div class="hex">#F38D86</div>
+            <div class="hls">H 4° · L 74% · S 82%</div>
+          </div>
+          <div class="swatch" style="--c:#F4948D; --tc:#071007">
+            <div class="stop">400</div>
+            <div class="hex">#F4948D</div>
+            <div class="hls">H 4° · L 75% · S 82%</div>
+          </div>
+          <div class="swatch" style="--c:#FF5A4F; --tc:#F4FFF4">
+            <div class="stop">500</div>
+            <div class="hex">#FF5A4F</div>
+            <div class="hls">H 4° · L 65% · S 100%</div>
+          </div>
+          <div class="swatch" style="--c:#F63225; --tc:#F4FFF4">
+            <div class="stop">600</div>
+            <div class="hex">#F63225</div>
+            <div class="hls">H 4° · L 55% · S 92%</div>
+          </div>
+          <div class="swatch" style="--c:#DF1709; --tc:#F4FFF4">
+            <div class="stop">700</div>
+            <div class="hex">#DF1709</div>
+            <div class="hls">H 4° · L 45% · S 92%</div>
+          </div>
+          <div class="swatch" style="--c:#AE1207; --tc:#F4FFF4">
+            <div class="stop">800</div>
+            <div class="hex">#AE1207</div>
+            <div class="hls">H 4° · L 35% · S 92%</div>
+          </div>
+          <div class="swatch" style="--c:#870E06; --tc:#F4FFF4">
+            <div class="stop">900</div>
+            <div class="hex">#870E06</div>
+            <div class="hls">H 4° · L 28% · S 91%</div>
+          </div>
+          <div class="swatch" style="--c:#5F0A04; --tc:#F4FFF4">
+            <div class="stop">1000</div>
+            <div class="hex">#5F0A04</div>
+            <div class="hls">H 4° · L 19% · S 92%</div>
+          </div></div>
+    </section>
+    <section class="scale-card" style="--base:#8C8C94">
+      <div class="scale-head">
+        <div>
+          <h2>System Muted</h2>
+          <p>System Neutral Gray — base 500: <code>#8C8C94</code></p>
+        </div>
+        <div class="base-dot" style="--c:#8C8C94"></div>
+      </div>
+      <div class="swatch-row">
+          <div class="swatch" style="--c:#F7F7F8; --tc:#111111">
+            <div class="stop">0</div>
+            <div class="hex">#F7F7F8</div>
+            <div class="hls">H 240° · L 97% · S 7%</div>
+          </div>
+          <div class="swatch" style="--c:#EAEAEB; --tc:#111111">
+            <div class="stop">100</div>
+            <div class="hex">#EAEAEB</div>
+            <div class="hls">H 240° · L 92% · S 2%</div>
+          </div>
+          <div class="swatch" style="--c:#D5D5D8; --tc:#111111">
+            <div class="stop">200</div>
+            <div class="hex">#D5D5D8</div>
+            <div class="hls">H 240° · L 84% · S 4%</div>
+          </div>
+          <div class="swatch" style="--c:#BABABF; --tc:#111111">
+            <div class="stop">300</div>
+            <div class="hex">#BABABF</div>
+            <div class="hls">H 240° · L 74% · S 4%</div>
+          </div>
+          <div class="swatch" style="--c:#A6A6AD; --tc:#111111">
+            <div class="stop">400</div>
+            <div class="hex">#A6A6AD</div>
+            <div class="hls">H 240° · L 66% · S 4%</div>
+          </div>
+          <div class="swatch" style="--c:#8C8C94; --tc:#111111">
+            <div class="stop">500</div>
+            <div class="hex">#8C8C94</div>
+            <div class="hls">H 240° · L 56% · S 4%</div>
+          </div>
+          <div class="swatch" style="--c:#72727B; --tc:#F4FFF4">
+            <div class="stop">600</div>
+            <div class="hex">#72727B</div>
+            <div class="hls">H 240° · L 46% · S 4%</div>
+          </div>
+          <div class="swatch" style="--c:#5A5A60; --tc:#F4FFF4">
+            <div class="stop">700</div>
+            <div class="hex">#5A5A60</div>
+            <div class="hls">H 240° · L 36% · S 3%</div>
+          </div>
+          <div class="swatch" style="--c:#414146; --tc:#F4FFF4">
+            <div class="stop">800</div>
+            <div class="hex">#414146</div>
+            <div class="hls">H 240° · L 26% · S 4%</div>
+          </div>
+          <div class="swatch" style="--c:#2D2D31; --tc:#F4FFF4">
+            <div class="stop">900</div>
+            <div class="hex">#2D2D31</div>
+            <div class="hls">H 240° · L 18% · S 4%</div>
+          </div>
+          <div class="swatch" style="--c:#1A1A1C; --tc:#F4FFF4">
+            <div class="stop">1000</div>
+            <div class="hex">#1A1A1C</div>
+            <div class="hls">H 240° · L 11% · S 4%</div>
+          </div></div>
+    </section>
+    <section class="scale-card" style="--base:#938E8A">
+      <div class="scale-head">
+        <div>
+          <h2>System Warm Muted</h2>
+          <p>Warm Neutral Gray — base 500: <code>#938E8A</code> · hue shifted to 26°</p>
+        </div>
+        <div class="base-dot" style="--c:#938E8A"></div>
+      </div>
+      <div class="swatch-row">
+          <div class="swatch" style="--c:#F8F7F7; --tc:#111111">
+            <div class="stop">0</div>
+            <div class="hex">#F8F7F7</div>
+            <div class="hls">H 26° · L 97% · S 7%</div>
+          </div>
+          <div class="swatch" style="--c:#EBEBEA; --tc:#111111">
+            <div class="stop">100</div>
+            <div class="hex">#EBEBEA</div>
+            <div class="hls">H 26° · L 92% · S 2%</div>
+          </div>
+          <div class="swatch" style="--c:#D8D6D5; --tc:#111111">
+            <div class="stop">200</div>
+            <div class="hex">#D8D6D5</div>
+            <div class="hls">H 26° · L 84% · S 4%</div>
+          </div>
+          <div class="swatch" style="--c:#BFBCBA; --tc:#111111">
+            <div class="stop">300</div>
+            <div class="hex">#BFBCBA</div>
+            <div class="hls">H 26° · L 74% · S 4%</div>
+          </div>
+          <div class="swatch" style="--c:#ACA8A5; --tc:#111111">
+            <div class="stop">400</div>
+            <div class="hex">#ACA8A5</div>
+            <div class="hls">H 26° · L 66% · S 4%</div>
+          </div>
+          <div class="swatch" style="--c:#938E8A; --tc:#111111">
+            <div class="stop">500</div>
+            <div class="hex">#938E8A</div>
+            <div class="hls">H 26° · L 56% · S 4%</div>
+          </div>
+          <div class="swatch" style="--c:#7A7571; --tc:#F4FFF4">
+            <div class="stop">600</div>
+            <div class="hex">#7A7571</div>
+            <div class="hls">H 26° · L 46% · S 4%</div>
+          </div>
+          <div class="swatch" style="--c:#5F5B59; --tc:#F4FFF4">
+            <div class="stop">700</div>
+            <div class="hex">#5F5B59</div>
+            <div class="hls">H 26° · L 36% · S 3%</div>
+          </div>
+          <div class="swatch" style="--c:#454240; --tc:#F4FFF4">
+            <div class="stop">800</div>
+            <div class="hex">#454240</div>
+            <div class="hls">H 26° · L 26% · S 4%</div>
+          </div>
+          <div class="swatch" style="--c:#302E2C; --tc:#F4FFF4">
+            <div class="stop">900</div>
+            <div class="hex">#302E2C</div>
+            <div class="hls">H 26° · L 18% · S 4%</div>
+          </div>
+          <div class="swatch" style="--c:#1D1C1B; --tc:#F4FFF4">
+            <div class="stop">1000</div>
+            <div class="hex">#1D1C1B</div>
+            <div class="hls">H 26° · L 11% · S 4%</div>
+          </div></div>
+    </section>
+
+  <section class="code-block">
+    <h2>Only replace these Glass Box dark steps</h2>
+<pre>/* Glass Box — keep 500, replace only 600–1000 */
+--color-project-glassbox-600: #8968EA;
+--color-project-glassbox-700: #7654D4;
+--color-project-glassbox-800: #6140B6;
+--color-project-glassbox-900: #4C2E91;
+--color-project-glassbox-1000: #38206E;</pre>
+  </section>
+
+  <section class="code-block">
+    <h2>Full color scale variables</h2>
+<pre>/* Color scales — Glass Box keeps 500 #9B7CFF; only 600–1000 adjusted */
+
+/* Deep Terminal Green */
+--color-project-genai-0: #F4FBF4;
+--color-project-genai-100: #E1F4E1;
+--color-project-genai-200: #C4E9C4;
+--color-project-genai-300: #93E693;
+--color-project-genai-400: #34D034;
+--color-project-genai-500: #19B819;
+--color-project-genai-600: #188618;
+--color-project-genai-700: #105B10;
+--color-project-genai-800: #083008;
+--color-project-genai-900: #041604;
+--color-project-genai-1000: #031103;
+
+/* Kiro-like Electric Violet */
+--color-project-glassbox-0: #F5F3FC;
+--color-project-glassbox-100: #E4DEF7;
+--color-project-glassbox-200: #C9BEEF;
+--color-project-glassbox-300: #A086F3;
+--color-project-glassbox-400: #BDABF7;
+--color-project-glassbox-500: #9B7CFF;
+--color-project-glassbox-600: #8968EA;
+--color-project-glassbox-700: #7654D4;
+--color-project-glassbox-800: #6140B6;
+--color-project-glassbox-900: #4C2E91;
+--color-project-glassbox-1000: #38206E;
+
+/* Operations Amber */
+--color-project-billing-0: #FCF8F3;
+--color-project-billing-100: #F7EDDE;
+--color-project-billing-200: #EFDBBE;
+--color-project-billing-300: #F3C886;
+--color-project-billing-400: #F4CA8B;
+--color-project-billing-500: #FFB84D;
+--color-project-billing-600: #F6A223;
+--color-project-billing-700: #DD8809;
+--color-project-billing-800: #AC6A07;
+--color-project-billing-900: #855206;
+--color-project-billing-1000: #5E3A04;
+
+/* Platform Blue */
+--color-project-data-0: #F3F8FC;
+--color-project-data-100: #DEEBF7;
+--color-project-data-200: #BED7EF;
+--color-project-data-300: #86BFF3;
+--color-project-data-400: #7AB8F2;
+--color-project-data-500: #3AA0FF;
+--color-project-data-600: #1187F5;
+--color-project-data-700: #086DCB;
+--color-project-data-800: #06539A;
+--color-project-data-900: #053E72;
+--color-project-data-1000: #03284B;
+
+/* Signal Pink */
+--color-project-mobile-0: #FCF3F5;
+--color-project-mobile-100: #F7DEE5;
+--color-project-mobile-200: #EFBECC;
+--color-project-mobile-300: #F386A5;
+--color-project-mobile-400: #F599B3;
+--color-project-mobile-500: #FF5C8A;
+--color-project-mobile-600: #F63269;
+--color-project-mobile-700: #EB0A49;
+--color-project-mobile-800: #BA083A;
+--color-project-mobile-900: #93062E;
+--color-project-mobile-1000: #6C0422;
+
+/* Muted Phosphor Green */
+--color-project-secondary-green-0: #F5FAF5;
+--color-project-secondary-green-100: #E4F1E4;
+--color-project-secondary-green-200: #CAE2CA;
+--color-project-secondary-green-300: #A2D8A2;
+--color-project-secondary-green-400: #93D293;
+--color-project-secondary-green-500: #66CC66;
+--color-project-secondary-green-600: #45BA45;
+--color-project-secondary-green-700: #379537;
+--color-project-secondary-green-800: #297029;
+--color-project-secondary-green-900: #1E521E;
+--color-project-secondary-green-1000: #133413;
+
+/* Terminal Warning Red */
+--color-system-warning-0: #FCF3F3;
+--color-system-warning-100: #F7E0DE;
+--color-system-warning-200: #EFC1BE;
+--color-system-warning-300: #F38D86;
+--color-system-warning-400: #F4948D;
+--color-system-warning-500: #FF5A4F;
+--color-system-warning-600: #F63225;
+--color-system-warning-700: #DF1709;
+--color-system-warning-800: #AE1207;
+--color-system-warning-900: #870E06;
+--color-system-warning-1000: #5F0A04;
+
+/* System Neutral Gray */
+--color-system-muted-0: #F7F7F8;
+--color-system-muted-100: #EAEAEB;
+--color-system-muted-200: #D5D5D8;
+--color-system-muted-300: #BABABF;
+--color-system-muted-400: #A6A6AD;
+--color-system-muted-500: #8C8C94;
+--color-system-muted-600: #72727B;
+--color-system-muted-700: #5A5A60;
+--color-system-muted-800: #414146;
+--color-system-muted-900: #2D2D31;
+--color-system-muted-1000: #1A1A1C;
+
+/* System Warm Muted */
+--color-system-warm-muted-0: #F8F7F7;
+--color-system-warm-muted-100: #EBEBEA;
+--color-system-warm-muted-200: #D8D6D5;
+--color-system-warm-muted-300: #BFBCBA;
+--color-system-warm-muted-400: #ACA8A5;
+--color-system-warm-muted-500: #938E8A;
+--color-system-warm-muted-600: #7A7571;
+--color-system-warm-muted-700: #5F5B59;
+--color-system-warm-muted-800: #454240;
+--color-system-warm-muted-900: #302E2C;
+--color-system-warm-muted-1000: #1D1C1B;
+</pre>
+  </section>
+</body>
+</html>
+

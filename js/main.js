@@ -117,17 +117,8 @@
 
 	};
 
-	// 顶部菜单：初始在文档流中的自然位置（如 hero 内 top:20px）；滚动到顶后再固定到视口顶部
-	var windowScroll = function() {
-		var header = document.getElementById('fh5co-header');
-		if (!header) return;
-		var top = header.getBoundingClientRect().top;
-		if (top <= 0) {
-			header.classList.add('navbar-fixed-top');
-		} else {
-			header.classList.remove('navbar-fixed-top');
-		}
-	};
+	// 顶部菜单：滚动固定功能已禁用
+	var windowScroll = function() {};
 
 
 	// Animations
