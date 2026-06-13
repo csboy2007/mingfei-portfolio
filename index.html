@@ -643,7 +643,7 @@ SideKcK · co-founder · consumer mobile app · social wellness</p>
 				
 				card.addEventListener('click', (e) => {
 					const link = card.querySelector('a');
-					if (link) {
+					if (link && !link.classList.contains('nda-modal-trigger')) {
 						window.location.href = link.href;
 					}
 				});

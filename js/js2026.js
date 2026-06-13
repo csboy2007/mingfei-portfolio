@@ -154,6 +154,14 @@ function setupScrollCurve() {
 	// Curve color: fixed to blob's initial color (green)
 	const heroHeight = heroSection.offsetHeight;
 	let currentProgress = 0; // smoothed draw progress
+	// Cache DOM queries and last written values to avoid unnecessary repaints
+	const displaceMap = document.getElementById('curve-displace-map');
+	const glassBoxSection = document.getElementById('glass-box-pattern');
+	const grainOverlay = blob.querySelector('.grain-overlay');
+	let lastDashOffset = -1;
+	let lastNoiseScale = -1;
+	let lastStrokeWidth = -1;
+	let lastBlobPaused = null;
 
 	function onScroll() {
 		const heroRect = heroSection.getBoundingClientRect();
@@ -164,12 +172,10 @@ function setupScrollCurve() {
 		const curveTriggered = orbProgress >= curveStart;
 
 		// Line tip stays at 60% of viewport height
-		// Map: viewport 60% Y position → how far along the path that point is
 		const scrollTop = window.scrollY || 0;
 		const viewportH = window.innerHeight;
-		const tipDocY = scrollTop + viewportH * 0.6; // where line tip should be in document coords
+		const tipDocY = scrollTop + viewportH * 0.6;
 
-		// Path runs from startY to finalY — map tipDocY into that range
 		const pathStartY = startY;
 		const pathEndY = finalY;
 		const pathProgress = Math.max(0, Math.min(1, (tipDocY - pathStartY) / (pathEndY - pathStartY)));
@@ -187,56 +193,52 @@ function setupScrollCurve() {
 			targetProgress = pathProgress;
 		}
 
-		// Smooth easing: drawing speed vs erasing speed (向下画线 / 向上消失)
+		// Smooth easing: drawing speed vs erasing speed
 		const lerpSpeed = targetProgress > currentProgress ? 0.2 : 0.6;
 		currentProgress += (targetProgress - currentProgress) * lerpSpeed;
 
-		path.style.strokeDashoffset = pathLength * (1 - currentProgress);
-
-		// Reduce noise: fully clean after glass-box-pattern section scrolls off screen
-		const displaceMap = document.getElementById('curve-displace-map');
-		const glassBoxSection = document.getElementById('glass-box-pattern');
-		if (displaceMap && glassBoxSection) {
-			const gbRect = glassBoxSection.getBoundingClientRect();
-			// When bottom of glass-box-pattern goes above viewport → noise = 0
-			const gbBottom = gbRect.bottom;
-			const viewportH = window.innerHeight;
-			// noiseProgress: 0 when section fully visible, 1 when its bottom passes top of viewport
-			const noiseProgress = Math.max(0, Math.min(1, 1 - (gbBottom / viewportH)));
-			const noiseScale = Math.max(0, 50 * (1 - noiseProgress));
-			displaceMap.setAttribute('scale', noiseScale);
-
-			// Shrink stroke width from 16 to 2 along with noise
-			const strokeWidth = 16 - (14 * noiseProgress); // 16 → 2
-			path.setAttribute('stroke-width', strokeWidth);
+		// Only write to DOM if value changed meaningfully
+		const newDashOffset = Math.round(pathLength * (1 - currentProgress));
+		if (newDashOffset !== lastDashOffset) {
+			path.style.strokeDashoffset = newDashOffset;
+			lastDashOffset = newDashOffset;
 		}
 
-		// Show clarity dot when footer's 30% enters viewport
-		if (clarityDot) {
-			if (footerRect) {
-				const footerHeight = footerRect.height;
-				// Calculate when 30% of footer has entered the viewport
-				// footerRect.top is distance from top of viewport to footer's top
-				// When footerRect.top <= viewportH - (footerHeight * 0.3), footer's 30% is in view
-				const footerTrigger = viewportH - (footerHeight * 0.3);
-				if (footerRect.top <= footerTrigger) {
-					clarityDot.classList.add('visible');
-				} else {
-					clarityDot.classList.remove('visible');
-				}
+		// Reduce noise: only update when glassBox section is relevant
+		if (displaceMap && glassBoxSection) {
+			const gbRect = glassBoxSection.getBoundingClientRect();
+			const gbBottom = gbRect.bottom;
+			const noiseProgress = Math.max(0, Math.min(1, 1 - (gbBottom / viewportH)));
+			const noiseScale = Math.round(Math.max(0, 50 * (1 - noiseProgress)));
+			if (noiseScale !== lastNoiseScale) {
+				displaceMap.setAttribute('scale', noiseScale);
+				lastNoiseScale = noiseScale;
+			}
+			const strokeWidth = Math.round(16 - (14 * noiseProgress));
+			if (strokeWidth !== lastStrokeWidth) {
+				path.setAttribute('stroke-width', strokeWidth);
+				lastStrokeWidth = strokeWidth;
+			}
+		}
+
+		// Show clarity dot
+		if (clarityDot && footerRect) {
+			const footerHeight = footerRect.height;
+			const footerTrigger = viewportH - (footerHeight * 0.3);
+			if (footerRect.top <= footerTrigger) {
+				clarityDot.classList.add('visible');
 			} else {
 				clarityDot.classList.remove('visible');
 			}
 		}
 
-		// Freeze blob animations once curve appears, restore when fully gone
-		const grainOverlay = blob.querySelector('.grain-overlay');
-		if (currentProgress > 0.01) {
-			blob.style.animationPlayState = 'paused';
-			if (grainOverlay) grainOverlay.style.animationPlayState = 'paused';
-		} else {
-			blob.style.animationPlayState = 'running';
-			if (grainOverlay) grainOverlay.style.animationPlayState = 'running';
+		// Freeze/restore blob animations only on state change
+		const shouldPause = currentProgress > 0.01;
+		if (shouldPause !== lastBlobPaused) {
+			const state = shouldPause ? 'paused' : 'running';
+			blob.style.animationPlayState = state;
+			if (grainOverlay) grainOverlay.style.animationPlayState = state;
+			lastBlobPaused = shouldPause;
 		}
 	}
 
