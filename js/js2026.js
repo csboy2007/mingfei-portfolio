@@ -104,7 +104,7 @@ function setupScrollCurve() {
 	const blobCenterX = orbRect.left + orbRect.width / 2;
 	// Blob bottom = orb vertical center + half blob height (blob is 300px, visually centered)
 	// Convert viewport Y to document Y by adding scroll offset
-	const blobBottomY = orbRect.top + scrollY + orbRect.height / 2 + 150; // 150 = half of 300px blob
+	const blobBottomY = orbRect.top + scrollY + orbRect.height / 2 + 138; // 150 = half of 300px blob
 
 	const startX = blobCenterX;
 	const startY = blobBottomY; // document coords
@@ -153,13 +153,14 @@ function setupScrollCurve() {
 
 	// Curve color: fixed to blob's initial color (green)
 	const heroHeight = heroSection.offsetHeight;
+	let currentProgress = 0; // smoothed draw progress
 
 	function onScroll() {
 		const heroRect = heroSection.getBoundingClientRect();
-		const orbProgress = Math.max(0, Math.min(1, -heroRect.top / (heroHeight * 0.65)));
+		const orbProgress = Math.max(0, Math.min(1, -heroRect.top / (heroHeight * 0.5)));
 
-		// Curve starts when orb is 80% shrunk — but only triggers, doesn't drive speed
-		const curveStart = 0.8;
+		// Curve starts when orb is 50% shrunk
+		const curveStart = 0.5;
 		const curveTriggered = orbProgress >= curveStart;
 
 		// Line tip stays at 60% of viewport height
@@ -177,16 +178,20 @@ function setupScrollCurve() {
 		const footerRect = footer ? footer.getBoundingClientRect() : null;
 		const footerVisible = footerRect && footerRect.top < viewportH;
 
-		let drawProgress;
+		let targetProgress;
 		if (footerVisible) {
-			drawProgress = 1;
+			targetProgress = 1;
 		} else if (!curveTriggered) {
-			drawProgress = 0;
+			targetProgress = 0;
 		} else {
-			drawProgress = pathProgress;
+			targetProgress = pathProgress;
 		}
 
-		path.style.strokeDashoffset = pathLength * (1 - drawProgress);
+		// Smooth easing: drawing speed vs erasing speed (向下画线 / 向上消失)
+		const lerpSpeed = targetProgress > currentProgress ? 0.2 : 0.6;
+		currentProgress += (targetProgress - currentProgress) * lerpSpeed;
+
+		path.style.strokeDashoffset = pathLength * (1 - currentProgress);
 
 		// Reduce noise: fully clean after glass-box-pattern section scrolls off screen
 		const displaceMap = document.getElementById('curve-displace-map');
@@ -224,9 +229,9 @@ function setupScrollCurve() {
 			}
 		}
 
-		// Freeze blob animations once curve appears
+		// Freeze blob animations once curve appears, restore when fully gone
 		const grainOverlay = blob.querySelector('.grain-overlay');
-		if (drawProgress > 0) {
+		if (currentProgress > 0.01) {
 			blob.style.animationPlayState = 'paused';
 			if (grainOverlay) grainOverlay.style.animationPlayState = 'paused';
 		} else {
@@ -235,18 +240,12 @@ function setupScrollCurve() {
 		}
 	}
 
-	let scheduled = false;
-	window.addEventListener('scroll', () => {
-		if (!scheduled) {
-			scheduled = true;
-			requestAnimationFrame(() => {
-				onScroll();
-				scheduled = false;
-			});
-		}
-	});
-
-	onScroll();
+	// rAF loop — runs every frame so lerp easing continues between scroll events
+	function loop() {
+		onScroll();
+		requestAnimationFrame(loop);
+	}
+	requestAnimationFrame(loop);
 }
 
 // ── Shared shape colors (set once, reused by hero and clarity) ──
