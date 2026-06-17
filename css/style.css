@@ -2756,8 +2756,9 @@ body.page-sidekck .project-text ul ul li {
   color: var(--color-text-on-accent);
   cursor: pointer;
   padding: 15px;
-   font-family: var(--font-heading);
+  font-family: var(--font-heading);
   font-weight: 700;
+  border-radius: var(--border-radius);
 }
 
 
@@ -3277,6 +3278,136 @@ background-color: #4A5A6C;
 }
 
 /* Two-column hero layout — uses same 3-col grid as achievements for alignment */
+
+/* ══════════════════════════════════════════════
+ * HERO LOADING STATE
+ * Shows "loading work" in place of the subtitle while assets load.
+ * ══════════════════════════════════════════════ */
+
+/* "loading work" text — reuses exact hero subtitle typography */
+#hero-loading-text {
+	font-family: var(--font-body);
+	font-size: var(--type-body-lead-size);
+	line-height: var(--type-body-lead-line);
+	font-weight: var(--type-body-lead-weight);
+	letter-spacing: var(--type-body-lead-spacing);
+	color: var(--color-text-secondary);
+	margin: 0;
+	text-align: left;
+	opacity: 1;
+	transition: opacity 0.4s ease;
+	/* Position absolutely within .hero-subtitle-slot so it does not affect layout height */
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* Wrapper keeps h2 in flow for stable height; loading text overlays it */
+.hero-subtitle-slot {
+	position: relative;
+}
+
+/* Subtle loading line under the text */
+#hero-loading-text::after {
+	content: '';
+	display: block;
+	margin-top: 12px;
+	width: 48px;
+	height: 2px;
+	background: var(--color-text-secondary);
+	opacity: 0.4;
+	animation: hero-loading-line 1.6s ease-in-out infinite;
+}
+
+@keyframes hero-loading-line {
+	0%, 100% { width: 48px; opacity: 0.4; }
+	50% { width: 80px; opacity: 0.7; }
+}
+
+/* Hide loading text once ready */
+body.is-ready #hero-loading-text {
+	opacity: 0;
+	pointer-events: none;
+	visibility: hidden;
+}
+
+/* During loading: hide subtitle, orb, and below-hero content */
+body.is-loading #hero-text h2 {
+	opacity: 0;
+}
+
+body.is-loading #hero-orb {
+	opacity: 0;
+}
+
+body.is-loading #scroll-curve,
+body.is-loading #achievements,
+body.is-loading .project-section,
+body.is-loading #glass-box-pattern,
+body.is-loading .glass-box-card-top,
+body.is-loading #back-to-top-section,
+body.is-loading #fh5co-footer,
+body.is-loading #demoportal-top,
+body.is-loading #glass-box-top,
+body.is-loading #agentcore-top,
+body.is-loading #vawl1-top,
+body.is-loading #vawl2-top,
+body.is-loading #cfaia-top,
+body.is-loading #dbcaps-top,
+body.is-loading #sidekck-top {
+	opacity: 0;
+}
+
+/* Once ready: fade everything in */
+body.is-ready #hero-text h2 {
+	transition: opacity 0.5s ease 0.1s;
+	opacity: 1;
+}
+
+body.is-ready #hero-orb {
+	transition: opacity 0.6s ease 0.2s;
+	opacity: 1;
+}
+
+body.is-ready #scroll-curve,
+body.is-ready #achievements,
+body.is-ready .project-section,
+body.is-ready #glass-box-pattern,
+body.is-ready .glass-box-card-top,
+body.is-ready #back-to-top-section,
+body.is-ready #fh5co-footer,
+body.is-ready #demoportal-top,
+body.is-ready #glass-box-top,
+body.is-ready #agentcore-top,
+body.is-ready #vawl1-top,
+body.is-ready #vawl2-top,
+body.is-ready #cfaia-top,
+body.is-ready #dbcaps-top,
+body.is-ready #sidekck-top {
+	transition: opacity 0.6s ease 0.35s;
+	opacity: 1;
+}
+
+/* prefers-reduced-motion: disable loading line animation, use immediate reveal */
+@media (prefers-reduced-motion: reduce) {
+	#hero-loading-text::after {
+		animation: none;
+	}
+	body.is-ready #hero-text h2,
+	body.is-ready #hero-orb,
+	body.is-ready #scroll-curve,
+	body.is-ready #achievements,
+	body.is-ready .project-section,
+	body.is-ready #glass-box-pattern,
+	body.is-ready .glass-box-card-top,
+	body.is-ready #back-to-top-section,
+	body.is-ready #fh5co-footer {
+		transition: none;
+	}
+}
+
+/* ══════════════════════════════════════════════ */
+
 #hero-layout {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -4066,3 +4197,349 @@ background-color: #4A5A6C;
 	transform: scale(1);
 }
 
+
+/* ═══════════════════════════════════════════════════════════════
+   2026 Project Pages — shared styles
+   Scoped under body.page-project-2026
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Centered single-column content container */
+body.page-project-2026 .project-body {
+  max-width: var(--layout-content-max-width);
+  margin: 0 auto;
+  padding-top: 160px;
+}
+
+/* Section spacing between major numbered sections */
+body.page-project-2026 .project-body-section {
+  margin-top: var(--project-section-to-section-gap);
+}
+body.page-project-2026 .project-body-section:first-child {
+  margin-top: 0;
+}
+
+/* Hero card at top */
+body.page-project-2026 .project-hero-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--project-title-to-body-gap);
+}
+
+body.page-project-2026 .project-hero-card .hero-image {
+  width: 100%;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+body.page-project-2026 .project-hero-card .hero-title {
+  font-family: var(--font-heading);
+  font-size: var(--type-card-title-size);
+  line-height: var(--type-card-title-line);
+  font-weight: var(--type-card-title-weight);
+  letter-spacing: var(--type-card-title-spacing);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+body.page-project-2026 .project-hero-card .hero-intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--project-paragraph-to-paragraph-gap);
+  margin-top: var(--project-subtitle-to-body-gap);
+}
+
+body.page-project-2026 .project-hero-card .hero-intro p {
+  font-family: var(--font-body);
+  font-size: var(--type-body-regular-size);
+  line-height: var(--type-body-regular-line);
+  font-weight: var(--type-body-regular-weight);
+  letter-spacing: -0.8px;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Key-value pairs */
+body.page-project-2026 .project-key-values {
+  display: flex;
+  gap: var(--space-lg);
+  padding-right: 10px;
+  margin-top: var(--project-info-to-content-gap);
+  border-top: none;
+}
+
+body.page-project-2026 .project-key-values .kv-column {
+  flex: 1;
+  min-width: 0;
+}
+
+body.page-project-2026 .project-key-values .kv-divider {
+  width: 1px;
+  background: var(--color-system-muted-700);
+  align-self: stretch;
+  flex-shrink: 0;
+}
+
+body.page-project-2026 .project-key-values .kv-key {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0 0 2px;
+}
+
+body.page-project-2026 .project-key-values .kv-value {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Section titles (numbered) */
+body.page-project-2026 .project-body-section .section-title {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  line-height: 1.4;
+  font-weight: 400;
+  letter-spacing: -0.6px;
+  color: var(--color-text-primary);
+  margin: 0 0 var(--project-title-to-body-gap);
+  padding-left: 0;
+}
+body.page-project-2026 .project-body-section .section-title .section-number {
+  display: inline;
+  margin-right: 8px;
+}
+
+/* Body text within sections */
+body.page-project-2026 .project-body-section .section-text {
+  font-family: var(--font-body);
+  font-size: var(--type-body-regular-size);
+  line-height: var(--type-body-regular-line);
+  font-weight: var(--type-body-regular-weight);
+  letter-spacing: var(--type-body-regular-spacing);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--project-paragraph-to-paragraph-gap);
+}
+body.page-project-2026 .project-body-section .section-text:last-child {
+  margin-bottom: 0;
+}
+
+/* Media blocks (images) */
+body.page-project-2026 .project-media-block {
+  margin-top: var(--project-text-to-image-gap);
+  margin-bottom: var(--project-image-to-next-text-gap);
+}
+
+/* Image scroll frame */
+body.page-project-2026 .project-image-scroll-frame {
+  position: relative;
+  z-index: 1;
+  max-height: 420px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: var(--border-radius);
+  scrollbar-color: var(--mingfei-teal) transparent;
+}
+body.page-project-2026 .project-image-scroll-frame::-webkit-scrollbar {
+  width: 6px;
+}
+body.page-project-2026 .project-image-scroll-frame::-webkit-scrollbar-track {
+  background: transparent;
+}
+body.page-project-2026 .project-image-scroll-frame::-webkit-scrollbar-thumb {
+  background: var(--mingfei-teal);
+  border-radius: 3px;
+}
+body.page-project-2026 .project-image-scroll-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+body.page-project-2026 .project-media-block .media-caption {
+  font-family: var(--font-body);
+  font-size: var(--type-meta-s-size);
+  line-height: var(--type-meta-s-line);
+  color: var(--color-text-secondary);
+  font-style: italic;
+  margin-top: var(--project-image-to-caption-gap);
+}
+
+/* YouTube embed block */
+body.page-project-2026 .project-video-block {
+  margin-top: var(--project-text-to-image-gap);
+  margin-bottom: var(--project-image-to-next-text-gap);
+}
+body.page-project-2026 .project-video-block .video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  border-radius: var(--border-radius);
+}
+body.page-project-2026 .project-video-block .video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+body.page-project-2026 .project-video-block .video-fallback {
+  margin-top: var(--space-md);
+}
+body.page-project-2026 .project-video-block .video-fallback p {
+  font-family: var(--font-body);
+  font-size: var(--type-body-regular-size);
+  line-height: var(--type-body-regular-line);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-sm);
+}
+body.page-project-2026 .project-video-block .btn-youtube {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #cc0000;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+}
+body.page-project-2026 .project-video-block .btn-youtube:hover {
+  background: #aa0000;
+  color: white;
+}
+
+/* Attachment links */
+body.page-project-2026 .project-attachment-link {
+  color: var(--mingfei-teal);
+  text-decoration: underline;
+}
+body.page-project-2026 .project-attachment-link:hover {
+  color: var(--color-text-primary);
+}
+body.page-project-2026 .ext-link-icon {
+  display: inline-block;
+  margin-left: 0.25em;
+  vertical-align: middle;
+  opacity: 0.85;
+}
+
+/* Next project link */
+body.page-project-2026 .project-next {
+  margin-top: var(--project-section-to-section-gap);
+  padding: var(--space-2xl) 0;
+}
+body.page-project-2026 .project-next a {
+  color: var(--mingfei-teal);
+  font-family: var(--font-heading);
+  font-size: var(--type-heading-m-size);
+  line-height: var(--type-heading-m-line);
+  font-weight: var(--type-heading-m-weight);
+  letter-spacing: var(--type-heading-m-spacing);
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px;
+}
+body.page-project-2026 .project-next a:hover {
+  background-color: var(--mingfei-teal);
+  color: var(--color-text-on-accent);
+}
+body.page-project-2026 .project-next .next-label {
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+/* Image modal overrides for 2026 Project Pages */
+body.page-project-2026 #img-modal-overlay {
+  background: rgba(0, 0, 0, 0.85);
+  overflow-y: auto;
+  align-items: flex-start;
+  padding: 60px 0 24px;
+}
+body.page-project-2026 #img-modal-content {
+  max-width: 80vw;
+  max-height: none;
+  margin: auto;
+}
+body.page-project-2026 #img-modal-content img {
+  max-width: 80vw;
+  max-height: none;
+  height: auto;
+  object-fit: contain;
+}
+body.page-project-2026 #img-modal-close {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 10000;
+}
+
+/* Image hover — rotating border for zoom targets */
+body.page-project-2026 .project-image-zoom-target {
+  position: relative;
+  display: block;
+  border-radius: var(--border-radius);
+  overflow: visible;
+  isolation: isolate;
+}
+body.page-project-2026 .project-image-zoom-target::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--border-radius);
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--gradient-angle, 0deg),
+    rgba(255, 255, 255, 0.05) 0deg,
+    rgba(255, 255, 255, 0.05) 60deg,
+    rgba(255, 255, 255, 0.7) 120deg,
+    rgba(255, 255, 255, 0.05) 180deg,
+    rgba(255, 255, 255, 0.05) 240deg,
+    rgba(255, 255, 255, 0.7) 300deg,
+    rgba(255, 255, 255, 0.05) 360deg
+  );
+  -webkit-mask: conic-gradient(#000 0 0) content-box exclude, conic-gradient(#000 0 0);
+  mask: conic-gradient(#000 0 0) content-box exclude, conic-gradient(#000 0 0);
+  animation: border-rotate 4s linear infinite;
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+body.page-project-2026 .project-image-zoom-target:hover::after {
+  opacity: 1;
+}
+
+/* Responsive — 2026 Project Pages */
+@media (max-width: 767px) {
+  body.page-project-2026 .project-body {
+    padding-left: var(--project-mobile-content-padding);
+    padding-right: var(--project-mobile-content-padding);
+  }
+  body.page-project-2026 .project-hero-card .hero-title {
+    font-size: 28px;
+    letter-spacing: -1px;
+  }
+  body.page-project-2026 .project-key-values {
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  body.page-project-2026 .project-key-values .kv-divider {
+    width: 100%;
+    height: 1px;
+    align-self: auto;
+  }
+  body.page-project-2026 .project-body-section .section-title {
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  body.page-project-2026 .project-body {
+    padding-left: var(--project-tablet-content-padding);
+    padding-right: var(--project-tablet-content-padding);
+  }
+}

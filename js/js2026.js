@@ -339,6 +339,64 @@ function assignHeroShapeColors() {
 	});
 }
 
+// ── Hero loading state: wait for fonts + orb visual readiness ──
+(function initHeroLoading() {
+	// Only run on homepage (where hero-loading-text exists)
+	var loadingText = document.getElementById('hero-loading-text');
+	if (!loadingText) return;
+
+	var ready = false;
+	var FALLBACK_TIMEOUT = 2800; // ms — always reveal even if assets fail
+
+	function revealPage() {
+		if (ready) return;
+		ready = true;
+		document.body.classList.remove('is-loading');
+		document.body.classList.add('is-ready');
+	}
+
+	// Check fonts + orb blob image/render readiness
+	function checkReady() {
+		var fontsReady = (typeof document.fonts !== 'undefined' && typeof document.fonts.ready !== 'undefined')
+			? document.fonts.ready
+			: Promise.resolve();
+
+		// Check if the orb blob has rendered (has computed dimensions)
+		var orbReady = new Promise(function(resolve) {
+			var blob = document.querySelector('.blob-wrapper .blob');
+			if (!blob) { resolve(); return; }
+			// If blob already has a size, it's rendered
+			if (blob.offsetWidth > 0 && blob.offsetHeight > 0) {
+				resolve();
+				return;
+			}
+			// Otherwise observe for a short period
+			var observer = new MutationObserver(function() {
+				if (blob.offsetWidth > 0 && blob.offsetHeight > 0) {
+					observer.disconnect();
+					resolve();
+				}
+			});
+			observer.observe(blob, { attributes: true, childList: true, subtree: true });
+			// Orb timeout — don't wait indefinitely for it
+			setTimeout(function() { observer.disconnect(); resolve(); }, 1500);
+		});
+
+		var minLoadingTime = new Promise(function(resolve) { setTimeout(resolve, 300); });
+		Promise.all([fontsReady, orbReady, minLoadingTime]).then(revealPage);
+	}
+
+	// Fallback timeout — always reveal
+	setTimeout(revealPage, FALLBACK_TIMEOUT);
+
+	// Start checks once DOM is interactive
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', checkReady);
+	} else {
+		checkReady();
+	}
+})();
+
 // ── Init ──
 requestAnimationFrame(setupHoverInteraction);
 document.addEventListener('DOMContentLoaded', () => {
@@ -357,3 +415,101 @@ document.addEventListener('DOMContentLoaded', () => {
 		alignClarityShapes();
 	});
 });
+
+
+/* ═══════════════════════════════════════════════════════════════
+   2026 Project Pages — shared page-specific JavaScript
+   Only runs on body.page-project-2026 pages with .project-body
+   ═══════════════════════════════════════════════════════════════ */
+
+// Back-to-top: smooth scroll (global — needed for onclick="topFunction()")
+function topFunction() {
+	window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+(function() {
+	if (!document.body.classList.contains('page-project-2026')) return;
+	if (!document.querySelector('.project-body')) return;
+
+	// ── Smooth scroll for anchor links ──
+	$(document).on('click', 'a[href^="#"]', function(event) {
+		event.preventDefault();
+		$('html, body').animate({
+			scrollTop: $($.attr(this, 'href')).offset().top - 70
+		}, 1500);
+	});
+
+	// ── Back to top button show/hide ──
+	window.onscroll = function() {
+		if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+			document.getElementById('myBtn').style.display = 'block';
+		} else {
+			document.getElementById('myBtn').style.display = 'none';
+		}
+	};
+
+	// ── Position back-to-top button relative to .project-body right edge ──
+	var btn = document.getElementById('myBtn');
+	var bodyEl = document.querySelector('.project-body');
+
+	function positionBtn() {
+		if (!btn || !bodyEl) return;
+		var rect = bodyEl.getBoundingClientRect();
+		btn.style.left = (rect.right + 60) + 'px';
+		btn.style.right = 'auto';
+	}
+	positionBtn();
+	window.addEventListener('resize', positionBtn);
+
+	// ── Menu bar hide on scroll down, show on scroll up ──
+	var header = document.getElementById('fh5co-header');
+	if (header) {
+		var lastScrollY = 0;
+		var ticking = false;
+
+		function updateHeader() {
+			var currentScrollY = window.scrollY || window.pageYOffset;
+			var delta = currentScrollY - lastScrollY;
+
+			if (delta > 5 && currentScrollY > 80) {
+				header.style.transform = 'translateY(-200%)';
+			} else if (delta < -5) {
+				header.style.transform = 'translateY(0)';
+			}
+			lastScrollY = currentScrollY;
+			ticking = false;
+		}
+
+		header.style.transition = 'transform 0.35s ease';
+
+		window.addEventListener('scroll', function() {
+			if (!ticking) {
+				requestAnimationFrame(updateHeader);
+				ticking = true;
+			}
+		});
+	}
+
+	// ── Zoom cursor label for project images (deferred until DOM complete) ──
+	window.addEventListener('load', function() {
+		var cursorEl = document.getElementById('custom-cursor-zoom');
+		var label = document.getElementById('cursor-zoom-label');
+		var targets = document.querySelectorAll('.project-image-zoom-target');
+
+		if (cursorEl && label && targets.length) {
+			document.addEventListener('mousemove', function(e) {
+				cursorEl.style.left = (e.clientX + 15) + 'px';
+				cursorEl.style.top = (e.clientY + 15) + 'px';
+			});
+
+			targets.forEach(function(target) {
+				target.addEventListener('mouseenter', function() {
+					label.style.opacity = '1';
+				});
+				target.addEventListener('mouseleave', function() {
+					label.style.opacity = '0';
+				});
+			});
+		}
+	});
+})();
